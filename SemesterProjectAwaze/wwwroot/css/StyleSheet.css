@@ -205,8 +205,6 @@ h2{
     margin-left: 0px;
 }
 
-
-
 .dropdown {
     position: relative;
     display: inline-block;
@@ -236,4 +234,25 @@ h2{
 
 .show {
     display: block;
+}
+
+.index-info-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+}
+
+.index-info {
+    display: flex;
+    justify-content: center;
+    padding-right: 150px;
+}
+
+.index-info2 {
+    display: flex;
+    justify-content: center;
+}
+
+.index-info-text {
+    padding-left: 20px;
 }
