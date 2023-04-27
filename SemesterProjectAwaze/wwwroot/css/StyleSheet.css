@@ -1,0 +1,77 @@
+﻿/* Reset to default values */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+/* Navbar style */
+.navbar-light {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #FFFFFF;
+    color: #2C2B2B;
+}
+
+nav-links a {
+    color: #2C2B2B;
+}
+
+/* Navbar menu */
+.menu {
+    display: flex;
+    gap: 1em;
+    font-size: 14px;
+}
+
+    .menu li {
+        padding: 5px 14px;
+    }
+
+/* Responsive navbar */
+/* Checkbox hack */
+input[type=checkbox] {
+    display: none;
+}
+
+/* Hamburger menu */
+.hamburger {
+    display: none;
+    font-size: 24px;
+    user-select: none;
+}
+
+/* Applying media queries */
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        position: absolute;
+        background-color: #FFFFFF;
+        right: 0;
+        left: 0;
+        text-align: center;
+        padding: 16px 0;
+    }
+
+    menu li + li {
+        margin-top: 12px;
+    }
+
+    input[type=checkbox]:checked ~ .menu {
+        display: block;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
