@@ -22,7 +22,7 @@ li {
 .navbar-light {
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    padding: 20px 0px 2px;
     background-color: #FFFFFF;
     color: #2C2B2B;
 }
@@ -38,10 +38,17 @@ nav-links a {
     font-size: 14px;
 }
 
-    .menu li {
-        padding: 5px 14px;
-    }
+.menu li {
+    padding: 5px 12px;
+}
 
+.menu li a {
+    color: #2C2B2B;
+}
+
+div .logo {
+    padding-right: 250px;
+}
 /* Responsive navbar */
 /* Checkbox hack */
 input[type=checkbox] {
@@ -56,6 +63,12 @@ input[type=checkbox] {
 }
 
 /* Applying media queries */
+@media (max-width: 1400px) {
+    div .logo {
+        padding-right: 100px;
+    }
+}
+
 @media (max-width: 1200px) {
     .menu {
         display: none;
