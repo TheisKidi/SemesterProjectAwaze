@@ -14,8 +14,12 @@ li {
 }
 
 /* Navbar style */
-.navbar-light {
+.navbar-container {
     display: flex;
+    justify-content: center;
+}
+
+.navbar-light {
     align-items: center;
     justify-content: space-between;
     padding: 20px;
@@ -52,7 +56,7 @@ input[type=checkbox] {
 }
 
 /* Applying media queries */
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .menu {
         display: none;
         position: absolute;
@@ -73,6 +77,10 @@ input[type=checkbox] {
 
     .hamburger {
         display: block;
+    }
+
+    .navbar-seperator {
+        display: none;
     }
 }
 
