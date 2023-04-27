@@ -91,8 +91,28 @@
     </header>
     @RenderBody()
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - Awaze - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        <div class="footer-text">
+            <div class="footer-header-container">
+                <p class="footer-header">Awaze A/S, Virumgårdsvej 27, 2830 Virum - Danmark CVR.nr. 17484575</p>
+            </div>
+            <div class="footer-links-container">
+                <ul class="footer-links">
+                    <li>
+                        <svg id="denmarkFlag" xmlns="http://www.w3.org/2000/svg" width="45" height="21.42" viewBox="0 0 45 21.42">
+                            <rect id="Rectangle_12" data-name="Rectangle 12" width="45" height="21.42" rx="1" fill="#c71e54" />
+                            <rect id="Rectangle_13" data-name="Rectangle 13" width="3.96" height="21.42" transform="translate(8.56)" fill="#fff" />
+                            <rect id="Rectangle_14" data-name="Rectangle 14" width="3.96" height="45" transform="translate(45 8.73) rotate(90)" fill="#fff" />
+                        </svg>
+                    </li>
+                    <li><a asp-page="/browse">Feriehuse</a></li>
+                    <li><a asp-page="">Politik vedr. persondata</a></li>
+                    <li><a asp-page="">Cookie Policy</a></li>
+                    <li><a asp-page="">Generelle vilkår</a></li>
+                    <li><a asp-page="">Lejebetingelser</a></li>
+                    <li><a asp-page="">Værd at vide</a></li>
+                    <li><a asp-page="">Agent login</a></li>
+                </ul>
+            </div>
         </div>
     </footer>
 
