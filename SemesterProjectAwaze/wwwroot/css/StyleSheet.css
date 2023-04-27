@@ -1,4 +1,6 @@
 ﻿/* Reset to default values */
+@import url('https://fonts.google.com/specimen/Poppins') 
+
 * {
     margin: 0;
     padding: 0;
@@ -86,9 +88,24 @@ input[type=checkbox] {
 
 .banner{
     background-image: url(/img/IndexBanner.jpg);
+    background-repeat: no-repeat;
     height: 605px;
 }
 
 .bannerText{
-    margin-left: 20em;
+    margin-left: 375px;
+    position: absolute;
+    margin-top: 150px;
+}
+
+h1{
+    font-size: 45px;
+    font-family: Poppins;
+    font-weight: bold;
+}
+
+h2{
+    font-size: 27px;
+    font-family: Poppins;
+    font-weight: 300;
 }
