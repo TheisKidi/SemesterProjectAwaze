@@ -97,11 +97,11 @@ input[type=checkbox] {
     }
 }
 
-.Banner{
-    width: 1920px;
+.banner{
+    background-image: url(/img/IndexBanner.jpg);
     height: 605px;
 }
 
-#layoutContainer{
-    margin-left: 0px;
+.bannerText{
+    margin-left: 20em;
 }
