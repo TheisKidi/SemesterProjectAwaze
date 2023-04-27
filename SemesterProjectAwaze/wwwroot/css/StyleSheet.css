@@ -75,3 +75,12 @@ input[type=checkbox] {
         display: block;
     }
 }
+
+.Banner{
+    width: 1920px;
+    height: 605px;
+}
+
+#layoutContainer{
+    margin-left: 0px;
+}
