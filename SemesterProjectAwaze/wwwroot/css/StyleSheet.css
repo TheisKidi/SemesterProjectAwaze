@@ -182,27 +182,60 @@ h2{
 
 #smallDropdown{
     padding-right: 130px;
+    margin-left: -5px;
+}
+
+#smallDropdown:hover {
+    box-shadow: 0px 4px 0px 0px rgb(45, 212, 115);
 }
 
 #searchBtn {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    margin-left: -4px;
+    padding-top: 19px;
+    padding-bottom: 21px;
     padding-inline: 90px;
-    border-radius: 5px;
     background-color: #2DD473;
+    border: none;
+    border-end-end-radius: 7px;
+    border-start-end-radius: 7px;
+}
+
+#searchBtn:hover {
+    background-color: #2CBF6A;
+}
+
+#searchBtn:focus + .btn-primary, .btn-primary:focus {
+    color: #fff;
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+    box-shadow: none;
+}
+
+#searchBtn:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
+    box-shadow: none;
 }
 
 .dropbtn {
     background-color: white;
     color: darkgrey;
+    font-family: Poppins;
     padding-right: 440px;
     padding-top: 20px;
     padding-bottom: 20px;
     font-size: 16px;
     border: none;
     cursor: pointer;
-    border-radius: 5px;
     margin-left: 0px;
+
+}
+
+#placeMenu {
+    border-end-start-radius: 7px;
+    border-start-start-radius: 7px;
+}
+
+#placeMenu:hover{
+    box-shadow: 0px 4px 0px 0px rgb(45, 212, 115);
 }
 
 .dropdown {
