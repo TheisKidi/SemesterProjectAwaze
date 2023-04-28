@@ -21,7 +21,7 @@ namespace AwazeLib.model
         public Facilities Facilities { get; set; }
         public string VR { get; set; }
 
-        public Property() : this ("default ID", HouseOwner, Country.Denmark, "default address", "default name", -1, 0, "default description", new Facilities(), "default VR link")
+        public Property() : this ("default ID", new HouseOwner(), Country.Denmark, "default address", "default name", -1, 0, "default description", new Facilities(), "default VR link")
         {
         }
 
