@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace AwazeLib.model
 {
-
     public enum HouseType {HolidayCottage, HollidayApartment, HouseBoat}
     public class Facilities
     {
@@ -31,7 +30,7 @@ namespace AwazeLib.model
             Type = type;
         }   
 
-        public Facilities() : this(0, 0, 0, false, false, false, false, HouseType.HolidayCottage) 
+        public Facilities() : this(0, 0, 0, false, false, false, 0, HouseType.HolidayCottage) 
         {
         }
 
