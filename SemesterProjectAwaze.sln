@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SemesterProjectAwaze", "SemesterProjectAwaze\SemesterProjectAwaze.csproj", "{F3E046E2-62DB-4034-9858-33029D79AAE0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AwazeLib", "AwazeLib\AwazeLib.csproj", "{B9903F80-25CB-4AA9-B147-3C6F14DF4B13}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwazeLib", "AwazeLib\AwazeLib.csproj", "{B9903F80-25CB-4AA9-B147-3C6F14DF4B13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
