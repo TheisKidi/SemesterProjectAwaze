@@ -1,4 +1,10 @@
-﻿namespace AwazeLib
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AwazeLib
 {
 
     public enum HouseType {HolidayCottage, HollidayApartment, HouseBoat}

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AwazeLib
+namespace AwazeLib.model
 {
     public enum Country {Denmark, Croatia, Italy, TheNetherlands, Portugal}
 
