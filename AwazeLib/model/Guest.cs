@@ -10,7 +10,6 @@ namespace AwazeLib.model
     {
         public string MyBookingId { get; set; }
 
-
         public Guest (string surname, string lastname, string email, string phone, bool isOwner, string password, string myBookingId)
             : base(surname, lastname, email, phone, isOwner, password)
         {
@@ -19,7 +18,6 @@ namespace AwazeLib.model
 
         public Guest() : this ("Default surname", "Default lastname", "Default email", "Default phone", false, "Default Password", "DefaultBookingId" )
         {
-
         }
 
         public override string ToString()

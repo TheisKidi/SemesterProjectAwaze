@@ -25,7 +25,7 @@ namespace AwazeLib.model
             IsBooked = isBooked;
         }
 
-        public Order() : this(0, 0, new Property, DateTime.Now, DateTime.Now, false) { }
+        public Order() : this(0, new Guest(), new Property(), DateTime.Now, DateTime.Now, false) { }
 
         public override string ToString()
         {
