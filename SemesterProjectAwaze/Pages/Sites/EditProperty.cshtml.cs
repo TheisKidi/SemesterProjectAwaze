@@ -48,7 +48,6 @@ namespace SemesterProjectAwaze.Pages.Sites
             PricePrNight = editProperty.PricePrNight;
             Rating = editProperty.Rating;
             Description = editProperty.Description;
-            VR = 
         }
     }
 }
