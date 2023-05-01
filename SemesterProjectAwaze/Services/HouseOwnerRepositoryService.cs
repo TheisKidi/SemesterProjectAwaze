@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 
 namespace SemesterProjectAwaze.Services
 {
-    public class HouseOwnerRepositoryService : IGenericRepository<HouseOwner>
+    public class HouseOwnerRepositoryService : IGenericRepositoryService<HouseOwner>
     {
         public HouseOwner Create(HouseOwner houseOwner)
         {
@@ -124,7 +124,7 @@ namespace SemesterProjectAwaze.Services
         public HouseOwner Update(string id, HouseOwner houseOwner)
         {
             string sqlInsert = "update HouseOwner " +
-                "set OwnerId = @OwnerId, SurName = @SurName, LastName = @LastName, " +
+                "set SurName = @SurName, LastName = @LastName, " +
                 "Email = @Email, Phone = @Phone, Password = @Password, " +
                 "Address = @Address where Id = @OwnerId";
 
@@ -148,7 +148,7 @@ namespace SemesterProjectAwaze.Services
                 }
                 else
                 {
-                    throw new ArgumentException("!!! Could not create a property !!!");
+                    throw new ArgumentException("!!! Could not create a HouseOwner !!!");
                 }
             }
             return houseOwner;
