@@ -16,7 +16,8 @@ namespace AwazeLib.model
             MyBookingId = myBookingId;
         }
 
-        public Guest() : this ("Default surname", "Default lastname", "Default email", "Default phone", false, "Default Password", "DefaultBookingId" )
+        public Guest() : this ("Default surname", "Default lastname", "Default email", "Default phone", false,
+                               "Default Password", "DefaultBookingId" )
         {
         }
 
