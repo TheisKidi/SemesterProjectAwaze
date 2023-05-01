@@ -5,56 +5,88 @@
 
 <div class="navbar-container" >
     <h1 style="font-family: Poppins; font-size: 50px; padding-top: 50px; padding-bottom: 50px;">Udlej dit sommerhus</h1>
-        <div class="row">
-            <div class="col-md-4">
+</div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="navbar-container">
                 <form method="post">
                     <div class="form-group">
-                        <label asp-for="@Model.HouseOwner.OwnerId" class="control-label"></label><br />
-                        <input asp-for="@Model.HouseOwner.OwnerId" class="form-control" /><br />
-                        <span asp-validation-for="@Model.HouseOwner.OwnerId" class="text-danger"></span>
-                    </div>
-                    @*<div class="form-group">
-                        <label asp-for="@Model." class="control-label"></label><br />
-                        <input asp-for="@Model.PrisPrUge" class="form-control" /><br />
-                        <span asp-validation-for="@Model.PrisPrUge" class="text-danger"></span>
+                        <label asp-for="@Model.Name" class="control-label"></label><br />
+                        <input asp-for="@Model.Name" class="form-control" /><br />
+                        <span asp-validation-for="@Model.Name" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="@Model.AntalSenge" class="control-label"></label><br />
-                        <input asp-for="@Model.AntalSenge" class="form-control" /><br />
-                        <span asp-validation-for="@Model.AntalSenge" class="text-danger"></span>
+                        <label asp-for="@Model.Country" class="control-label"></label><br />
+                        <input asp-for="@Model.Country" class="form-control" /><br />
+                        <span asp-validation-for="@Model.Country" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="@Model.Rengøring" class="control-label"></label><br />
-                        <input type="checkbox" checked="true" asp-for="@Model.Rengøring" /><br />
-                        <span asp-validation-for="@Model.Rengøring" class="text-danger"></span>
+                        <label asp-for="@Model.Address" class="control-label"></label><br />
+                        <input asp-for="@Model.Address" class="form-control" /><br />
+                        <span asp-validation-for="@Model.Address" class="text-danger"></span>
+                    </div>  
+                    <div class="form-group">
+                        <label asp-for="@Model.PricePrNight" class="control-label"></label><br />
+                        <input asp-for="@Model.PricePrNight" class="form-control" /><br />
+                        <span asp-validation-for="@Model.PricePrNight" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="@Model.Husdyr" class="control-label"></label><br />
-                        <input type="checkbox" checked="true" asp-for="@Model.Husdyr" /><br />
-                        <span asp-validation-for="@Model.Husdyr" class="text-danger"></span>
+                        <label asp-for="@Model.Description" class="control-label"></label><br />
+                        <input asp-for="@Model.Description" class="form-control" /><br />
+                        <span asp-validation-for="@Model.Description" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="@Model.Vaskemaskine" class="control-label"></label><br />
-                        <input type="checkbox" checked="true" asp-for="@Model.Vaskemaskine" /><br />
-                        <span asp-validation-for="@Model.Vaskemaskine" class="text-danger"></span>
+                        <label asp-for="@Model.Facilities.Persons" class="control-label"></label><br />
+                        <input asp-for="@Model.Facilities.Persons" class="form-control" /><br />
+                        <span asp-validation-for="@Model.Facilities.Persons" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="@Model.Opvaskemaskine" class="control-label"></label><br />
-                        <input type="checkbox" checked="true" asp-for="@Model.Opvaskemaskine" /><br />
-                        <span asp-validation-for="@Model.Opvaskemaskine" class="text-danger"></span>
+                        <label asp-for="@Model.Facilities.Bedrooms" class="control-label"></label><br />
+                        <input asp-for="@Model.Facilities.Bedrooms" class="form-control" /><br />
+                        <span asp-validation-for="@Model.Facilities.Bedrooms" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label asp-for="@Model.Spa" class="control-label"></label><br />
-                        <input type="checkbox" checked="true" asp-for="@Model.Spa" /><br />
-                        <span asp-validation-for="@Model.Spa" class="text-danger"></span>
+                        <label asp-for="@Model.Facilities.Bathrooms" class="control-label"></label><br />
+                        <input asp-for="@Model.Facilities.Bathrooms" class="form-control" /><br />
+                        <span asp-validation-for="@Model.Facilities.Bathrooms" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Facilities.Sustainable" class="control-label"></label><br />
+                        <input type="checkbox" checked="true" asp-for="@Model.Facilities.Sustainable" /><br />
+                        <span asp-validation-for="@Model.Facilities.Sustainable" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Facilities.AllowPets" class="control-label"></label><br />
+                        <input type="checkbox" checked="true" asp-for="@Model.Facilities.AllowPets" /><br />
+                        <span asp-validation-for="@Model.Facilities.AllowPets" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Facilities.Wifi" class="control-label"></label><br />
+                        <input type="checkbox" checked="true" asp-for="@Model.Facilities.Wifi" /><br />
+                        <span asp-validation-for="@Model.Facilities.Wifi" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Facilities.Tv" class="control-label"></label><br />
+                        <input asp-for="@Model.Facilities.Tv" class="form-control" /><br />
+                        <span asp-validation-for="@Model.Facilities.Tv" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Facilities.Type" class="control-label"></label><br />
+                        <input asp-for="@Model.Facilities.Type" class="form-control" /><br />
+                        <span asp-validation-for="@Model.Facilities.Type" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.VR" class="control-label"></label><br />
+                        <input asp-for="@Model.VR" class="form-control" /><br />
+                    <span asp-validation-for="@Model.VR" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <input type="submit" value="Create Sommerhus" class="btn btn-primary" />
-                    </div>*@
-                </form>
+                    </div>
+                </form> 
             </div>
         </div>
-    <div>
-        <a asp-page="Index">Back to list</a>
     </div>
+<div>
+    <a asp-page="Index">Back to list</a>
 </div>

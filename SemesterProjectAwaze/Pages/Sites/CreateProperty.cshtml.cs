@@ -2,6 +2,7 @@ using AwazeLib.model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SemesterProjectAwaze.Services;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace SemesterProjectAwaze.Pages.Sites
@@ -29,8 +30,26 @@ namespace SemesterProjectAwaze.Pages.Sites
         public string VR { get; set; }
 
 
+        public void OnPost()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+            
+            Property newProperty = new Property(Id, HouseOwner, Country, Address, Name, PricePrNight, Rating, Description,
+                                              new Facilities (Facilities.Persons, Facilities.Bedrooms, Facilities.Bathrooms, 
+                                              Facilities.Sustainable, Facilities.AllowPets, Facilities.Wifi, Facilities.Tv,
+                                              Facilities.Type), VR);
+            _userService.Create(newUser);
+
+            return RedirectToPage("Index");
+        }
+
         public void OnGet()
         {
+
+
         }
     }
 }
