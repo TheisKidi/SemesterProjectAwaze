@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 
 namespace SemesterProjectAwaze.Services
 {
-    public interface IGenericRepository<T>
+    public interface IGenericRepositoryService<T>
     {
         public List<T> GetAll();
         public T GetById(string id);
