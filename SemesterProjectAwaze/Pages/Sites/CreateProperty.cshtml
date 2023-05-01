@@ -2,3 +2,59 @@
 @model SemesterProjectAwaze.Pages.Sites.CreatePropertyModel
 @{
 }
+
+<div class="navbar-container" >
+    <h1 style="font-family: Poppins; font-size: 50px; padding-top: 50px; padding-bottom: 50px;">Udlej dit sommerhus</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <form method="post">
+                    <div class="form-group">
+                        <label asp-for="@Model.HouseOwner.OwnerId" class="control-label"></label><br />
+                        <input asp-for="@Model.HouseOwner.OwnerId" class="form-control" /><br />
+                        <span asp-validation-for="@Model.HouseOwner.OwnerId" class="text-danger"></span>
+                    </div>
+                    @*<div class="form-group">
+                        <label asp-for="@Model." class="control-label"></label><br />
+                        <input asp-for="@Model.PrisPrUge" class="form-control" /><br />
+                        <span asp-validation-for="@Model.PrisPrUge" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.AntalSenge" class="control-label"></label><br />
+                        <input asp-for="@Model.AntalSenge" class="form-control" /><br />
+                        <span asp-validation-for="@Model.AntalSenge" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Rengøring" class="control-label"></label><br />
+                        <input type="checkbox" checked="true" asp-for="@Model.Rengøring" /><br />
+                        <span asp-validation-for="@Model.Rengøring" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Husdyr" class="control-label"></label><br />
+                        <input type="checkbox" checked="true" asp-for="@Model.Husdyr" /><br />
+                        <span asp-validation-for="@Model.Husdyr" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Vaskemaskine" class="control-label"></label><br />
+                        <input type="checkbox" checked="true" asp-for="@Model.Vaskemaskine" /><br />
+                        <span asp-validation-for="@Model.Vaskemaskine" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Opvaskemaskine" class="control-label"></label><br />
+                        <input type="checkbox" checked="true" asp-for="@Model.Opvaskemaskine" /><br />
+                        <span asp-validation-for="@Model.Opvaskemaskine" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="@Model.Spa" class="control-label"></label><br />
+                        <input type="checkbox" checked="true" asp-for="@Model.Spa" /><br />
+                        <span asp-validation-for="@Model.Spa" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create Sommerhus" class="btn btn-primary" />
+                    </div>*@
+                </form>
+            </div>
+        </div>
+    <div>
+        <a asp-page="Index">Back to list</a>
+    </div>
+</div>
