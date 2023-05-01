@@ -93,7 +93,7 @@ namespace SemesterProjectAwaze.Pages.Sites
 
             _propertyService.Create(newProperty);
 
-            return RedirectToPage("Index");
+            return RedirectToPage("/Sites/Browse");
         }
     }
 }

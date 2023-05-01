@@ -8,8 +8,7 @@ namespace SemesterProjectAwaze.Services
 
         public Property Create(Property property)
         {
-            string sql = "insert into Property values(@Id, @OwnerId, @Country, @Address, @Name, @PricePrNight, @Rating, @Description, @VR, @Persons, " +
-                         "@Bedrooms, @Bathrooms, @Sustainable, @AllowPets, @Wifi, @Tv, @HouseType)";
+            string sql = "INSERT INTO [dbo].[Property] VALUES(@Id, @OwnerId, @Country, @Address, @Name, @PricePrNight, @Rating, @Description, @VR, @Persons, @Bedrooms, @Bathrooms, @Sustainable, @AllowPets, @Wifi, @Tv, @HouseType)";
 
             // forbindelse
             SqlConnection conn = new SqlConnection(Secret.GetConnectionString);
@@ -17,7 +16,7 @@ namespace SemesterProjectAwaze.Services
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@Id", property.Id);
-            cmd.Parameters.AddWithValue("@OwnerId", property.HouseOwner.OwnerId);
+            cmd.Parameters.AddWithValue("@OwnerId", property.OwnerId);
             cmd.Parameters.AddWithValue("@Country", property.Country);
             cmd.Parameters.AddWithValue("@Address", property.Address);
             cmd.Parameters.AddWithValue("@Name", property.Name);
@@ -102,7 +101,7 @@ namespace SemesterProjectAwaze.Services
             Property property = new Property();
 
             property.Id = reader.GetString(0);
-            property.HouseOwner.OwnerId = reader.GetString(1);
+            property.OwnerId = reader.GetString(1);
             property.Country = Enum.Parse<Country>(reader.GetString(2));
             property.Address = reader.GetString(3);
             property.Name = reader.GetString(4);
@@ -157,7 +156,7 @@ namespace SemesterProjectAwaze.Services
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(sqlInsert, conn);
                 cmd.Parameters.AddWithValue("@Id", id);
-                cmd.Parameters.AddWithValue("@OwnerId", property.HouseOwner.OwnerId);
+                cmd.Parameters.AddWithValue("@OwnerId", property.OwnerId);
                 cmd.Parameters.AddWithValue("@Country", property.Country.ToString());
                 cmd.Parameters.AddWithValue("@Address", property.Address);
                 cmd.Parameters.AddWithValue("@Name", property.Name);

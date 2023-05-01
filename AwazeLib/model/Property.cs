@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SemesterProjectAwaze.Services;
 
 namespace AwazeLib.model
 {
@@ -10,8 +11,10 @@ namespace AwazeLib.model
 
     public class Property
     {
+        private IGenericRepositoryService<HouseOwner> _houseOwnerService;
+
         public string Id { get; set; }
-        public HouseOwner HouseOwner { get; set; }
+        public string OwnerId { get; set; }
         public Country Country { get; set; }
         public string Address { get; set; }
         public string Name { get; set; }
@@ -28,7 +31,7 @@ namespace AwazeLib.model
         public Property(string id, string ownerId, Country country, string address, string name, double pricePrNight, int rating, string description, Facilities facilities, string vr)
         {
             Id = id;
-            HouseOwner.OwnerId = ownerId;
+            OwnerId = ownerId;
             Country = country;
             Address = address;
             Name = name;
@@ -41,7 +44,7 @@ namespace AwazeLib.model
 
         public override string ToString()
         {
-            return $"Id: {Id}, HouseOwner: {HouseOwner}, Country: {Country}, Address: {Address}, Name: {Name}, " +
+            return $"Id: {Id}, HouseOwner: {OwnerId}, Country: {Country}, Address: {Address}, Name: {Name}, " +
                    $"PricePrNight: {PricePrNight}, Rating: {Rating}, Description: {Description}, " +
                    $"Facilities: {Facilities}, VR: {VR}";
         }
