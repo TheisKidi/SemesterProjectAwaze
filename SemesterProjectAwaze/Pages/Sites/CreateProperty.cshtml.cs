@@ -69,8 +69,8 @@ namespace SemesterProjectAwaze.Pages.Sites
 
         private string MakePersonalId() // makes a personal id from the accounts first name and the RandomNumber() method
         {
-            string threeLetters = _houseOwnerService.GetById(OwnerId).SurName[..4];
-            _personalId = $"{RandomNumber()}" + $"{threeLetters}";
+            string threeLetters = Name[..3].ToUpper();
+            _personalId = $"{threeLetters}" + $"{RandomNumber()}";
             return _personalId;
         }
 
