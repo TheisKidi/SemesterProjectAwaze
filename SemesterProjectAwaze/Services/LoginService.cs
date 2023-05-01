@@ -1,6 +1,8 @@
-﻿namespace SemesterProjectAwaze.Services
+﻿using AwazeLib.model;
+
+namespace SemesterProjectAwaze.Services
 {
-    public class LoginService
+    public class LoginService : ILoginService
     {
     }
 }

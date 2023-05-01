@@ -36,7 +36,8 @@ namespace AwazeLib.model
 
         public override string ToString()
         {
-            return $"Perons: {Persons}, Bedrooms: {Bedrooms}, Bathrooms: {Bathrooms}, Sustainable: {Sustainable}, Is pets allowed: {AllowPets}, Wifi: {Wifi}, Tv: {Tv}, HouseType: {HouseType.HouseBoat}";
+            return $"Perons: {Persons}, Bedrooms: {Bedrooms}, Bathrooms: {Bathrooms}, Sustainable: {Sustainable}, " +
+                   $"Is pets allowed: {AllowPets}, Wifi: {Wifi}, Tv: {Tv}, HouseType: {HouseType.HouseBoat}";
         }
     }
 }

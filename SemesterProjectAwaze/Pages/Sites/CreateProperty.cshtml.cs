@@ -7,49 +7,94 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SemesterProjectAwaze.Pages.Sites
 {
-    [BindProperties]
     public class CreatePropertyModel : PageModel
     {
-        private IGenericRepositoryService<Property> _repo;
+        private IGenericRepositoryService<Property> _propertyService;
+        private IGenericRepositoryService<HouseOwner> _houseOwnerService;
+        private int _randomNumberForId;
+        private string _personalId;
 
-        public CreatePropertyModel(IGenericRepositoryService<Property> repo)
+        public CreatePropertyModel(IGenericRepositoryService<Property> propertyService, IGenericRepositoryService<HouseOwner> houseOwnerService)
         {
-            _repo = repo;
+            _propertyService = propertyService;
+            _houseOwnerService = houseOwnerService;
         }
 
-        [Required, MaxLength(6)]
-        public string Id { get; set; }
-        public HouseOwner OwnerId { get; set; }
+        [BindProperty]
+        [Required(ErrorMessage = "Id is required")]
+        [Range(6, 6, ErrorMessage = "Id must be 6 characters")]
+        public string Id
+        {
+            get { return _personalId; }
+            set { _personalId = value; }
+        }
+        [BindProperty]
+        [Required(ErrorMessage = "OwnerId is required")]
+        public string OwnerId { get; set; } // skal erstattes, når vi har lavet loginService
+        [BindProperty]
+        [Required(ErrorMessage = "Country is required")]
         public Country Country { get; set; }
+        public List<Country> Countries { get; private set; }
+        [BindProperty]
+        [Required(ErrorMessage = "Address is required")]
         public string Address { get; set; }
+        [BindProperty]
+        [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; }
+        [BindProperty]
+        [Required(ErrorMessage = "PricePrNight is required")]
         public double PricePrNight { get; set; }
+        [BindProperty]
+        [Required(ErrorMessage = "Rating is required")]
         public int Rating { get; set; }
+        [BindProperty]
+        [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
+        [BindProperty]
+        [Required(ErrorMessage = "Facilities is required")]
         public Facilities Facilities { get; set; }
+        [BindProperty]
+        [Required(ErrorMessage = "VR link is required")]
         public string VR { get; set; }
+        [BindProperty]
+        public HouseType Type { get; set; }
+        public List<HouseType> HouseTypes { get; private set; }
 
+        private int RandomNumber() // calculates a random number for the personal ID in the interval [0-999]
+        {
+            Random rnd = new Random();
+            _randomNumberForId = rnd.Next(0, 999);
+            return _randomNumberForId;
+        }
+
+        private string MakePersonalId() // makes a personal id from the accounts first name and the RandomNumber() method
+        {
+            string threeLetters = _houseOwnerService.GetById(OwnerId).SurName[..4];
+            _personalId = $"{RandomNumber()}" + $"{threeLetters}";
+            return _personalId;
+        }
+
+        public void OnGet()
+        {
+            HouseTypes = Enum.GetValues<HouseType>().ToList();
+            Countries = Enum.GetValues<Country>().ToList();
+        }
 
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
+                HouseTypes = Enum.GetValues<HouseType>().ToList();
+                Countries = Enum.GetValues<Country>().ToList();
                 return Page();
             }
-            
-            Property newProperty = new Property(Id, OwnerId.OwnerId, Country, Address, Name, PricePrNight, Rating, Description,
-                                              new Facilities (Facilities.Persons, Facilities.Bedrooms, Facilities.Bathrooms, 
-                                              Facilities.Sustainable, Facilities.AllowPets, Facilities.Wifi, Facilities.Tv,
-                                              Facilities.Type), VR);
-            _repo.Create(newProperty);
+            Property newProperty = new Property(MakePersonalId(), OwnerId /* skal ertstates, når vi har loginService */, Country, Address, Name, PricePrNight, Rating, Description,
+                                new Facilities(Facilities.Persons, Facilities.Bedrooms, Facilities.Bathrooms, Facilities.Sustainable,
+                                Facilities.AllowPets, Facilities.Wifi, Facilities.Tv, Type), VR);
+
+            _propertyService.Create(newProperty);
 
             return RedirectToPage("Index");
-        }
-
-        public void OnGet()
-        {
-
-
         }
     }
 }
