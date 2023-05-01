@@ -44,7 +44,7 @@ namespace SemesterProjectAwaze.Services
                 return null;
             }
 
-            string sql = "delete from HouseOwner where Id = @OwnerId";
+            string sql = "delete from HouseOwner where OwnerId = @OwnerId";
 
             // forbindelse
             SqlConnection conn = new SqlConnection(Secret.GetConnectionString);
@@ -102,7 +102,7 @@ namespace SemesterProjectAwaze.Services
 
         public HouseOwner GetById(string id)
         {
-            string sqlInsert = "select * from HouseOwner where Id = @OwnerId";
+            string sqlInsert = "select * from HouseOwner where OwnerId = @OwnerId";
             List<HouseOwner> list = new List<HouseOwner>();
 
             using (SqlConnection conn = new SqlConnection(Secret.GetConnectionString))
@@ -126,7 +126,7 @@ namespace SemesterProjectAwaze.Services
             string sqlInsert = "update HouseOwner " +
                 "set SurName = @SurName, LastName = @LastName, " +
                 "Email = @Email, Phone = @Phone, Password = @Password, " +
-                "Address = @Address where Id = @OwnerId";
+                "Address = @Address where OwnerId = @OwnerId";
 
             using (SqlConnection conn = new SqlConnection(Secret.GetConnectionString))
             {
