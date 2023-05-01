@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 
 namespace SemesterProjectAwaze.Services
 {
-    public class PropertyRepositoryService : IPropertyRepositoryService
+    public class PropertyRepositoryService : IGenericRepository<Property>
     {
 
         public Property Create(Property property)
