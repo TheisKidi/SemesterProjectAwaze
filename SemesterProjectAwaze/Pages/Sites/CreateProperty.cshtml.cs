@@ -21,8 +21,6 @@ namespace SemesterProjectAwaze.Pages.Sites
         }
 
         [BindProperty]
-        [Required(ErrorMessage = "Id is required")]
-        [Range(6, 6, ErrorMessage = "Id must be 6 characters")]
         public string Id
         {
             get { return _personalId; }
@@ -82,13 +80,14 @@ namespace SemesterProjectAwaze.Pages.Sites
 
         public IActionResult OnPost()
         {
+            Id = MakePersonalId();
             if (!ModelState.IsValid)
             {
                 HouseTypes = Enum.GetValues<HouseType>().ToList();
                 Countries = Enum.GetValues<Country>().ToList();
                 return Page();
             }
-            Property newProperty = new Property(MakePersonalId(), OwnerId /* skal ertstates, når vi har loginService */, Country, Address, Name, PricePrNight, Rating, Description,
+            Property newProperty = new Property(Id, OwnerId /* skal ertstates, når vi har loginService */, Country, Address, Name, PricePrNight, Rating, Description,
                                 new Facilities(Facilities.Persons, Facilities.Bedrooms, Facilities.Bathrooms, Facilities.Sustainable,
                                 Facilities.AllowPets, Facilities.Wifi, Facilities.Tv, Type), VR);
 
