@@ -43,14 +43,14 @@ namespace SemesterProjectAwaze.Services
                 return null;
             }
 
-            string sql = "delete from Guest where Id = @Id";
+            string sql = "delete from Guest where MyBookingId = @MyBookingId";
 
             // connection to database with ConnectionString
             SqlConnection conn = new SqlConnection(Secret.GetConnectionString);
             conn.Open();
 
             SqlCommand cmd = new SqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@Id", id);
+            cmd.Parameters.AddWithValue("@MyBookingId", id);
 
 
             int row = cmd.ExecuteNonQuery();
@@ -102,7 +102,7 @@ namespace SemesterProjectAwaze.Services
 
         public Guest GetById(string id)
         {
-            string sqlInsert = "select * from Guest where Id = @Id";
+            string sqlInsert = "select * from Guest where MyBookingId = @Id";
             List<Guest> list = new List<Guest>();
 
             using (SqlConnection conn = new SqlConnection(Secret.GetConnectionString))
@@ -124,7 +124,7 @@ namespace SemesterProjectAwaze.Services
         {
             string sqlInsert = "update Guest " +
                                "set SurName = @SurName, LastName = @LastName, Email = @Email, " +
-                               "Phone = @Phone, Password = @Password where Id = @MyBookingId";
+                               "Phone = @Phone, Password = @Password where MyBookingId = @MyBookingId";
 
             using (SqlConnection conn = new SqlConnection(Secret.GetConnectionString))
             {
