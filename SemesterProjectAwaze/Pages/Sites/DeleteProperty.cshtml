@@ -2,3 +2,90 @@
 @model SemesterProjectAwaze.Pages.Sites.DeletePropertyModel
 @{
 }
+<h1>Delete Property</h1>
+
+<table class="table">
+    <thead>
+    <th></th>
+    <th></th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Id</td>
+            <td>@Model.Property.Id</td>
+        </tr>
+        <tr>
+            <td>OwnerId</td>
+            <td>@Model.Property.HouseOwner.OwnerId</td>
+        </tr>
+        <tr>
+            <td>Country</td>
+            <td>@Model.Property.Country</td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>@Model.Property.Address</td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>@Model.Property.Name</td>
+        </tr>
+        <tr>
+            <td>PricePrNight</td>
+            <td>@Model.Property.PricePrNight</td>
+        </tr>
+        <tr>
+            <td>Rating</td>
+            <td>@Model.Property.Rating</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>@Model.Property.Description</td>
+        </tr>
+        <tr>
+            <td>VR link</td>
+            <td>@Model.Property.VR</td>
+        </tr>
+        <tr>
+            <td>Persons allowed</td>
+            <td>@Model.Property.Facilities.Persons</td>
+        </tr>
+        <tr>
+            <td>Bedrooms</td>
+            <td>@Model.Property.Facilities.Bedrooms</td>
+        </tr>
+        <tr>
+            <td>Bathrooms</td>
+            <td>@Model.Property.Facilities.Bathrooms</td>
+        </tr>
+        <tr>
+            <td>Is this house sustainable?</td>
+            <td>@Model.Property.Facilities.Sustainable</td>
+        </tr>
+        <tr>
+            <td>Pets allowed?</td>
+            <td>@Model.Property.Facilities.AllowPets</td>
+        </tr>
+                <tr>
+            <td>WIFI</td>
+            <td>@Model.Property.Facilities.Wifi</td>
+        </tr>
+        <tr>
+            <td>TVs</td>
+            <td>@Model.Property.Facilities.Tv</td>
+        </tr>
+        <tr>
+            <td>House type</td>
+            <td>@Model.Property.Facilities.Type</td>
+        </tr>
+
+    </tbody>
+</table>
+
+<form method="post">
+    <div class="form-group">
+        <input type="submit" value="Delete Sommerhus" asp-page-handler="Delete" asp-route-id="@Model.Property.Id" class="btn btn-danger" />
+
+        <input type="submit" value="Cancel" asp-page-handler="Cancel" class="btn btn-primary" />
+    </div>
+</form>
