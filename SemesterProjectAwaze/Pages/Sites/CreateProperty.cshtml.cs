@@ -19,7 +19,7 @@ namespace SemesterProjectAwaze.Pages.Sites
 
         [Required, MaxLength(6)]
         public string Id { get; set; }
-        public HouseOwner HouseOwner { get; set; }
+        public HouseOwner OwnerId { get; set; }
         public Country Country { get; set; }
         public string Address { get; set; }
         public string Name { get; set; }
@@ -30,18 +30,18 @@ namespace SemesterProjectAwaze.Pages.Sites
         public string VR { get; set; }
 
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
             
-            Property newProperty = new Property(Id, HouseOwner, Country, Address, Name, PricePrNight, Rating, Description,
+            Property newProperty = new Property(Id, OwnerId.OwnerId, Country, Address, Name, PricePrNight, Rating, Description,
                                               new Facilities (Facilities.Persons, Facilities.Bedrooms, Facilities.Bathrooms, 
                                               Facilities.Sustainable, Facilities.AllowPets, Facilities.Wifi, Facilities.Tv,
                                               Facilities.Type), VR);
-            _userService.Create(newUser);
+            _repo.Create(newProperty);
 
             return RedirectToPage("Index");
         }
