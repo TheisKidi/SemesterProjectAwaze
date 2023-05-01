@@ -125,20 +125,18 @@ namespace SemesterProjectAwaze.Services
         {
             string sqlInsert = "update HouseOwner " +
                 "set OwnerId = @OwnerId, SurName = @SurName, LastName = @LastName, " +
-                "Email = @Email, Phone = @Phone, IsOwner = @IsOwner, Password = @Password, " +
-                "Address = @Address, where Id = @OwnerId";
+                "Email = @Email, Phone = @Phone, Password = @Password, " +
+                "Address = @Address where Id = @OwnerId";
 
             using (SqlConnection conn = new SqlConnection(Secret.GetConnectionString))
             {
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(sqlInsert, conn);
-                cmd.Parameters.AddWithValue("@Id", id);
-                cmd.Parameters.AddWithValue("@OwnerId", houseOwner.OwnerId);
+                cmd.Parameters.AddWithValue("@OwnerId", id);
                 cmd.Parameters.AddWithValue("@SurName", houseOwner.SurName);
                 cmd.Parameters.AddWithValue("@LastName", houseOwner.LastName);
                 cmd.Parameters.AddWithValue("@Email", houseOwner.Email);
                 cmd.Parameters.AddWithValue("@Phone", houseOwner.Phone);
-                cmd.Parameters.AddWithValue("@IsOwner", houseOwner.IsOwner);
                 cmd.Parameters.AddWithValue("@Password", houseOwner.Password);
                 cmd.Parameters.AddWithValue("@Address", houseOwner.Address);
 
