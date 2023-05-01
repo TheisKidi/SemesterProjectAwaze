@@ -21,14 +21,14 @@ namespace AwazeLib.model
         public Facilities Facilities { get; set; }
         public string VR { get; set; }
 
-        public Property() : this ("default ID", new HouseOwner(), Country.Denmark, "default address", "default name", -1, 0, "default description", new Facilities(), "default VR link")
+        public Property() : this ("default ID", "DEF001", Country.Denmark, "default address", "default name", -1, 0, "default description", new Facilities(), "default VR link")
         {
         }
 
-        public Property(string id, HouseOwner houseOwner, Country country, string address, string name, double pricePrNight, int rating, string description, Facilities facilities, string vr)
+        public Property(string id, string ownerId, Country country, string address, string name, double pricePrNight, int rating, string description, Facilities facilities, string vr)
         {
             Id = id;
-            HouseOwner = houseOwner;
+            HouseOwner.OwnerId = ownerId;
             Country = country;
             Address = address;
             Name = name;
