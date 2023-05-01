@@ -146,7 +146,7 @@ namespace SemesterProjectAwaze.Services
         public Property Update(string id, Property property)
         {
             string sqlInsert = "update Property " +
-                "set Id = @Id, OwnerId = @OwnerId, Country = @Country, Address = @Address, " +
+                "set OwnerId = @OwnerId, Country = @Country, Address = @Address, " +
                 "Name = @Name, PricePrNight = @PricePrNight, Rating = @Rating, Description = @Description, " +
                 "VR = @VR, Persons = @Persons, Bedrooms = @Bedrooms, Bathrooms = @Bathrooms, Sustainable = @Sustainable, " +
                 "Allowpets = @AllowPets, Wifi = @Wifi, Tv = @Tv, HouseType = @HouseType" +

@@ -123,8 +123,8 @@ namespace SemesterProjectAwaze.Services
         public Guest Update(string id, Guest guest)
         {
             string sqlInsert = "update Guest " +
-                               "set MyBookingId = @MyBookingId, SurName = @SurName, LastName = @LastName, Email = @Email, " +
-                               "Phone = @Phone, IsOwner = @IsOwner, Password = @Password where Id = @Id";
+                               "set SurName = @SurName, LastName = @LastName, Email = @Email, " +
+                               "Phone = @Phone, Password = @Password where Id = @MyBookingId";
 
             using (SqlConnection conn = new SqlConnection(Secret.GetConnectionString))
             {
@@ -135,7 +135,6 @@ namespace SemesterProjectAwaze.Services
                 cmd.Parameters.AddWithValue("@LastName", guest.LastName);
                 cmd.Parameters.AddWithValue("@Email", guest.Email);
                 cmd.Parameters.AddWithValue("@Phone", guest.Phone);
-                cmd.Parameters.AddWithValue("@IsOwner", guest.IsOwner);
                 cmd.Parameters.AddWithValue("@Password", guest.Password);
 
                 SqlDataReader reader = cmd.ExecuteReader();
