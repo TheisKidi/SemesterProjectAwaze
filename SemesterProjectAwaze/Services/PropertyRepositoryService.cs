@@ -8,7 +8,7 @@ namespace SemesterProjectAwaze.Services
 
         public Property Create(Property property)
         {
-            string sql = "INSERT INTO [dbo].[Property] VALUES(@Id, @OwnerId, @Country, @Address, @Name, @PricePrNight, @Rating, @Description, @VR, @Persons, @Bedrooms, @Bathrooms, @Sustainable, @AllowPets, @Wifi, @Tv, @HouseType)";
+            string sql = "insert into [dbo].[Property] values(@Id, @OwnerId, @Country, @Address, @Name, @PricePrNight, @Rating, @Description, @VR, @Persons, @Bedrooms, @Bathrooms, @Sustainable, @AllowPets, @Wifi, @Tv, @HouseType)";
 
             // forbindelse
             SqlConnection conn = new SqlConnection(Secret.GetConnectionString);
@@ -55,7 +55,7 @@ namespace SemesterProjectAwaze.Services
                 return null;
             }
 
-            string sql = "delete from Property where Id = @Id";
+            string sql = "delete from [dbo].[Property] where Id = @Id";
 
             // forbindelse
             SqlConnection conn = new SqlConnection(Secret.GetConnectionString);
@@ -82,7 +82,7 @@ namespace SemesterProjectAwaze.Services
             SqlConnection conn = new SqlConnection(Secret.GetConnectionString);
             conn.Open();
 
-            string sql = "select * from Property";
+            string sql = "select * from [dbo].[Property]";
             SqlCommand cmd = new SqlCommand(sql, conn);
 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -123,7 +123,7 @@ namespace SemesterProjectAwaze.Services
 
         public Property GetById(string id)
         {
-            string sqlInsert = "select * from Propery where Id = @Id";
+            string sqlInsert = "select * from [dbo].[Property] where Id = @Id";
             List<Property> list = new List<Property>();
 
             using (SqlConnection conn = new SqlConnection(Secret.GetConnectionString))
@@ -144,7 +144,7 @@ namespace SemesterProjectAwaze.Services
 
         public Property Update(string id, Property property)
         {
-            string sqlInsert = "update Property " +
+            string sqlInsert = "update [dbo].[Property] " +
                 "set OwnerId = @OwnerId, Country = @Country, Address = @Address, " +
                 "Name = @Name, PricePrNight = @PricePrNight, Rating = @Rating, Description = @Description, " +
                 "VR = @VR, Persons = @Persons, Bedrooms = @Bedrooms, Bathrooms = @Bathrooms, Sustainable = @Sustainable, " +
