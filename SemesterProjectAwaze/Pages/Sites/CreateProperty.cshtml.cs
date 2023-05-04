@@ -20,7 +20,7 @@ namespace SemesterProjectAwaze.Pages.Sites
             _houseOwnerService = houseOwnerService;
         }
 
-        [BindProperty]
+        //[BindProperty]
         public string Id
         {
             get { return _personalId; }
@@ -65,7 +65,7 @@ namespace SemesterProjectAwaze.Pages.Sites
             return _randomNumberForId;
         }
 
-        private string MakePersonalId() // makes a personal id from the accounts first name and the RandomNumber() method
+        private string MakePropertyId() // makes a personal id from the accounts first name and the RandomNumber() method
         {
             string threeLetters = Name[..3].ToUpper();
             _personalId = $"{threeLetters}" + $"{RandomNumber()}";
@@ -80,7 +80,13 @@ namespace SemesterProjectAwaze.Pages.Sites
 
         public IActionResult OnPost()
         {
-            Id = MakePersonalId();
+
+            if (Id == null)
+            {
+                Id = MakePropertyId();
+            }
+
+            //Id = MakePropertyId();
             if (!ModelState.IsValid)
             {
                 HouseTypes = Enum.GetValues<HouseType>().ToList();

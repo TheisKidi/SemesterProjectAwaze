@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="SemesterProjectAwaze">
-      <HintPath>..\SemesterProjectAwaze\bin\Debug\net6.0\SemesterProjectAwaze.dll</HintPath>
-    </Reference>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
 </Project>

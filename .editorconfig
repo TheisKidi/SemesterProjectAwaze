@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS0006: Metadata file 'C:\Users\Theis\Source\Repos\SemesterProjectAwaze\AwazeLib\obj\Debug\net6.0\ref\AwazeLib.dll' could not be found
+dotnet_diagnostic.CS0006.severity = error
