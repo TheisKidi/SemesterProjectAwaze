@@ -1,31 +1,31 @@
 using AwazeLib.model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using SemesterProjectAwaze.Services;
 using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace SemesterProjectAwaze.Pages.Sites
 {
+    [PrimaryKey(nameof(Id))]
     public class CreatePropertyModel : PageModel
     {
-        private IGenericRepositoryService<Property> _propertyService;
-        private IGenericRepositoryService<HouseOwner> _houseOwnerService;
+        private IGenericRepositoryService<Property> _repo;
         private int _randomNumberForId;
         private string _personalId;
 
-        public CreatePropertyModel(IGenericRepositoryService<Property> propertyService, IGenericRepositoryService<HouseOwner> houseOwnerService)
+        public CreatePropertyModel(IGenericRepositoryService<Property> repo)
         {
-            _propertyService = propertyService;
-            _houseOwnerService = houseOwnerService;
+            _repo = repo;
         }
 
-        //[BindProperty]
         public string Id
         {
             get { return _personalId; }
             set { _personalId = value; }
         }
+
         [BindProperty]
         [Required(ErrorMessage = "OwnerId is required")]
         public string OwnerId { get; set; } // skal erstattes, når vi har lavet loginService
@@ -93,11 +93,11 @@ namespace SemesterProjectAwaze.Pages.Sites
                 Countries = Enum.GetValues<Country>().ToList();
                 return Page();
             }
-            Property newProperty = new Property(Id, OwnerId /* skal ertstates, når vi har loginService */, Country, Address, Name, PricePrNight, Rating, Description,
+            Property newProperty = new Property(MakePropertyId(), OwnerId /* skal ertstates, når vi har loginService */, Country, Address, Name, PricePrNight, Rating, Description,
                                 new Facilities(Facilities.Persons, Facilities.Bedrooms, Facilities.Bathrooms, Facilities.Sustainable,
                                 Facilities.AllowPets, Facilities.Wifi, Facilities.Tv, Type), VR);
 
-            _propertyService.Create(newProperty);
+            _repo.Create(newProperty);
             
             return RedirectToPage("/Sites/Browse");
         }

@@ -10,7 +10,6 @@ namespace SemesterProjectAwaze.Pages.Login
     [PrimaryKey(nameof(OwnerId))]
     public class CreateHouseOwnerModel : PageModel
     {
-
         private IGenericRepositoryService<HouseOwner> _repo;
 
         public CreateHouseOwnerModel(IGenericRepositoryService<HouseOwner> repo)
