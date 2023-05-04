@@ -4,8 +4,6 @@ namespace SemesterProjectAwaze.Services
 {
     public interface ILoginService
     {
-        public bool Login(string email, string password);
-        public Guest Guests { get; set; }
-        public HouseOwner HouseOwners { get; set; }
+        Task<string> LoginAsync(string email, string password);
     }
 }

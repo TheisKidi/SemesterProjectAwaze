@@ -4,37 +4,18 @@ namespace SemesterProjectAwaze.Services
 {
     public class LoginService : ILoginService
     {
-        private IGenericRepositoryService<HouseOwner> _houseOwnerService;
         private IGenericRepositoryService<Guest> _guestService;
+        private IGenericRepositoryService<HouseOwner> _houseOwnerService;
 
-        public HouseOwner HouseOwners { get; set; }
-        public Guest Guests { get; set; }
-
-        public bool Login(string email, string password)
+        public LoginService(IGenericRepositoryService<Guest> guestService, IGenericRepositoryService<HouseOwner> houseOwnerService)
         {
-            if (_houseOwnerService.GetByEmail(email).IsOwner)
-            {
-                foreach (HouseOwner ho in _houseOwnerService.GetAll())
-                {
-                    if (ho.Email == email && ho.Password == password)
-                    {
-                        HouseOwners = _houseOwnerService.GetAll().Find(p => p.Email == email);
-                        return true;
+            _guestService = guestService;
+            _houseOwnerService = houseOwnerService;
                     }
-                }
-            } else
+        public async Task<string> LoginAsync(string email, string password)
             {
-                foreach (Guest p in _guestService.GetAll())
-                {
-                    if (p.Email == email && p.Password == password)
-                    {
-                        Guests = _guestService.GetAll().Find(p => p.Email == email);
-                        return true;
-                    }
-                }
-                return false;
-            }
-            throw new KeyNotFoundException();
+            // chech HouseOwner
+            var houseOwner = await _houseOwnerService.GetAll().FirstOrDefaultAsync()
         }
     }
 }
