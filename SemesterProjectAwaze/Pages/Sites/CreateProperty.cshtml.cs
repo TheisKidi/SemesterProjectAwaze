@@ -61,7 +61,7 @@ namespace SemesterProjectAwaze.Pages.Sites
         private int RandomNumber() // calculates a random number for the personal ID in the interval [0-999]
         {
             Random rnd = new Random();
-            _randomNumberForId = rnd.Next(0, 999);
+            _randomNumberForId = rnd.Next(100, 999);
             return _randomNumberForId;
         }
 
@@ -98,7 +98,7 @@ namespace SemesterProjectAwaze.Pages.Sites
                                 Facilities.AllowPets, Facilities.Wifi, Facilities.Tv, Type), VR);
 
             _propertyService.Create(newProperty);
-
+            
             return RedirectToPage("/Sites/Browse");
         }
     }
