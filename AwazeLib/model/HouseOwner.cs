@@ -13,14 +13,14 @@ namespace AwazeLib.model
         public string OwnerId { get; set; }
         public string Address { get; set; }
 
-        public HouseOwner() : this("default FirstName", "default lastname", "default email", "default phone", 
+        public HouseOwner() : this("default surname", "default lastname", "default email", "default phone", 
                                    false, "default password", "default ownerId", "default address")
         {
         }
 
-        public HouseOwner(string FirstName, string lastname, string email, 
+        public HouseOwner(string surname, string lastname, string email, 
                string phone, bool isOwner, string password, string ownerId, string address)
-               : base(FirstName, lastname, email, phone, isOwner, password)
+               : base(surname, lastname, email, phone, isOwner, password)
         {
             OwnerId = ownerId;
             Address = address;
@@ -28,7 +28,7 @@ namespace AwazeLib.model
 
         public override string ToString()
         {
-            return $"FirstName: {FirstName}, LastName: {LastName}, Email: {Email}, Phone: {Phone}, IsOwner: {IsOwner}, " +
+            return $"Surname: {SurName}, LastName: {LastName}, Email: {Email}, Phone: {Phone}, IsOwner: {IsOwner}, " +
                    $"Password: {Password}, OwnerId: {OwnerId}, Address: {Address}";
         }
     }
