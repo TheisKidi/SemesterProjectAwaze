@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using SemesterProjectAwaze.Services;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SemesterProjectAwaze.Pages.Sites
 {
@@ -50,6 +51,7 @@ namespace SemesterProjectAwaze.Pages.Sites
         public string Description { get; set; }
         [BindProperty]
         [Required(ErrorMessage = "Facilities is required")]
+        [NotMapped]
         public Facilities Facilities { get; set; }
         [BindProperty]
         [Required(ErrorMessage = "VR link is required")]
