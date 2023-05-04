@@ -11,8 +11,6 @@ namespace AwazeLib.model
 
     public class Property
     {
-        private IGenericRepositoryService<HouseOwner> _houseOwnerService;
-
         public string Id { get; set; }
         public string OwnerId { get; set; }
         public Country Country { get; set; }
