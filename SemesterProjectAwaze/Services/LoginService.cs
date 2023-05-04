@@ -1,4 +1,5 @@
 ﻿using AwazeLib.model;
+using Microsoft.EntityFrameworkCore;
 
 namespace SemesterProjectAwaze.Services
 {
@@ -10,11 +11,11 @@ namespace SemesterProjectAwaze.Services
         {
             _houseOwnerService = houseOwnerService;
         }
-        public async Task<string> LoginAsync(string email, string password)
+        public Task<string> LoginAsync(string email, string password)
         {
             // chech HouseOwner
-            var houseOwner = await _houseOwnerService.GetAll().FirstOrDefaultAsync(ho => ho.Email == email);
-
+            var houseOwner = _houseOwnerService.GetByEmail(email);
+            return null;
         }
     }
 }

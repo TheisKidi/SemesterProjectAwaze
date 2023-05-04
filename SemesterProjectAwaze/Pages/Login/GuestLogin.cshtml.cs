@@ -18,11 +18,11 @@ namespace SemesterProjectAwaze.Pages.Login
 
         public IActionResult OnPost()
         {
-            var check = _loginService.Login(Email, Password);
-            if (check && Password == ConfirmPassword)
-            {
-                return RedirectToPage("/Login/GuestSite");
-            }
+            //var check = _loginService.Login(Email, Password);
+            //if (check && Password == ConfirmPassword)
+            //{
+            //    return RedirectToPage("/Login/GuestSite");
+            //}
 
             return Page();
         }
