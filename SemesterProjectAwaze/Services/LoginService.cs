@@ -11,9 +11,9 @@ namespace SemesterProjectAwaze.Services
         {
             _guestService = guestService;
             _houseOwnerService = houseOwnerService;
-                    }
+        }
         public async Task<string> LoginAsync(string email, string password)
-            {
+        {
             // chech HouseOwner
             var houseOwner = await _houseOwnerService.GetAll().FirstOrDefaultAsync()
         }
