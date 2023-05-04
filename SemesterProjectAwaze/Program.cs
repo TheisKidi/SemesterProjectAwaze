@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<IGenericRepositoryService<HouseOwner>, HouseOwnerRepositoryServiceDB>();
 builder.Services.AddSingleton<IGenericRepositoryService<Guest>, GuestRepositoryServiceDB>();
+builder.Services.AddSingleton<IGenericRepositoryService<Property>, PropertyRepositoryServiceDB>();
 
 var app = builder.Build();
 
