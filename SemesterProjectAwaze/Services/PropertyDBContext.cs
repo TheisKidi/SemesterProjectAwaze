@@ -13,6 +13,7 @@ namespace SemesterProjectAwaze.Services
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Property>().HasKey(b => b.Id).HasName(nameof(Property));
+            modelBuilder.Entity<Facilities>().HasNoKey();
         }
 
         public virtual DbSet<Property> Property { get; set; }
