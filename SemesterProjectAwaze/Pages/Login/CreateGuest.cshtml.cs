@@ -27,7 +27,6 @@ namespace SemesterProjectAwaze.Pages.Login
         [BindProperty]
         [Required]
         public string Phone { get; set; }
-        public bool IsOwner { get; set; }
         [BindProperty]
         [Required]
         public string Password { get; set; }
