@@ -12,29 +12,44 @@ namespace SemesterProjectAwaze.Services
 
         public bool Login(string email, string password)
         {
-            if (_houseOwnerService.GetByEmail(email).IsOwner)
+
+            foreach (HouseOwner h in _houseOwnerService.GetAll())
             {
-                foreach (HouseOwner ho in _houseOwnerService.GetAll())
+                if (h.Email == email && h.Password == password)
                 {
-                    if (ho.Email == email && ho.Password == password)
-                    {
-                        HouseOwners = _houseOwnerService.GetAll().Find(p => p.Email == email);
-                        return true;
-                    }
+                    HouseOwners = _houseOwnerService.GetByEmail(email);
+                    break;
                 }
-            } else
-            {
-                foreach (Guest p in _guestService.GetAll())
-                {
-                    if (p.Email == email && p.Password == password)
-                    {
-                        Guests = _guestService.GetAll().Find(p => p.Email == email);
-                        return true;
-                    }
-                }
-                return false;
+                throw new ArgumentNullException();
             }
-            throw new KeyNotFoundException();
+
+
+
+
+            //    foreach (HouseOwner ho in _houseOwnerService.GetAll())
+            //    {
+            //        if (ho.Email == email && ho.Password == password)
+            //        {
+            //            HouseOwners = _houseOwnerService.GetAll().Find(p => p.Email == email);
+            //            return true;
+            //        }
+            //        else
+            //        {
+            //            foreach (Guest p in _guestService.GetAll())
+            //            {
+            //                if (p.Email == email && p.Password == password)
+            //                {
+            //                    Guests = _guestService.GetAll().Find(p => p.Email == email);
+            //                    return true;
+            //                }
+            //            }
+
+            //         return false;
+            //        }
+            //    }
+
+            //    throw new KeyNotFoundException();
+            //}
         }
     }
 }
