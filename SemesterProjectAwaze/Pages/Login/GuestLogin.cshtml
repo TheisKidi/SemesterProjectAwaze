@@ -2,3 +2,31 @@
 @model SemesterProjectAwaze.Pages.Login.GuestLoginModel
 @{
 }
+<div>
+    <form method="post">
+
+        <div>
+            <h1>Log in</h1>
+            <div>
+                <p>E-mail</p>
+                <input type="text" class="form-control" placeholder="averagejoe@gmail.com" asp-for="@Model.Email" />
+                <span asp-validation-for="@Model.Email" class="text-danger"></span>
+
+                <p class="loginText">Password</p>
+                <input class="loginBox" type="text" class="form-control" placeholder="********************" asp-for="@Model.Password" />
+                <span asp-validation-for="@Model.Password" class="text-danger"></span>
+
+                <p class="loginText">Bekræft Password</p>
+                <input class="loginBox" type="text" class="form-control" placeholder="********************" asp-for="@Model.ConfirmPassword" />
+                <span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
+                <br />
+                <input type="submit" value="Log in" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+
+    <div class="forgot">
+        <p class="signUp">Sign up</p>
+        <p class="forgotUser">Forgot user</p>
+    </div>
+</div>
