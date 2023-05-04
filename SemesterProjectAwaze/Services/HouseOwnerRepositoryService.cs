@@ -7,7 +7,7 @@ namespace SemesterProjectAwaze.Services
     {
         public HouseOwner Create(HouseOwner houseOwner)
         {
-            string sql = "insert into HouseOwner values(@OwnerId, @SurName, @LastName, @Email, @Phone, @IsOwner, @Password, @Address)";
+            string sql = "insert into HouseOwner values(@OwnerId, @FirstName, @LastName, @Email, @Phone, @IsOwner, @Password, @Address)";
 
             // forbindelse
             SqlConnection conn = new SqlConnection(Secret.GetConnectionString);
@@ -15,7 +15,7 @@ namespace SemesterProjectAwaze.Services
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@OwnerId", houseOwner.OwnerId);
-            cmd.Parameters.AddWithValue("@SurName", houseOwner.SurName);
+            cmd.Parameters.AddWithValue("@FirstName", houseOwner.FirstName);
             cmd.Parameters.AddWithValue("@LastName", houseOwner.LastName);
             cmd.Parameters.AddWithValue("@Email", houseOwner.Email);
             cmd.Parameters.AddWithValue("@Phone", houseOwner.Phone);
@@ -89,7 +89,7 @@ namespace SemesterProjectAwaze.Services
             HouseOwner houseOwner = new HouseOwner();
 
             houseOwner.OwnerId = reader.GetString(0);
-            houseOwner.SurName = reader.GetString(1);
+            houseOwner.FirstName = reader.GetString(1);
             houseOwner.LastName = reader.GetString(2);
             houseOwner.Email = reader.GetString(3);
             houseOwner.Phone = reader.GetString(4);
@@ -144,7 +144,7 @@ namespace SemesterProjectAwaze.Services
         public HouseOwner Update(string id, HouseOwner houseOwner)
         {
             string sqlInsert = "update HouseOwner " +
-                "set SurName = @SurName, LastName = @LastName, " +
+                "set FirstName = @FirstName, LastName = @LastName, " +
                 "Email = @Email, Phone = @Phone, Password = @Password, " +
                 "Address = @Address where OwnerId = @OwnerId";
 
@@ -153,7 +153,7 @@ namespace SemesterProjectAwaze.Services
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(sqlInsert, conn);
                 cmd.Parameters.AddWithValue("@OwnerId", id);
-                cmd.Parameters.AddWithValue("@SurName", houseOwner.SurName);
+                cmd.Parameters.AddWithValue("@FirstName", houseOwner.FirstName);
                 cmd.Parameters.AddWithValue("@LastName", houseOwner.LastName);
                 cmd.Parameters.AddWithValue("@Email", houseOwner.Email);
                 cmd.Parameters.AddWithValue("@Phone", houseOwner.Phone);

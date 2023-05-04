@@ -7,7 +7,7 @@ namespace SemesterProjectAwaze.Services
     {
         public Guest Create(Guest guest)
         {
-            string sql = "insert into Guest values(@MyBookingId, @SurName, @LastName, @Email, @Phone, @IsOwner, @Password)";
+            string sql = "insert into Guest values(@MyBookingId, @FirstName, @LastName, @Email, @Phone, @IsOwner, @Password)";
 
             // connection to database with ConnectionString
             SqlConnection conn = new SqlConnection(Secret.GetConnectionString);
@@ -15,7 +15,7 @@ namespace SemesterProjectAwaze.Services
 
             SqlCommand cmd = new SqlCommand(sql, conn);
             cmd.Parameters.AddWithValue("@Id", guest.MyBookingId);
-            cmd.Parameters.AddWithValue("@SurName", guest.SurName);
+            cmd.Parameters.AddWithValue("@FirstName", guest.FirstName);
             cmd.Parameters.AddWithValue("@LastName", guest.LastName);
             cmd.Parameters.AddWithValue("@Email", guest.Email);
             cmd.Parameters.AddWithValue("@Phone", guest.Phone);
@@ -89,7 +89,7 @@ namespace SemesterProjectAwaze.Services
             Guest guest = new Guest();
 
             guest.MyBookingId = reader.GetString(0);
-            guest.SurName = reader.GetString(1);
+            guest.FirstName = reader.GetString(1);
             guest.LastName = reader.GetString(2);
             guest.Email = reader.GetString(3);
             guest.Phone = reader.GetString(4);
@@ -143,7 +143,7 @@ namespace SemesterProjectAwaze.Services
         public Guest Update(string id, Guest guest)
         {
             string sqlInsert = "update Guest " +
-                               "set SurName = @SurName, LastName = @LastName, Email = @Email, " +
+                               "set FirstName = @FirstName, LastName = @LastName, Email = @Email, " +
                                "Phone = @Phone, Password = @Password where MyBookingId = @MyBookingId";
 
             using (SqlConnection conn = new SqlConnection(Secret.GetConnectionString))
@@ -151,7 +151,7 @@ namespace SemesterProjectAwaze.Services
                 conn.Open();
                 SqlCommand cmd = new SqlCommand(sqlInsert, conn);
                 cmd.Parameters.AddWithValue("@MyBookingId", id);
-                cmd.Parameters.AddWithValue("@SurName", guest.SurName);
+                cmd.Parameters.AddWithValue("@FirstName", guest.FirstName);
                 cmd.Parameters.AddWithValue("@LastName", guest.LastName);
                 cmd.Parameters.AddWithValue("@Email", guest.Email);
                 cmd.Parameters.AddWithValue("@Phone", guest.Phone);
