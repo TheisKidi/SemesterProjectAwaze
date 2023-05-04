@@ -1,24 +1,25 @@
 using AwazeLib.model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using SemesterProjectAwaze.Services;
 using System.ComponentModel.DataAnnotations;
 
 namespace SemesterProjectAwaze.Pages.Login
 {
+    [PrimaryKey(nameof(OwnerId))]
     public class CreateHouseOwnerModel : PageModel
     {
 
-        private IGenericRepositoryService<HouseOwnerRepositoryServiceDB> _repo;
+        private IGenericRepositoryService<HouseOwner> _repo;
 
-        public CreateHouseOwnerModel(IGenericRepositoryService<HouseOwnerRepositoryServiceDB> repo)
+        public CreateHouseOwnerModel(IGenericRepositoryService<HouseOwner> repo)
         {
             _repo = repo;
         }
 
         private int _randomNumberForId;
         private string _personalId;
-
         public string OwnerId
         {
             get { return _personalId; }
