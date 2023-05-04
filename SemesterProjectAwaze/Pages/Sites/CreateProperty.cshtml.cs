@@ -50,15 +50,33 @@ namespace SemesterProjectAwaze.Pages.Sites
         [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
         [BindProperty]
-        [Required(ErrorMessage = "Facilities is required")]
-        [NotMapped]
-        public Facilities Facilities { get; set; }
-        [BindProperty]
         [Required(ErrorMessage = "VR link is required")]
         public string VR { get; set; }
         [BindProperty]
         public HouseType Type { get; set; }
         public List<HouseType> HouseTypes { get; private set; }
+        [BindProperty]
+        [Required(ErrorMessage = "Persons is required")]
+        public int Persons { get; set; }
+        [BindProperty]
+        [Required(ErrorMessage = "Bedrooms is required")]
+        public int Bedrooms { get; set; }
+        [BindProperty]
+        [Required(ErrorMessage = "Bathrooms is required")]
+        public int Bathrooms { get; set; }
+        [BindProperty]
+        [Required(ErrorMessage = "Sustainable is required")]
+        public bool Sustainable { get; set; }
+        [BindProperty]
+        [Required(ErrorMessage = "Allow pets is required")]
+        public bool AllowPets { get; set; }
+        [BindProperty]
+        [Required(ErrorMessage = "Wifi is required")]
+        public bool Wifi { get; set; }
+        [BindProperty]
+        [Required(ErrorMessage = "TV is required")]
+        public int Tv { get; set; }
+
 
         private int RandomNumber() // calculates a random number for the personal ID in the interval [0-999]
         {
@@ -95,9 +113,8 @@ namespace SemesterProjectAwaze.Pages.Sites
                 Countries = Enum.GetValues<Country>().ToList();
                 return Page();
             }
-            Property newProperty = new Property(MakePropertyId(), OwnerId /* skal ertstates, når vi har loginService */, Country, Address, Name, PricePrNight, Rating, Description,
-                                new Facilities(Facilities.Persons, Facilities.Bedrooms, Facilities.Bathrooms, Facilities.Sustainable,
-                                Facilities.AllowPets, Facilities.Wifi, Facilities.Tv, Type), VR);
+            Property newProperty = new Property(MakePropertyId(), OwnerId, Country, Address, Name, PricePrNight, Rating, Description,
+                VR, Persons, Bedrooms, Bathrooms, Sustainable, AllowPets, Wifi, Tv, Type);
 
             _repo.Create(newProperty);
             

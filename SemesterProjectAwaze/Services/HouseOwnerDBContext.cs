@@ -15,6 +15,7 @@ namespace SemesterProjectAwaze.Services
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<HouseOwner>().HasKey(b => b.OwnerId).HasName(nameof(HouseOwner));
+
         }
 
         public virtual DbSet<HouseOwner> HouseOwner { get; set; }
