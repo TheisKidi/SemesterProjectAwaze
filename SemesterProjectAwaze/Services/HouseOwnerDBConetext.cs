@@ -13,13 +13,6 @@ namespace SemesterProjectAwaze.Services
             builder.UseSqlServer(Secret.GetConnectionString);
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<HouseOwner>()
-                .HasKey(b => b.OwnerId)
-                .HasName("OwnerId");
-        }
-
         public virtual DbSet<HouseOwner> HouseOwner { get; set; }
     }
 }

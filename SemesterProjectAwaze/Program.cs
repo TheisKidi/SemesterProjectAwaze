@@ -5,8 +5,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddSingleton<IGenericRepositoryService<Property>, PropertyRepositoryService>();
-builder.Services.AddSingleton<IGenericRepositoryService<Guest>, GuestRepositoryService>();
 builder.Services.AddSingleton<IGenericRepositoryService<HouseOwner>, HouseOwnerRepositoryServiceDB>();
 
 var app = builder.Build();
