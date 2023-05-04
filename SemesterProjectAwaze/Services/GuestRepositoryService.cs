@@ -7,14 +7,14 @@ namespace SemesterProjectAwaze.Services
     {
         public Guest Create(Guest guest)
         {
-            string sql = "insert into Guest values(@MyBookingId, @FirstName, @LastName, @Email, @Phone, @IsOwner, @Password)";
+            string sql = "INSERT INTO [dbo].[Guest] VALUES(@MyBookingId, @FirstName, @LastName, @Email, @Phone, @IsOwner, @Password)";
 
             // connection to database with ConnectionString
             SqlConnection conn = new SqlConnection(Secret.GetConnectionString);
             conn.Open();
 
             SqlCommand cmd = new SqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@Id", guest.MyBookingId);
+            cmd.Parameters.AddWithValue("@MyBookingId", guest.MyBookingId);
             cmd.Parameters.AddWithValue("@FirstName", guest.FirstName);
             cmd.Parameters.AddWithValue("@LastName", guest.LastName);
             cmd.Parameters.AddWithValue("@Email", guest.Email);

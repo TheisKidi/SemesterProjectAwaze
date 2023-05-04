@@ -28,7 +28,7 @@ namespace AwazeLib.model
 
         public override string ToString()
         {
-            return $"Surname: {SurName}, LastName: {LastName}, Email: {Email}, Phone: {Phone}, IsOwner: {IsOwner}, " +
+            return $"Surname: {FirstName}, LastName: {LastName}, Email: {Email}, Phone: {Phone}, IsOwner: {IsOwner}, " +
                    $"Password: {Password}, OwnerId: {OwnerId}, Address: {Address}";
         }
     }
