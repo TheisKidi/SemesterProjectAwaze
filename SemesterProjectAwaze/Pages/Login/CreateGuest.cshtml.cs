@@ -1,13 +1,16 @@
 using AwazeLib.model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using SemesterProjectAwaze.Services;
 using System.ComponentModel.DataAnnotations;
 
 namespace SemesterProjectAwaze.Pages.Login
 {
+    [PrimaryKey(nameof(MyBookingId))]
     public class CreateGuestModel : PageModel
     {
+
         private IGenericRepositoryService<Guest> _guestService;
         public CreateGuestModel(IGenericRepositoryService<Guest> guestService)
         {
