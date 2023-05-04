@@ -10,5 +10,6 @@ namespace SemesterProjectAwaze.Services
         public T Create(T t);
         public T Delete(string id);
         public T Update(string id, T t);
+        public T GetByEmail(string email);
     }
 }
