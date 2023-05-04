@@ -142,6 +142,26 @@ namespace SemesterProjectAwaze.Services
             throw new KeyNotFoundException();
         }
 
+        public Property GetByEmail(string email)
+        {
+            // connection
+            SqlConnection conn = new SqlConnection(Secret.GetConnectionString);
+            conn.Open();
+
+            string sql = "SELECT * FROM [dbo].[Propert] WHERE Email = @Email";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@Email", email);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                return ReadProperty(reader);
+            }
+
+            throw new KeyNotFoundException();
+        }
+
         public Property Update(string id, Property property)
         {
             string sqlInsert = "update [dbo].[Property] " +
