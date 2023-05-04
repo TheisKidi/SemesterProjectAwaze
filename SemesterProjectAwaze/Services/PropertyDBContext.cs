@@ -1,11 +1,9 @@
 ﻿using AwazeLib.model;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Metadata;
-
 
 namespace SemesterProjectAwaze.Services
 {
-    public class HouseOwnerDBContext : DbContext
+    public class PropertyDBContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
@@ -14,9 +12,9 @@ namespace SemesterProjectAwaze.Services
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<HouseOwner>().HasKey(b => b.OwnerId).HasName(nameof(HouseOwner));
+            modelBuilder.Entity<Property>().HasKey(b => b.Id).HasName(nameof(Property));
         }
 
-        public virtual DbSet<HouseOwner> HouseOwner { get; set; }
+        public virtual DbSet<Property> Property { get; set; }
     }
 }

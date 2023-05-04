@@ -4,9 +4,7 @@ namespace SemesterProjectAwaze.Services
 {
     public class HouseOwnerRepositoryServiceDB : IGenericRepositoryService<HouseOwner>
     {
-
         private HouseOwnerDBContext _db = new HouseOwnerDBContext();
-
 
         public HouseOwner Create(HouseOwner houseOwner)
         {
@@ -48,12 +46,12 @@ namespace SemesterProjectAwaze.Services
             return houseOwner;
         }
 
-        public HouseOwner Update(string id, HouseOwner t)
+        public HouseOwner Update(string id, HouseOwner houseOwner)
         {
             HouseOwner? updateHouseOwner = GetById(id);
             _db.HouseOwner.Update(updateHouseOwner);
             _db.SaveChanges();
-            return t;
+            return houseOwner;
         }
     }
 }
