@@ -5,7 +5,7 @@ namespace SemesterProjectAwaze.Services
     public class HouseOwnerRepositoryServiceDB : IGenericRepositoryService<HouseOwner>
     {
 
-        private HouseOwnerDBConetext _db = new HouseOwnerDBConetext();
+        private HouseOwnerDBContext _db = new HouseOwnerDBContext();
 
 
         public HouseOwner Create(HouseOwner houseOwner)
