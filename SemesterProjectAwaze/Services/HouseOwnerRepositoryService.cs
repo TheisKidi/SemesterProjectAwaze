@@ -102,7 +102,7 @@ namespace SemesterProjectAwaze.Services
 
         public HouseOwner GetById(string id)
         {
-            string sqlInsert = "select * from HouseOwner where OwnerId = @OwnerId";
+            string sqlInsert = "SELECT * FROM [dbo].[HouseOwner] WHERE OwnerId = @OwnerId";
             List<HouseOwner> list = new List<HouseOwner>();
 
             using (SqlConnection conn = new SqlConnection(Secret.GetConnectionString))
@@ -116,6 +116,26 @@ namespace SemesterProjectAwaze.Services
                 {
                     return ReadHouseOwner(reader);
                 }
+            }
+
+            throw new KeyNotFoundException();
+        }
+
+        public HouseOwner GetByEmail(string email)
+        {
+            // connection
+            SqlConnection conn = new SqlConnection(Secret.GetConnectionString);
+            conn.Open();
+
+            string sql = "SELECT * FROM [dbo].[HouseOwner] WHERE Email = @Email";
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@Email", email);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader.Read())
+            {
+                return ReadHouseOwner(reader);
             }
 
             throw new KeyNotFoundException();
