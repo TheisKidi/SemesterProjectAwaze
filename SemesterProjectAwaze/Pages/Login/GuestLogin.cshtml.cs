@@ -49,7 +49,7 @@ namespace SemesterProjectAwaze.Pages.Login
             try
             {
                 _guestRepo.GetByEmail(Email);
-                _loginService.SetProfileLoggedIn(Email, false);
+                _loginService.SetProfileLoggedIn(_guestRepo.GetByEmail(Email).FirstName, false);
             }
             catch (KeyNotFoundException ex)
             {
