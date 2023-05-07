@@ -6,23 +6,12 @@ using SemesterProjectAwaze.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Set cookie expiration and sliding expiration
-/*builder.Services.ConfigureApplicationCookie(options =>
-{
-    options.Cookie.HttpOnly = true;
-    options.ExpireTimeSpan = TimeSpan.FromDays(14); // Change the value according to your needs
-    options.SlidingExpiration = true;
-});
-builder.Services.AddDistributedMemoryCache();
-*/
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromSeconds(10);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
-
-
 
 // Add this line if it's not already present
 builder.Services.AddControllersWithViews();

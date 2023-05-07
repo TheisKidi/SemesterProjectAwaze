@@ -156,18 +156,26 @@ input[type=checkbox] {
     background-image: url(/img/IndexBanner.jpg);
     background-repeat: no-repeat;
     height: 605px;
+    background-size: cover;
+    background-attachment: local;
 }
 
 .bannerText {
-    margin-left: 293px;
-    position: absolute;
     margin-top: 120px;
+    margin: auto;
+    width: 1334px;
 }
 
-h1{
+.bannerText h1{
     font-size: 45px;
     font-family: Poppins;
     font-weight: bold;
+    padding-top: 135px;
+}
+
+.center {
+    margin: auto;
+    width: 1334px;
 }
 
 h2{
@@ -181,7 +189,8 @@ h2{
 }
 
 #smallDropdown{
-    padding-right: 130px;
+    padding-right: 100px;
+    padding-left: 30px;
     margin-left: -5px;
 }
 
@@ -227,6 +236,15 @@ h2{
     cursor: pointer;
     margin-left: 0px;
 
+}
+
+.dropWide{
+    padding-left: 15px;
+    padding-right: 350px !important;
+}
+
+.dropWide:focus{
+    outline: none;
 }
 
 #placeMenu {
@@ -291,16 +309,10 @@ h2{
 }
 
 .titles {
-    margin-left: 293px;
     padding-top: 100px;
     padding-bottom: 30px;
     font-size: 40px;
     font-weight: 500;
-}
-
-.readMorePic {
-    width: 69%;
-    margin-left: 293px;
 }
 
 .hide {
