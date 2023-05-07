@@ -6,6 +6,8 @@ namespace SemesterProjectAwaze.Services
     {
         private GuestDBContext _db = new GuestDBContext();
 
+       
+
 
         public Guest Create(Guest guest)
         {

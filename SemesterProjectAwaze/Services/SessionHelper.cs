@@ -1,4 +1,6 @@
-﻿using System.Text.Json;
+﻿using System.Runtime.CompilerServices;
+using System.Text.Json;
+using Microsoft.AspNetCore.Http;
 
 namespace SemesterProjectAwaze.Services
 {
@@ -14,17 +16,20 @@ namespace SemesterProjectAwaze.Services
 
         public static ILoginService GetProfile(HttpContext context)
         {
+
             string? json = context.Session.GetString(KEY);
 
             if (json is not null)
             {
+
                 return JsonSerializer.Deserialize<LoginService>(json);
             }
-
-            // Hvis nøglen ikke findes
+            else
+            {
             LoginService us = new LoginService();
             us.ProfileLoggedOut();
             return us;
+            }
         }
     }
 }

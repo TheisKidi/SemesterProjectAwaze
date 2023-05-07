@@ -1,4 +1,6 @@
 ﻿using AwazeLib.model;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace SemesterProjectAwaze.Services
 {
@@ -12,7 +14,7 @@ namespace SemesterProjectAwaze.Services
             _user = new LoggedInUser();
         }
 
-        public void SetProfileLoggedIn(string name, bool isOwner)
+        public async void SetProfileLoggedIn(string name, bool isOwner)
         {
             _user.Name = name;
             _user.IsOwner = isOwner;
