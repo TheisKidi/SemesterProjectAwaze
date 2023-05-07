@@ -10,17 +10,21 @@
     <div class="bannerText">
         <h1>Sommerhuse til dine feriedrømme</h1>
         <h2>Tusindvis af sommerhuse og ferieboliger i Europa</h2>
+        <form method="post">
         <div class="mainMenues">
             <div class="dropdown">
-              <button onclick="myFunction()" class="dropbtn" id="placeMenu">Hvor víl du rejse hen?</button>
-              <div id="place" class="dropdown-content">
-                <a href="#home">Home</a>
-                <a href="#about">yo</a>
-                <a href="#contact">Contact</a>
-              </div>
+
+                <label>Land</label><br>
+                    <select id="smallDropdown" name="Country" class="form-control">
+                    @foreach (var country in Model.Countries)
+                    {
+                            <option value="@country">@country</option>
+                    }
+                </select>
+
             </div>
             <div class="dropdown">
-              <button onclick="myFunction()" class="dropbtn" id="smallDropdown">Ankomst</button>
+              <button class="dropbtn" id="smallDropdown">Ankomst</button>
               <div id="persons" class="dropdown-content">
                 <a href="#home">Danmark</a>
                 <a href="#about">Sverige</a>
@@ -28,7 +32,7 @@
               </div>
             </div>
             <div class="dropdown">
-              <button onclick="myFunction()" class="dropbtn" id="smallDropdown">Afrejse</button>
+              <button class="dropbtn" id="smallDropdown">Afrejse</button>
               <div id="persons" class="dropdown-content">
                 <a href="#home">Danmark</a>
                 <a href="#about">Sverige</a>
@@ -36,7 +40,7 @@
               </div>
             </div>
             <div class="dropdown">
-              <button onclick="myFunction()" class="dropbtn" id="smallDropdown">Personer</button>
+              <button class="dropbtn" id="smallDropdown">Personer</button>
               <div id="persons" class="dropdown-content">
                 <a href="#home">Danmark</a>
                 <a href="#about">Sverige</a>
@@ -45,6 +49,7 @@
             <a asp-page="/Sites/Browse" id="searchBtn" class="btn-primary">SØG</a>
             </div>
         </div>
+        </form>
     </div>
 </div>
 
