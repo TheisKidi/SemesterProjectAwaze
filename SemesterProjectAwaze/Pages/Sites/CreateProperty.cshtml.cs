@@ -47,7 +47,7 @@ namespace SemesterProjectAwaze.Pages.Sites
         public string Name { get; set; }
         [BindProperty]
         [Required(ErrorMessage = "PricePrNight is required")]
-        public double PricePrNight { get; set; }
+        public decimal PricePrNight { get; set; }
         [BindProperty]
         [Required(ErrorMessage = "Rating is required")]
         public int Rating { get; set; }

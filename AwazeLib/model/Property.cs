@@ -17,7 +17,7 @@ namespace AwazeLib.model
         public string Country { get; set; }
         public string Address { get; set; }
         public string Name { get; set; }
-        public double PricePrNight { get; set; }
+        public decimal PricePrNight { get; set; }
         public int Rating { get; set; }
         public string Description { get; set; }
         public string VR { get; set; }
@@ -35,7 +35,7 @@ namespace AwazeLib.model
         {
         }
 
-        public Property(string id, string ownerId, string country, string address, string name, double pricePrNight, 
+        public Property(string id, string ownerId, string country, string address, string name, decimal pricePrNight, 
             int rating, string description, string vr, int persons, int bedrooms, int bathrooms, bool sustainable, 
             bool allowPets, bool wifi, int tv, string houseType)
         {

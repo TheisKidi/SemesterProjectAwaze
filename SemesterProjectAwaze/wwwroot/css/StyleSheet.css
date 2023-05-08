@@ -318,3 +318,13 @@ h2{
 .hide {
     height: 200px;
 }
+
+/*BROWSE*/
+
+.filterRow{
+    display: block;
+    margin: inherit;
+    width: 250px;
+    border-block: dashed;
+    border-color: black;
+}

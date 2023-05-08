@@ -23,3 +23,20 @@ window.onclick = function (event) {
         }
     }
 }
+
+
+document.getElementById('Price').addEventListener('input', function (event) {
+    document.getElementById('priceValue').textContent = event.target.value;
+});
+
+document.getElementById('stjerner').addEventListener('input', function (event) {
+    document.getElementById('stjernerValue').textContent = event.target.value;
+});
+
+document.getElementById('soveværelser').addEventListener('input', function (event) {
+    document.getElementById('soveværelserValue').textContent = event.target.value;
+});
+
+document.getElementById('badeværelser').addEventListener('input', function (event) {
+    document.getElementById('badeværelserValue').textContent = event.target.value;
+});
