@@ -1,0 +1,100 @@
+﻿@page
+@model SemesterProjectAwaze.Pages.Sites.EditPropertyModel
+@{
+}
+<h1>Update Sommerhus @Model.Id</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div class="form-group">
+                <input type="hidden" asp-for="@Model.Id" class="form-control" /><br>
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" asp-for="@Model.Rating" class="form-control" /><br>
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" asp-for="@Model.OwnerId" class="form-control" /><br>
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" asp-for="@Model.Country" class="form-control" /><br>
+            </div>
+
+             <div class="form-group">
+                <input type="hidden" asp-for="@Model.Address" class="form-control" /><br>
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" asp-for="@Model.Country" class="form-control" /><br>
+            </div>
+
+            <div class="form-group">
+                <label>Name</label><br>
+                <input asp-for="@Model.Name" class="form-control" /><br />
+            </div>
+
+            <div class="form-group">
+                <label>PrisPrUge</label><br>
+                <input asp-for="@Model.PricePrNight" class="form-control" /><br />
+            </div>
+
+            <div class="form-group">
+                <label>VR link</label><br>
+                <input asp-for="@Model.VR" class="form-control" /><br />
+            </div>
+
+            <div class="form-group">
+                <label>Max antal personer</label><br>
+                <input asp-for="@Model.Persons" /><br />
+            </div>
+
+            <div class="form-group">
+                <label>Antal soveværelser</label><br>
+                <input asp-for="@Model.Bedrooms" /><br />
+            </div>
+
+            <div class="form-group">
+                <label>Antal badeværelse</label><br>
+                <input asp-for="@Model.Bathrooms" /><br />
+            </div>
+
+            <div class="form-group">
+                <label>Er dette hus bæredygtigt?</label><br>
+                <input asp-for="@Model.Sustainable" /><br />
+            </div>
+
+            <div class="form-group">
+                <label>Beskrivelse</label><br>
+                <input asp-for="@Model.Description" /><br />
+            </div>
+
+            <div class="form-group">
+                <label>Er Wifi tilgængeligt?</label><br>
+                <input asp-for="@Model.Wifi" /><br />
+            </div>
+
+            <div class="form-group">
+                <label>Er kæledyr tilladt?</label><br>
+                <input asp-for="@Model.AllowPets" /><br />
+            </div>
+
+            <div class="form-group">
+                <label>Antal fjernsyn</label><br>
+                <input asp-for="@Model.Tv" /><br />
+            </div>
+
+            <form method="post">
+                <div class="form-group">
+                    <input type="submit" value="Update Sommerhus" asp-page-handler="Edit" asp-route-id="@Model.Id" class="btn btn-success" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Cancel" asp-page-handler="Cancel" class="btn btn-primary" />
+                </div>
+            </form>
+
+        </form>
+    </div>
+</div>
