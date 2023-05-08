@@ -1,0 +1,38 @@
+﻿@page
+@model SemesterProjectAwaze.Pages.Sites.SelectedPropertyModel
+@{
+}
+
+<h1 style="margin: auto; width: 265px; padding-top: 50px; padding-bottom: 50px;">@Model.SelectedProperty.Name</h1>
+@switch (Model.SelectedProperty.Rating)
+    {
+        case 1:
+        <div style="margin: auto; width: 195px;">
+            <img class="starImg" src="~/img/starIcon.svg"/>
+        </div>
+            break;
+        case 2:
+            <img class="starImg" src="~/img/starIcon.svg" />
+            <img class="starImg" src="~/img/starIcon.svg" />
+            break;
+        case 3:
+            <img class="starImg" src="~/img/starIcon.svg" />
+            <img class="starImg" src="~/img/starIcon.svg" />
+            <img class="starImg" src="~/img/starIcon.svg" />
+            break;
+        case 4:
+            <img class="starImg" src="~/img/starIcon.svg" />
+            <img class="starImg" src="~/img/starIcon.svg" />
+            <img class="starImg" src="~/img/starIcon.svg" />
+            <img class="starImg" src="~/img/starIcon.svg" />
+            break;
+        case 5:
+        <div style="margin: auto; width: 195px;">
+            <img class="starImg" src="~/img/starIcon.svg" />
+            <img class="starImg" src="~/img/starIcon.svg" />
+            <img class="starImg" src="~/img/starIcon.svg" />
+            <img class="starImg" src="~/img/starIcon.svg" />
+            <img class="starImg" src="~/img/starIcon.svg" />
+        </div>
+            break;
+    }

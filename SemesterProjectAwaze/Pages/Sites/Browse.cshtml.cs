@@ -1,6 +1,7 @@
 using AwazeLib.model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Identity.Client;
 using SemesterProjectAwaze.Services;
 
 namespace SemesterProjectAwaze.Pages.Sites
@@ -23,7 +24,6 @@ namespace SemesterProjectAwaze.Pages.Sites
         [BindProperty]
         public HashSet<HouseType> uniqueType { get; set; }
 
-
         public void OnGet()
         {
 
@@ -32,5 +32,12 @@ namespace SemesterProjectAwaze.Pages.Sites
             //unique = new HashSet<Country>(Properties.Select(c => c.Country));
             //uniqueType = new HashSet<HouseType>(Properties.Select(c => c.HouseType));
         }
+
+        public IActionResult OnPost()
+        {
+
+            return RedirectToPage("SelectedProperty");
+        }
+
     }
 }

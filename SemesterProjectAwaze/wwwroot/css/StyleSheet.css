@@ -321,10 +321,106 @@ h2{
 
 /*BROWSE*/
 
+.browseContainer {
+    margin: auto;
+    padding-left: 277px;
+    padding-top: 50px;
+    display: -webkit-inline-box;
+}
+
 .filterRow{
     display: block;
     margin: inherit;
     width: 250px;
     border-block: dashed;
     border-color: black;
+}
+
+.browsePanel{
+    width: 80%;
+}
+
+.propertyModule {
+    border-style: solid;
+    border-width: 1px;
+    width: 370px;
+    height: 410px;
+    border-radius: 4px;
+    margin-left: 60px;
+    display: inline-block;
+    margin-bottom: 40px;
+}
+
+.propertyHeader {
+    display: flex;
+    padding-left: 14px;
+    padding-top: 7px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    height: 50px;
+}
+
+.propertyHeader p {
+    color: white;
+}
+
+.starImg{
+    padding-left: 4px;
+    height: 30px;
+}
+
+.favoriteIcon {
+    margin-left: auto;
+    display: inline-block;
+    height: 25px;
+    padding-right: 14px;
+    padding-top: 5px;
+}
+
+.moduleImg{
+    z-index: 0;
+    height: 235px;
+    width: 369px;
+}
+
+.imageContainer{
+    justify-content: center;
+}
+
+.imageContainer p {
+    position: absolute;
+}
+
+h3 {
+    font-family: Poppins;
+    font-size: 24px;
+    color: #2dd473;
+}
+
+.propertyName{
+    padding-left: 14px;
+    padding-top: 7px;
+}
+
+.moduleBottom{
+    margin:auto;
+    padding-left: 50px;
+    padding-top: 13px;
+    display: flex;
+    border-top: solid;
+    border-width: 1px;
+}
+
+.bedroom{
+    height: 35px;
+    padding-right: 30px;
+}
+
+.person {
+    height: 35px;
+    padding-right: 30px;
+}
+
+.houseType {
+    height: 35px;
 }
