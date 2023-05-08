@@ -34,6 +34,11 @@ namespace SemesterProjectAwaze.Pages.Sites
         [Required(ErrorMessage = "Country is required")]
         public Country Country { get; set; }
         public List<Country> Countries { get; private set; }
+        public string CountryToString
+        {
+            get { return Country.ToString(); }
+            set { CountryToString = value; }
+        }
         [BindProperty]
         [Required(ErrorMessage = "Address is required")]
         public string Address { get; set; }
@@ -55,6 +60,12 @@ namespace SemesterProjectAwaze.Pages.Sites
         [BindProperty]
         public HouseType Type { get; set; }
         public List<HouseType> HouseTypes { get; private set; }
+        public string TypeToString
+        {
+            get { return Type.ToString(); }
+            set { TypeToString = value; }
+        }
+
         [BindProperty]
         [Required(ErrorMessage = "Persons is required")]
         public int Persons { get; set; }
@@ -113,8 +124,8 @@ namespace SemesterProjectAwaze.Pages.Sites
                 Countries = Enum.GetValues<Country>().ToList();
                 return Page();
             }
-            Property newProperty = new Property(MakePropertyId(), OwnerId, Country, Address, Name, PricePrNight, Rating, Description,
-                VR, Persons, Bedrooms, Bathrooms, Sustainable, AllowPets, Wifi, Tv, Type);
+            Property newProperty = new Property(MakePropertyId(), OwnerId, CountryToString, Address, Name, PricePrNight, Rating, Description,
+                VR, Persons, Bedrooms, Bathrooms, Sustainable, AllowPets, Wifi, Tv, TypeToString);
 
             _repo.Create(newProperty);
             

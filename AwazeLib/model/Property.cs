@@ -14,7 +14,7 @@ namespace AwazeLib.model
     {
         public string Id { get; set; }
         public string OwnerId { get; set; }
-        public Country Country { get; set; }
+        public string Country { get; set; }
         public string Address { get; set; }
         public string Name { get; set; }
         public double PricePrNight { get; set; }
@@ -28,16 +28,16 @@ namespace AwazeLib.model
         public bool AllowPets { get; set; }
         public bool Wifi { get; set; }
         public int Tv { get; set; }
-        public HouseType HouseType { get; set; }
+        public string HouseType { get; set; }
 
-        public Property() : this ("default ID", "DEF001", Country.Denmark, "default address", "default name", -1, 0, 
-            "default description", "default VR link", 0, 0, 0, false, false, false, 0, HouseType.HolidayCottage)
+        public Property() : this ("default ID", "DEF001", "Denmark", "default address", "default name", -1, 0, 
+            "default description", "default VR link", 0, 0, 0, false, false, false, 0, "HolidayCottage")
         {
         }
 
-        public Property(string id, string ownerId, Country country, string address, string name, double pricePrNight, 
+        public Property(string id, string ownerId, string country, string address, string name, double pricePrNight, 
             int rating, string description, string vr, int persons, int bedrooms, int bathrooms, bool sustainable, 
-            bool allowPets, bool wifi, int tv, HouseType houseType)
+            bool allowPets, bool wifi, int tv, string houseType)
         {
             Id = id;
             OwnerId = ownerId;

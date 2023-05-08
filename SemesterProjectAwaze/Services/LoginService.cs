@@ -7,6 +7,7 @@ namespace SemesterProjectAwaze.Services
     public class LoginService : ILoginService
     {
         public static bool iAmOwner = false;
+        public static string MyName = "";
         private LoggedInUser _user;
 
         public LoginService()
@@ -16,6 +17,7 @@ namespace SemesterProjectAwaze.Services
 
         public async void SetProfileLoggedIn(string name, bool isOwner)
         {
+            MyName = name;
             _user.Name = name;
             _user.IsOwner = isOwner;
             iAmOwner = isOwner;
@@ -23,6 +25,7 @@ namespace SemesterProjectAwaze.Services
 
         public void ProfileLoggedOut()
         {
+            MyName = "";
             _user.Name = "";
             _user.IsOwner = false;
             iAmOwner = false;

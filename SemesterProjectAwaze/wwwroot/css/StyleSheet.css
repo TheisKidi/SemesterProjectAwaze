@@ -67,7 +67,7 @@ div .logo {
 
 /* Responsive navbar */
 /* Checkbox hack */
-input[type=checkbox] {
+ul.nav-links input[type=checkbox] {
     display: none;
 }
 
