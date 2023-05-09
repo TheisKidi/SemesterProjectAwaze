@@ -23,9 +23,6 @@ namespace SemesterProjectAwaze.Pages.Login
         public string Email { get; set; }
         [Required, BindProperty]
         public string Password { get; set; }
-        [Required, BindProperty]
-        public string ConfirmPassword { get; set; }
-
 
         public void OnGet()
         {
@@ -37,11 +34,6 @@ namespace SemesterProjectAwaze.Pages.Login
             _loginService = SessionHelper.GetProfile(HttpContext);
 
             if (!ModelState.IsValid)
-            {
-                return Page();
-            }
-
-            if (Password != ConfirmPassword)
             {
                 return Page();
             }
@@ -59,9 +51,6 @@ namespace SemesterProjectAwaze.Pages.Login
 
             SessionHelper.SetUser(_loginService, HttpContext);
             return RedirectToPage("../Index");
-
         }
-
-
     }
 }

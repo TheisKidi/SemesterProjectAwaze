@@ -420,6 +420,7 @@ h3 {
     padding: 15px 0px;
     gap: 25px;
     border-color: lightgrey;
+    position: relative;
 }
 
 .moduleIconContainer {
@@ -587,4 +588,72 @@ ul.propertNavbarUl li {
     color: #7C7777;
     font-family: Poppins;
     font-size: 18px;
+}
+
+.sustainableIcon {
+    position: absolute;
+    bottom: -9px;
+    right: -21px;
+}
+
+.sustainableIcon img{
+    height: 40px;
+}
+
+.loginContainer {
+    margin: 100px auto;
+    width: 544px;
+    background-color: #f3f3f3;
+    border-top: 5px solid #2dd473;
+    font-family: 'Poppins';
+}
+
+.loginTop{
+    padding: 50px;
+    padding-bottom: 10px;
+}
+
+.loginContainer h1 {
+    font-size: 35px;
+    margin-bottom: 50px;
+    text-align: center;
+    color: #2dd473;
+}
+
+.loginbtn {
+    width: 100%;
+    height: 50px;
+    background-color: #2C2B2B;
+    font-weight: 600;
+    font-size: 20px;
+    border: none;
+}
+
+.loginbtn:hover {
+    background-color: #2dd473;
+}
+
+.loginContainer label{
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.terms {
+    font-size: 10px;
+}
+
+.forgotPass {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.opretBruger {
+    text-align: center;
+    border-top: 1px solid lightgrey;
+    padding: 20px 0px;
+}
+
+.opretBruger p{
+    margin: 0px;
 }

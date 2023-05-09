@@ -26,7 +26,7 @@ window.onclick = function (event) {
 
 
 document.getElementById('Price').addEventListener('input', function (event) {
-    document.getElementById('priceValue').textContent = event.target.value;
+    document.getElementById('priceValue').textContent = `${event.target.value} DKK`;
 });
 
 document.getElementById('stjerner').addEventListener('input', function (event) {
