@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AwazeLib.model
 {
@@ -65,5 +68,49 @@ namespace AwazeLib.model
                    $"VR: {VR}, Persons: {Persons}, Bedrooms: {Bedrooms}, Bathroom: {Bathrooms}, Sustainable: {Sustainable}, " +
                    $"AllowPets: {AllowPets}, Wifi: {Wifi}, Tv: {Tv}, Type: {HouseType}";
         }
+
+//----------------------------------------------------
+//Database setup
+//----------------------------------------------------
+//property
+//| id | houseid | name | rating | fk_promo_img | fk_imgs |
+//| 1 | ABC123 | mithus | 4 | 3 | 1,2,3 |
+
+//images
+//| id | url | 
+//| 1  | /assets/house/nice_house.jpg |
+//| 2  | /assets/house/nice_house2.jpg |
+//| 3  | /assets/house/promo_house.jpg |
+//| 4  | /assets/house/boat_house.jpg |
+
+
+//----------------------------------------------------
+///browse: Vis alle properties
+//----------------------------------------------------
+//SELECT* FROM property RIGHT JOIN property.fk_main_img = images.id;
+
+
+//----------------------------------------------------
+///abc123: Selected house
+//----------------------------------------------------
+//// Snup al data omkring huset og gem i propertydata
+//Property propertydata = "SELECT * FROM property RIGHT JOIN property.fk_main_img = images.id WHERE houseid = '<url houseid(abc123)>'";
+
+//        // Snup al data omkring billederne der ligger på huset ved at tilgå fk_imgs der kommer tilbage
+//        fra første query.
+//        PropertyImages propertyImages = "SELECT * FROM images WHERE id in (propertydata.fk_imgs)" 
+
+//// Render lortet:
+//foreach (propertydata as property) 
+//{
+//  <div class="images">
+//    foreach (Image image in propertyImages) 
+//    {
+//      <img src = "image.url" />
+//    }
+//  </div>
+//  <p>property.name</p>
+//}
+
     }
 }

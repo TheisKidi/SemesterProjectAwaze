@@ -5,22 +5,27 @@
 
 <div class="browseContainer">
     <form method="postFilter">
-            <div class="filterRow">
-                <label class="form-label" for="Price">Price</label>
-                <div class="range browseRange">
-                    <input type="range" class="form-range" id="Price" min="200" max="5000" />
+        <div class="filterRow">
+            <div class="filterGroup">
+                <div class="rangeSummary">
+                    <label class="form-label" for="Price">Price</label> 
                     <span id="priceValue">2500</span>
                 </div>
+                <div class="range browseRange">
+                    <input type="range" class="form-range" id="Price" min="200" max="5000" />
+                </div>
+            </div>
+            <div class="filterGroup">
                 <input type="checkbox" class="custom-control-input" id="ck1a" />
                 <label class="custom-control-label" for="ck1a">
                     <svg class="svgClick" xmlns="http://www.w3.org/2000/svg" width="45" height="50.208" viewBox="0 0 45 50.208">
-                      <g id="typeHouseIcon" transform="translate(8.193 -0.003)">
+                        <g id="typeHouseIcon" transform="translate(8.193 -0.003)">
                         <path id="Path_36" data-name="Path 36" d="M16.368,7.991,7.023,17.337A1.515,1.515,0,0,0,6.58,18.4V29.917a.789.789,0,0,0,.789.789H12.69a.789.789,0,0,0,.783-.789V22.086a.867.867,0,0,1,.867-.86h5.135a.86.86,0,0,1,.867.86v7.831a.789.789,0,0,0,.783.789h5.321a.789.789,0,0,0,.789-.789V18.4a1.534,1.534,0,0,0-.436-1.065l-9.32-9.345a.783.783,0,0,0-1.11,0Z" transform="translate(-2.61 -4.286)" fill="#2c2b2b"/>
                         <path id="Path_37" data-name="Path 37" d="M15.259,2.569,28.776,15.291a.777.777,0,0,1,0,1.117l-.642.61a.77.77,0,0,1-1.091,0L15.252,5.182a.777.777,0,0,0-1.1,0L2.319,17.018a.77.77,0,0,1-1.091,0l-.61-.61a.777.777,0,0,1,0-1.117L14.148,2.569A.822.822,0,0,1,15.259,2.569Z" transform="translate(-0.39 -2.35)" fill="#2c2b2b"/>
                         <rect id="Rectangle_29" data-name="Rectangle 29" width="2.587" height="1.727" rx="0.55" transform="translate(22.07 3.146)" fill="#2c2b2b"/>
                         <path id="Path_38" data-name="Path 38" d="M34.315,9.566V4.9H29.36Z" transform="translate(-10.518 -1.754)" fill="#2c2b2b"/>
-                      </g>
-                      <text id="FERIEHUS" transform="translate(0 46.208)" fill="#2c2b2b" font-size="10" font-family="Poppins-Medium, Poppins" font-weight="500"><tspan x="0" y="0">FERIEHUS</tspan></text>
+                        </g>
+                        <text id="FERIEHUS" transform="translate(0 46.208)" fill="#2c2b2b" font-size="10" font-family="Poppins-Medium, Poppins" font-weight="500"><tspan x="0" y="0">FERIEHUS</tspan></text>
                     </svg>
                 </label>
                 <input type="checkbox" class="custom-control-input" id="ck1a2" />
@@ -52,113 +57,134 @@
                         </g>
                     </svg>
                 </label>
-                <label class="form-label" for="stjerner">Antal stjerner</label>
-                <div class="range browseRange">
-                    <input type="range" class="form-range" id="stjerner" min="1" max="5" />
+            </div>
+            <div class="filterGroup">
+                <div class="rangeSummary">
+                    <label class="form-label" for="stjerner">Antal stjerner</label>
                     <span id="stjernerValue">3</span>
                 </div>
-                <label class="form-label" for="soveværelser">Min. Soveværelser</label>
                 <div class="range browseRange">
-                    <input type="range" class="form-range" id="soveværelser" min="1" max="50" />
+                    <input type="range" class="form-range" id="stjerner" min="1" max="5" />
+                </div>
+            </div>
+            <div class="filterGroup">
+                <div class="rangeSummary">
+                    <label class="form-label" for="soveværelser">Min. Soveværelser</label>
                     <span id="soveværelserValue">25</span>
                 </div>
-                <label class="form-label" for="badeværelser">Min. Badeværelser</label>
                 <div class="range browseRange">
-                    <input type="range" class="form-range" id="badeværelser" min="1" max="20" />
+                    <input type="range" class="form-range" id="soveværelser" min="1" max="50" />
+
+                </div>
+            </div>
+            <div class="filterGroup">
+                <div class="rangeSummary">
+                    <label class="form-label" for="badeværelser">Min. Badeværelser</label>
                     <span id="badeværelserValue">10</span>
                 </div>
-                <div>
+                <div class="range browseRange">
+                    <input type="range" class="form-range" id="badeværelser" min="1" max="20" />
+                </div>
+            </div>
+            <div class="filterGroup">
                 <label>Sustainable</label>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24.345" height="24.31" viewBox="0 0 24.345 24.31">
-                  <g id="co2    Friendly" transform="translate(0.002)">
+                    <g id="co2    Friendly" transform="translate(0.002)">
                     <path id="Path_45" data-name="Path 45" d="M13.129,27.28a9.5,9.5,0,0,0-.132-1.6l-2.118-3.472a6.169,6.169,0,0,1-2.743-.826,6.313,6.313,0,0,1-2.56-2.9l-.3-.677C4.239,15.446,4.05,14.27,3.1,11.963c-.029-.075-.063-.161-.1-.253A12.144,12.144,0,0,0,12.75,30.04,9.756,9.756,0,0,0,13.129,27.28Z" transform="translate(-1.29 -5.73)" fill="#2dd473"/>
                     <path id="Path_46" data-name="Path 46" d="M15.23,1.29A12.133,12.133,0,0,0,5.438,6.256a11.926,11.926,0,0,1,6.016,2.787,11.972,11.972,0,0,1,3.8,6.531q-2.416-2.037-4.9-4.08L8.32,9.835l1.188,1.693q3.053,4.344,6.152,8.488a4.413,4.413,0,0,1,.528,1,6.08,6.08,0,0,1,.189,2.611c-.034.545-.08,1.211-.155,1.957A12.167,12.167,0,0,0,15.23,1.29Zm8.149,12.626c-.494,1.481-.316,2.026-.958,3.122A5.309,5.309,0,0,1,20.165,19.2a5.165,5.165,0,0,1-2.732.488c.425-.62.861-1.24,1.3-1.865Q20.246,15.7,21.749,13.7c-1.176.913-2.376,1.865-3.581,2.87-.574.494-1.188.993-1.768,1.486a8.609,8.609,0,0,1,1.263-3.214C20,11.293,24.3,10.828,25.02,10.777a11.547,11.547,0,0,0-1.641,3.145Z" transform="translate(-3.058 -1.29)" fill="#2dd473"/>
-                  </g>
+                    </g>
                 </svg>
                 <input type="checkbox" class="custom-control-input" />
+            </div>
+        </div>
+    </form>
+    <div class="browsePanel">
+        @foreach (var p in Model.Properties)
+        {
+            <div class="propertyModule">
+                <div class="propertyHeader">
+                    @{
+                        switch (p.Rating)
+                        {
+                            case 1:
+                                <img class="starImg" src="~/img/starIcon.svg"/>
+                                break;
+                            case 2:
+                                <img class="starImg" src="~/img/starIcon.svg" />
+                                <img class="starImg" src="~/img/starIcon.svg" />
+                                break;
+                            case 3:
+                                <img class="starImg" src="~/img/starIcon.svg" />
+                                <img class="starImg" src="~/img/starIcon.svg" />
+                                <img class="starImg" src="~/img/starIcon.svg" />
+                                break;
+                            case 4:
+                                <img class="starImg" src="~/img/starIcon.svg" />
+                                <img class="starImg" src="~/img/starIcon.svg" />
+                                <img class="starImg" src="~/img/starIcon.svg" />
+                                <img class="starImg" src="~/img/starIcon.svg" />
+                                break;
+                            case 5:
+                                <img class="starImg" src="~/img/starIcon.svg" />
+                                <img class="starImg" src="~/img/starIcon.svg" />
+                                <img class="starImg" src="~/img/starIcon.svg" />
+                                <img class="starImg" src="~/img/starIcon.svg" />
+                                <img class="starImg" src="~/img/starIcon.svg" />
+                                break;
+                        }
+                    }
+                    <img class="favoriteIcon" src="~/img/favoritesIcon.svg" />
                 </div>
-                <label>Tilbud</label>
-                <input type="checkbox" class="custom-control-input" />
-             </div>
-         </form>
-            <div class="browsePanel">
-                @foreach (var p in Model.Properties)
-                {
-                    
-                    <div class="propertyModule">
-                        <div class="propertyHeader">
+                <div class="imageContainer">
+                    <form method="post">
+                        <a style="border: none;" type="submit" asp-route-id="@p.Id" asp-page="SelectedProperty">
+                            <img class="moduleImg" src="~/img/IndexBanner.jpg"/>
+                        </a>
+                    </form>
+                </div>
+                <h3 class="propertyName">@p.Name, @p.Country</h3>
+                <div class="moduleBottom">
+                    <div class="moduleIconContainer">
+                        <img class="moduleIcon" src="~/img/bedIcon.svg" />
+                        <p>@p.Bedrooms 
                             @{
-                                switch (p.Rating)
+                                if (p.Bedrooms > 1)
                                 {
-                                    case 1:
-                                        <img class="starImg" src="~/img/starIcon.svg"/>
-                                        break;
-                                    case 2:
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        break;
-                                    case 3:
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        break;
-                                    case 4:
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        break;
-                                    case 5:
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        break;
+                                    @:SENGE
+                                } 
+                                else 
+                                {
+                                    @:SENG
                                 }
                             }
-                            <img class="favoriteIcon" src="~/img/favoritesIcon.svg" />
-                        </div>
-                        <div class="imageContainer">
-                            <form method="post">
-                                <a style="border: none;" type="submit" asp-route-id="@p.Id" asp-page="SelectedProperty">
-                                    <img class="moduleImg" src="~/img/IndexBanner.jpg"/>
-                                </a>
-                            </form>
-                        </div>
-                        <h3 class="propertyName">@p.Name, @p.Country</h3>
-                        <div class="moduleBottom">
-                            <div class="bedroom">
-                                <img class="bedroom" src="~/img/bedIcon.svg"/>
-                                <p>@p.Bedrooms SENGE</p>
-                            </div>
-                            <div class="person">
-                                <img class="person" src="~/img/personsIcon.svg"/>
-                                <p>@p.Persons PERSONER</p>
-                            </div>
-                            <div>
-                                @{
-                                    switch (p.HouseType)
-                                    {
-                                        case "HolidayCottage":
-                                            <img class="houseType" src="~/img/typeHouseIcon.svg" />
-                                            <p>FERIEHUS</p>
-                                            break;
-                                        case "HollidayApartment":
-                                            <img class="houseType" src="~/img/typeVactionIcon.svg" />
-                                            <p>FERIELEJLIGHED</p>
-                                            break;
-                                        case "HouseBoat":
-                                            <img class="houseType" src="~/img/typeBoatIcon.svg" />
-                                            <p>HUSBÅD</p>
-                                            break;
-                                    }
-                                }
-                            </div>
-                        </div>
+                        </p>
                     </div>
+                    <div class="moduleIconContainer">
+                        <img class="moduleIcon" src="~/img/personsIcon.svg"/>
+                        <p>@p.Persons PERSONER</p>
+                    </div>
+                    <div class="moduleIconContainer">
+                        @{
+                            switch (p.HouseType)
+                            {
+                                case "HolidayCottage":
+                                    <img class="moduleIcon" src="~/img/typeHouseIcon.svg" />
+                                    <p>FERIEHUS</p>
+                                    break;
+                                case "HollidayApartment":
+                                    <img class="moduleIcon" src="~/img/typeVactionIcon.svg" />
+                                    <p>FERIELEJLIGHED</p>
+                                    break;
+                                case "HouseBoat":
+                                    <img class="moduleIcon" src="~/img/typeBoatIcon.svg" />
+                                    <p>HUSBÅD</p>
+                                    break;
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
         }
     </div>
-
 </div>
 
