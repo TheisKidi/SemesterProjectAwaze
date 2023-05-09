@@ -327,14 +327,16 @@ h2{
     display: grid;
     /* grid-auto-flow: column; */
     grid-template-columns: 1fr 3fr;
-    margin-top: 100px;
+    padding-top: 100px;
 }
 
 .filterRow {
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
     position: fixed;
     background-color: white;
     padding: 30px;
     border-radius: 10px;
+    border: 1px solid lightgrey;
 }
 
 .propertyModule {
@@ -346,6 +348,9 @@ h2{
     margin-left: 60px;
     display: inline-block;
     margin-bottom: 40px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+    border-color: lightgray;
+    background-color: white;
 }
 
 .propertyHeader {
@@ -374,18 +379,16 @@ h2{
     padding-top: 5px;
 }
 
-.moduleImg{
-    z-index: 0;
+.moduleImg {
     height: 235px;
     width: 369px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
 }
 
 .imageContainer{
     justify-content: center;
-}
-
-.imageContainer p {
-    position: absolute;
 }
 
 h3 {
@@ -394,9 +397,15 @@ h3 {
     color: #2dd473;
 }
 
-.propertyName{
+.propertyName {
     padding-left: 14px;
-    padding-top: 7px;
+    padding-top: 14px;
+    font-size: 18px;
+    padding-bottom: 14px;
+    margin: 0;
+    overflow: hidden;
+    height: 62px;
+    line-height: 38px;
 }
 
 .moduleBottom {
@@ -410,6 +419,7 @@ h3 {
     justify-content: center;
     padding: 15px 0px;
     gap: 25px;
+    border-color: lightgrey;
 }
 
 .moduleIconContainer {
@@ -419,7 +429,7 @@ h3 {
 }
 
 .moduleIcon {
-    height: 35px;
+    height: 25px;
     margin: auto;
 }
 
@@ -436,4 +446,85 @@ h3 {
 .rangeSummary {
     display: flex;
     justify-content: space-between;
+}
+
+.custom-control-input.hidden{
+    position: absolute;
+    opacity: 0;
+    padding-right: 20px;
+}
+
+.filterGroup.houseTypesGroup {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.selected {
+    background-color: #2dd473;
+}
+
+.custom-control-label.houseTypeItem {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid lightgrey;
+}
+
+.backgroundContainer {
+    background-color: #f9f9f9;  
+}
+
+.form-range::-webkit-slider-thumb {
+    background: black;
+}
+
+.form-range::-moz-range-thumb {
+    background: black;
+}
+
+.form-range::-ms-thumb {
+    background: black;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    background: #2dd473;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #2dd473;
+}
+
+input[type=range]::-moz-range-track {
+    background: #2dd473;
+}
+
+input[type=range]::-ms-fill-lower {
+    background: #2dd473;
+}
+
+input[type=range]::-ms-fill-upper {
+    background: #2dd473;
+}
+
+input[type=range]:focus::-ms-fill-lower {
+    background: #2dd473;
+}
+
+input[type=range]:focus::-ms-fill-upper {
+    background: #2dd473;
+}
+
+.priceBox {
+    position: absolute;
+    bottom: 19px;
+    right: 0;
+    background-color: #2dd473;
+    padding: 7px 20px;
+    color: white;
+    font-family: poppins;
+    font-weight: bold;
+}
+
+.priceBox p{
+    margin: 0;
 }
