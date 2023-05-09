@@ -437,3 +437,62 @@ h3 {
     display: flex;
     justify-content: space-between;
 }
+
+/* Selected Property */
+.propertyNavbar {
+    background-color: #F5F5F5;
+    font-family: Poppins;
+    font-size: 18px;
+    color: #5A5A5A;
+    font-weight: 500;
+}
+
+.propertNavbarUl {
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+
+ul.propertNavbarUl li {
+    padding-right: 40px;
+}
+
+.selectedPropertyNavigation {
+    color: #ACACAC;
+    font-family: Poppins;
+    font-size: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.propertyId {
+    font-weight: 700;
+    color: #2C2B2B;
+}
+
+.selectedPropertyHeader {
+    color: #2DD473;
+    font-family: Poppins;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.catalogNumber {
+    color: #ACACAC;
+    font-family: Poppins;
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.selectedPropertyDescHeader {
+    color: #2C2B2B;
+    font-family: Poppins;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.breadText {
+    color: #7C7777;
+    font-family: Poppins;
+    font-size: 18px;
+}

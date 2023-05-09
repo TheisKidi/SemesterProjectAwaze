@@ -3,36 +3,85 @@
 @{
 }
 
-<h1 style="margin: auto; width: 265px; padding-top: 50px; padding-bottom: 50px;">@Model.SelectedProperty.Name</h1>
-@switch (Model.SelectedProperty.Rating)
-    {
-        case 1:
-        <div style="margin: auto; width: 195px;">
-            <img class="starImg" src="~/img/starIcon.svg"/>
-        </div>
-            break;
-        case 2:
-            <img class="starImg" src="~/img/starIcon.svg" />
-            <img class="starImg" src="~/img/starIcon.svg" />
-            break;
-        case 3:
-            <img class="starImg" src="~/img/starIcon.svg" />
-            <img class="starImg" src="~/img/starIcon.svg" />
-            <img class="starImg" src="~/img/starIcon.svg" />
-            break;
-        case 4:
-            <img class="starImg" src="~/img/starIcon.svg" />
-            <img class="starImg" src="~/img/starIcon.svg" />
-            <img class="starImg" src="~/img/starIcon.svg" />
-            <img class="starImg" src="~/img/starIcon.svg" />
-            break;
-        case 5:
-        <div style="margin: auto; width: 195px;">
-            <img class="starImg" src="~/img/starIcon.svg" />
-            <img class="starImg" src="~/img/starIcon.svg" />
-            <img class="starImg" src="~/img/starIcon.svg" />
-            <img class="starImg" src="~/img/starIcon.svg" />
-            <img class="starImg" src="~/img/starIcon.svg" />
-        </div>
-            break;
-    }
+
+<div class="propertyNavbar">
+    <ul class="propertNavbarUl">
+        <li>Koncepter</li>
+        <li>Beskrivelse</li>
+        <li>Om feriehuset</li>
+        <li>Kort</li>
+    </ul>
+</div>
+
+<!-- Navigation -->
+<div>
+    <p class="selectedPropertyNavigation">FORSIDE / FERIEHUSE / @Model.SelectedProperty.Country / @Model.SelectedProperty.Address / <strong class="propertyId">@Model.SelectedProperty.Id</strong></p>
+</div>
+
+<!-- Rating -->
+<div>
+        @switch (Model.SelectedProperty.Rating)
+        {
+            case 1:
+                <img class="starImg" src="~/img/starIcon.svg" />
+                break;
+            case 2:
+                <img class="starImg" src="~/img/starIcon.svg" />
+                <img class="starImg" src="~/img/starIcon.svg" />
+                break;
+            case 3:
+                <img class="starImg" src="~/img/starIcon.svg" />
+                <img class="starImg" src="~/img/starIcon.svg" />
+                <img class="starImg" src="~/img/starIcon.svg" />
+                break;
+            case 4:
+                <img class="starImg" src="~/img/starIcon.svg" />
+                <img class="starImg" src="~/img/starIcon.svg" />
+                <img class="starImg" src="~/img/starIcon.svg" />
+                <img class="starImg" src="~/img/starIcon.svg" />
+                break;
+            case 5:
+                <img class="starImg" src="~/img/starIcon.svg" />
+                <img class="starImg" src="~/img/starIcon.svg" />
+                <img class="starImg" src="~/img/starIcon.svg" />
+                <img class="starImg" src="~/img/starIcon.svg" />
+                <img class="starImg" src="~/img/starIcon.svg" />
+                break;
+        }
+</div>
+
+<!-- Name -->
+<div>
+    <h2 class="selectedPropertyHeader">@Model.SelectedProperty.Name,<br />@Model.SelectedProperty.Country</h2>
+    <p class="catalogNumber">Katalognummer: @Model.SelectedProperty.Id</p>
+</div>
+
+<div>
+    <ul>
+        @switch (Model.SelectedProperty.HouseType)
+        {
+            case "HolidayCottage":
+                <li><img class="starImg" src="~/img/typeHouseIcon.svg"/></li>
+                break;
+            case "HollidayApartment":
+                <li><img class="starImg" src="~/img/typeVactionIcon.svg"/></li>
+                break;
+            case "HouseBoat":
+                <li><img class="starImg" src="~/img/typeBoatIcon.svg" /></li>
+                break;
+        }
+        <li><img class="starImg" src="~/img/personsIcon.svg"/></li>
+        <li><img class="starImg" src="~/img/bedIcon.svg"/></li>
+        <li><img class="starImg"  src="~/img/bathroomIcon.svg" /></li>
+        @if (Model.SelectedProperty.Sustainable == true)
+        {
+            <li><img class="starImg" src="~/img/co2Friendly.svg"/></li>
+        }
+    </ul>
+</div>
+
+<!-- Description -->
+<div>
+    <h4 class="selectedPropertyDescHeader">Beskrivelse</h4>
+    <p class="breadText">@Model.SelectedProperty.Description</p>
+</div>
