@@ -4,7 +4,7 @@
 }
 
 
-<div class="propertyNavbar">
+<div class="selectedPropertyNavbar">
     <ul class="propertNavbarUl">
         <li>Koncepter</li>
         <li>Beskrivelse</li>
@@ -14,12 +14,12 @@
 </div>
 
 <!-- Navigation -->
-<div>
+<div class="selectedPropertyNavigationContainer">
     <p class="selectedPropertyNavigation">FORSIDE / FERIEHUSE / @Model.SelectedProperty.Country / @Model.SelectedProperty.Address / <strong class="propertyId">@Model.SelectedProperty.Id</strong></p>
 </div>
 
 <!-- Rating -->
-<div>
+<div class="raitingContainer">
         @switch (Model.SelectedProperty.Rating)
         {
             case 1:
@@ -51,13 +51,13 @@
 </div>
 
 <!-- Name -->
-<div>
+<div class="selectedPropertyNameContainer">
     <h2 class="selectedPropertyHeader">@Model.SelectedProperty.Name,<br />@Model.SelectedProperty.Country</h2>
     <p class="catalogNumber">Katalognummer: @Model.SelectedProperty.Id</p>
 </div>
 
-<div>
-    <ul>
+<div class="facilitiesContainer">
+    <ul class="facilitiesUl">
         @switch (Model.SelectedProperty.HouseType)
         {
             case "HolidayCottage":

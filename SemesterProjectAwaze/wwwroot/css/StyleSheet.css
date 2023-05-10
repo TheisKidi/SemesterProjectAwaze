@@ -532,35 +532,60 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 /* Selected Property */
-.propertyNavbar {
+.selectedPropertyNavbar {
     background-color: #F5F5F5;
-    font-family: Poppins;
-    font-size: 18px;
-    color: #5A5A5A;
-    font-weight: 500;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    gap: 10px;
+    height: 60px;
 }
 
 .propertNavbarUl {
     display: flex;
     align-items: center;
     height: 60px;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    font-weight: 500;
+    background-color: #F5F5F5;
+    font-family: 'Poppins';
 }
 
 ul.propertNavbarUl li {
     padding-right: 40px;
 }
 
+.selectedPropertyNavigationContainer {
+    font-family: 'Poppins';
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    gap: 10px;
+    padding-top: 25px;
+}
+
 .selectedPropertyNavigation {
     color: #ACACAC;
-    font-family: Poppins;
     font-size: 10px;
     font-weight: 400;
     text-transform: uppercase;
+    grid-column-start: 2;
+    grid-column-end: 4;
+    padding-left: 30px;
 }
 
-.propertyId {
-    font-weight: 700;
-    color: #2C2B2B;
+.raitingContainer {
+    margin: auto;
+    text-align: center;
+    padding-right: 1190px;
+    padding-top: 15px;
+}
+
+.selectedPropertyNameContainer {
+    font-family: 'Poppins';
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    gap: 10px;
+    padding-top: 25px;
 }
 
 .selectedPropertyHeader {
@@ -568,6 +593,7 @@ ul.propertNavbarUl li {
     font-family: Poppins;
     font-size: 25px;
     font-weight: 500;
+    grid-column-start: 2;
 }
 
 .catalogNumber {
@@ -575,6 +601,32 @@ ul.propertNavbarUl li {
     font-family: Poppins;
     font-size: 10px;
     font-weight: 400;
+    font-family: Poppins;
+    grid-column-start: 2;
+}
+
+.facilitiesContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    gap: 10px;
+    height: 60px;
+}
+
+.facilitiesUl {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    grid-column-start: 3;
+    column-gap: 130px;
+    border-top: solid;
+    border-bottom: solid;
+    border-width: 1px;
+    border-color: #ACACAC;
+}
+
+.propertyId {
+    font-weight: 700;
+    color: #2C2B2B;
 }
 
 .selectedPropertyDescHeader {
@@ -600,6 +652,8 @@ ul.propertNavbarUl li {
     height: 40px;
 }
 
+
+/* Login */
 .loginContainer {
     margin: 100px auto;
     width: 544px;
