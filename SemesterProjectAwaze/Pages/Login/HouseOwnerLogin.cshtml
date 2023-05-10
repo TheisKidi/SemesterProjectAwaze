@@ -3,6 +3,26 @@
 @{
 }
 
-<div style="font-size: 50px;">
-    <p>Har du ikke en profil? <a asp-page="CreateHouseOwner">Opret en her </a> </p>
+<div class="loginContainer">
+    <div class="loginTop">
+        <h1>Husejer login</h1>
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="@Model.Email" class="control-label">EMAIL ADRESSE *</label> <br />
+                <input asp-for="@Model.Email" class="form-control"> <br />
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Password" class="control-label">PASSWORD *</label> <br />
+                <input asp-for="@Model.Password" class="form-control" type="password"> <br />
+            </div>
+            <p class="terms">Ved at oprette en bruger eller ved at logge på accepterer du vores <strong>Politik ved persondata</strong> og <strong>Cookie Policy</strong></p>
+            <div class="form-group">
+                <input type="submit" value="Log på" class="btn btn-primary loginbtn" />
+            </div>
+        </form>
+        <p class="forgotPass">Glemt password?</p>
+    </div>
+    <div class="opretBruger">
+        <p>Har du ikke en profil? <strong><a asp-page="CreateHouseOwner">Opret husejer profil</a></strong></p>
+    </div>
 </div>

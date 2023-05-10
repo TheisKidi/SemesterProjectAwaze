@@ -12,11 +12,9 @@ namespace SemesterProjectAwaze.Pages.Login
     {
         private ILoginService _loginService;
         private IGenericRepositoryService<Guest> _guestRepo;
-        private IGenericRepositoryService<HouseOwner> _ownerRepo;
-        public GuestLoginModel(IGenericRepositoryService<Guest> guestRepo, IGenericRepositoryService<HouseOwner> ownerRepo)
+        public GuestLoginModel(IGenericRepositoryService<Guest> guestRepo)
         {
             _guestRepo = guestRepo;
-            _ownerRepo = ownerRepo;
         }
 
         [Required, BindProperty]
