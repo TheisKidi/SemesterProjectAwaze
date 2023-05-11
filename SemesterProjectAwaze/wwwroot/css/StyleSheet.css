@@ -622,6 +622,8 @@ ul.propertNavbarUl li {
     border-bottom: solid;
     border-width: 1px;
     border-color: #ACACAC;
+    justify-content: center;
+    padding: 0;
 }
 
 .propertyId {
@@ -710,4 +712,8 @@ ul.propertNavbarUl li {
 
 .opretBruger p{
     margin: 0px;
+}
+
+.selectedPropContainer{
+
 }

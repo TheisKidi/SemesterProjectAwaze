@@ -6,12 +6,12 @@ using SemesterProjectAwaze.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSession(options =>
-{
-    options.IdleTimeout = TimeSpan.FromSeconds(10);
-    options.Cookie.HttpOnly = true;
-    options.Cookie.IsEssential = true;
-});
+//builder.Services.AddSession(options =>
+//{
+//    options.IdleTimeout = TimeSpan.FromSeconds(10);
+//    options.Cookie.HttpOnly = true;
+//    options.Cookie.IsEssential = true;
+//});
 
 // Add this line if it's not already present
 builder.Services.AddControllersWithViews();
