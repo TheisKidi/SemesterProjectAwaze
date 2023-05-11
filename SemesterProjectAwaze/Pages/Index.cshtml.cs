@@ -10,7 +10,6 @@ namespace SemesterProjectAwaze.Pages
         private readonly ILogger<IndexModel> _logger;
         [BindProperty]
         public string userName { get; set; }
-        
 
         [BindProperty]
         public List<Country> Countries { get; private set; }

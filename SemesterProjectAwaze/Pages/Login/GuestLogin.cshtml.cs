@@ -10,6 +10,7 @@ namespace SemesterProjectAwaze.Pages.Login
 {
     public class GuestLoginModel : PageModel
     {
+        
         private ILoginService _loginService;
         private IGenericRepositoryService<Guest> _guestRepo;
         public GuestLoginModel(IGenericRepositoryService<Guest> guestRepo)
@@ -22,9 +23,8 @@ namespace SemesterProjectAwaze.Pages.Login
         public string Email { get; set; }
         [Required, BindProperty]
         public string Password { get; set; }
-        [BindProperty]
-        public Guest loggedInGuest { get; set; }
 
+        public static string EmailId;
 
         public void OnGet()
         {
@@ -42,17 +42,16 @@ namespace SemesterProjectAwaze.Pages.Login
 
             try
             {
-                _guestRepo.GetByEmail(Email);
-                _loginService.SetProfileLoggedIn(_guestRepo.GetByEmail(Email).FirstName, false);
+                _loginService.SetProfileLoggedIn(_guestRepo.GetByEmail(Email).FirstName, _guestRepo.GetByEmail(Email).Email,false);
             }
+
             catch (KeyNotFoundException ex)
             {
                 return Page();
 
             }
 
-            loggedInGuest = _guestRepo.GetByEmail(loggedInGuest.Email);
-
+            EmailId = _guestRepo.GetByEmail(Email).Email;
             SessionHelper.SetUser(_loginService, HttpContext);
             return RedirectToPage("GuestProfile");
         }

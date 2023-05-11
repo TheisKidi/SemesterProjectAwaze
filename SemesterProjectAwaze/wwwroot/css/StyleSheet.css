@@ -718,3 +718,55 @@ ul.propertNavbarUl li {
 .selectedPropContainer{
 
 }
+
+.filterRow.profile {
+    font-family: Poppins;
+    position: static;
+    height: 500px;
+}
+
+.favoriteModule {
+    margin-left: 60px;
+}
+
+.favoriteTitle {
+    font-size: 50px;
+    margin: 0;
+    color: #2dd473;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.favoriteSiteIcon {
+    height: 45px;
+}
+
+
+.profileInfoTitle {
+    margin: 0;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.profileInfo{
+
+}
+
+.browseContainerProfile {
+    margin: auto;
+    width: 1364px;
+    display: grid;
+    /* grid-auto-flow: column; */
+    grid-template-columns: 1fr 3fr;
+    position: relative;
+    padding-top: 152px;
+}
+
+.favoriteContainer {
+    display: flex;
+    /* margin-bottom: 50px; */
+    position: absolute;
+    top: 47px;
+    right: 542px;
+}
+}

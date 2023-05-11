@@ -7,18 +7,27 @@ namespace SemesterProjectAwaze.Pages.Login
 {
     public class GuestProfileModel : PageModel
     {
+        [BindProperty]
+        public Guest LoggedInUser { get; set; }
+        [BindProperty]
+        public List<Property> Properties { get; set; }
+
+        private IGenericRepositoryService<Property> _propRepo;
         private IGenericRepositoryService<Guest> _guestRepo;
 
-        public GuestProfileModel(IGenericRepositoryService<Guest> guestRepo)
+        public GuestProfileModel(IGenericRepositoryService<Guest> guestRepo, IGenericRepositoryService<Property> propRepo)
         {
             _guestRepo = guestRepo;
+            _propRepo = propRepo;
         }
 
-        public Guest? Profile { get; set; }
 
-        public void OnGet(string email)
+        public void OnGet()
         {
-            Profile = _guestRepo.GetByEmail(email);
+            LoggedInUser = _guestRepo.GetByEmail(SemesterProjectAwaze.Pages.Login.GuestLoginModel.EmailId);
+            Properties = _propRepo.GetAll();
         }
+
+
     }
 }

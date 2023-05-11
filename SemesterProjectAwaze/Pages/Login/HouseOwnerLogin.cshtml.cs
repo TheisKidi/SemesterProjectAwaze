@@ -39,7 +39,7 @@ namespace SemesterProjectAwaze.Pages.Login
             try
             {
                 _repo.GetByEmail(Email);
-                _loginService.SetProfileLoggedIn(_repo.GetByEmail(Email).FirstName, true);
+                _loginService.SetProfileLoggedIn(_repo.GetByEmail(Email).FirstName, _repo.GetByEmail(Email).Email, true);
             }
             catch (KeyNotFoundException ex)
             {

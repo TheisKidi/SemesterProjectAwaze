@@ -3,6 +3,133 @@
 @{
 }
 
-<p>@Model.Profile.Email</p>
-<p>@Model.Profile.FirstName</p>
-<p>@Model.Profile.Phone</p>
+<div class="backgroundContainer">
+    <div class="browseContainerProfile">
+        <div class="filterRow profile">
+            <h1>MIN PROFIL</h1>
+            <p class="profileInfoTitle">EMAIL ADRESSE</p>
+            <p class="profileInfo">@Model.LoggedInUser.Email</p>
+            <div>
+                <p class="profileInfoTitle">FORNAVN</p>
+                <p class="profileInfo">@Model.LoggedInUser.FirstName</p>
+            </div>
+            <div>
+                <p class="profileInfoTitle">EFTERNAVN</p>
+                <p class="profileInfo">@Model.LoggedInUser.LastName</p>
+            </div>
+            <div>
+                <p class="profileInfoTitle">ID</p>
+                <p class="profileInfo">@Model.LoggedInUser.MyBookingId</p>
+            </div>
+            <div>
+                <p class="profileInfoTitle">TELEFON NR.</p>
+                <p class="profileInfo">@Model.LoggedInUser.Phone</p>
+            </div>
+        </div>
+        <div class="favoriteModule">
+            <div class="favoriteContainer">
+                <p class="favoriteTitle">FAVORITTER</p>
+                <img class="favoriteSiteIcon" src="~/img/favoritesIcon.svg"/>
+            </div>
+            <div class="browsePanel">
+                @foreach (var p in Model.Properties)
+                {
+                    <div class="propertyModule">
+                        <div class="propertyHeader">
+                            @{
+                                switch (p.Rating)
+                                {
+                                    case 1:
+                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                        break;
+                                    case 2:
+                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                        break;
+                                    case 3:
+                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                        break;
+                                    case 4:
+                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                        break;
+                                    case 5:
+                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                        break;
+                                }
+                            }
+                            <img class="favoriteIcon" src="~/img/favoritesIcon.svg" />
+                        </div>
+                        <div class="imageContainer">
+                            <form method="post">
+                                <a style="border: none;" type="submit" asp-route-id="@p.Id" asp-page="../Sites/SelectedProperty">
+                                    <div class="moduleImg" style="background-image: url('/img/IndexBanner.jpg')">
+                                        <div class="priceBox">
+                                            <p>@Math.Round(p.PricePrNight, 2) DKK</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </form>
+                        </div>
+                        <h3 class="propertyName">@p.Name, @p.Country</h3>
+                        <div class="moduleBottom">
+                            <div class="moduleIconContainer">
+                                <img class="moduleIcon" src="~/img/bedIcon.svg" />
+                                <p>
+                                    @p.Bedrooms
+                                    @{
+                                        if (p.Bedrooms > 1)
+                                        {
+                                            @:SENGE
+                                        }
+                                        else
+                                        {
+                                            @:SENG
+                                        }
+                                    }
+                                </p>
+                            </div>
+                            <div class="moduleIconContainer">
+                                <img class="moduleIcon" src="~/img/personsIcon.svg" />
+                                <p>@p.Persons PERSONER</p>
+                            </div>
+                            <div class="moduleIconContainer">
+                                @{
+                                    switch (p.HouseType)
+                                    {
+                                        case "HolidayCottage":
+                                            <img class="moduleIcon" src="~/img/typeHouseIcon.svg" />
+                                            <p>FERIEHUS</p>
+                                            break;
+                                        case "HollidayApartment":
+                                            <img class="moduleIcon" src="~/img/typeVactionIcon.svg" />
+                                            <p>FERIELEJLIGHED</p>
+                                            break;
+                                        case "HouseBoat":
+                                            <img class="moduleIcon" src="~/img/typeBoatIcon.svg" />
+                                            <p>HUSBÅD</p>
+                                            break;
+                                    }
+                                }
+                            </div>
+                            <div class="sustainableIcon">
+                                @if (p.Sustainable)
+                                {
+                                    <img src="/img/co2Friendly.svg" />
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

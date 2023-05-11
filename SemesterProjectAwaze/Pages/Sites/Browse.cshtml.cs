@@ -89,8 +89,12 @@ namespace SemesterProjectAwaze.Pages.Sites
                 .Where(p => Bathrooms == 0 || p.Bathrooms >= Bathrooms)
                 .Where(p => Rating == 0 || p.Rating >= Rating)
                 .Where(p => !Sustainable || p.Sustainable == Sustainable)
-                .Where(p => string.IsNullOrEmpty(HouseTypeHouseString) && string.IsNullOrEmpty(HouseTypeVacString) && string.IsNullOrEmpty(HouseTypeBoatString) ||
-                            (p.HouseType == HouseTypeHouseString || p.HouseType == HouseTypeVacString || p.HouseType == HouseTypeBoatString))
+                .Where(p => string.IsNullOrEmpty(HouseTypeHouseString) && 
+                        string.IsNullOrEmpty(HouseTypeVacString) && 
+                        string.IsNullOrEmpty(HouseTypeBoatString) ||
+                        (p.HouseType == HouseTypeHouseString || 
+                        p.HouseType == HouseTypeVacString || 
+                        p.HouseType == HouseTypeBoatString))
                 .ToList();
         }
     }
