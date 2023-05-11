@@ -11,7 +11,6 @@ namespace AwazeLib.model
         public string Name { get; set; }
         public bool IsOwner { get; set; }
 
-
         public LoggedInUser() : this("", false)
         {
         }

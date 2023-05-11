@@ -4,71 +4,104 @@
 }
 <div class="backgroundContainer">
     <div class="browseContainer">
-        <form method="postFilter">
+        <form method="post" asp-page-handler="Filter">
             <div class="filterRow">
                 <div class="filterGroup">
                     <div class="rangeSummary">
                         <label class="form-label" for="Price">Pris</label> 
-                        <span id="priceValue">2500 DKK</span>
+                            @if (Model.Price == 0)
+                            {
+                            <span id="priceValue">Ikke angivet</span>
+                        } else
+                        {
+                            <span id="priceValue">@Model.Price DKK</span>
+                        }
                     </div>
                     <div class="range browseRange">
-                        <input type="range" class="form-range" id="Price" min="200" max="5000" />
+                        <input asp-for="@Model.Price" type="range" class="form-range" id="Price" min="0" max="5000" />
                     </div>
                 </div>
                 <div class="filterGroup houseTypesGroup" id="selectedIcons">
-                    <input type="checkbox" class="custom-control-input hidden" id="ck1a" />
-                    <label class="custom-control-label houseTypeItem" for="ck1a" onclick="selectHouseType(this)">
-                        <img src="~/img/typeHouseIcon.svg" style="width: 45px; height: 50px; "/>
+                    <input asp-for="@Model.HouseTypeHouse" type="checkbox" class="custom-control-input hidden" id="ck1a" onclick="selectHouseType(this)" />
+                    <label class="custom-control-label houseTypeItem" data-housetype="HouseTypeHouse" for="ck1a">
+                        <img src="~/img/typeHouseIcon.svg" style="width: 45px; height: 50px; " />
                     </label>
-                    <input type="checkbox" class="custom-control-input hidden" id="ck1a2" />
-                    <label class="custom-control-label houseTypeItem" for="ck1a2" onclick="selectHouseType(this)">
+                    <input asp-for="@Model.HouseTypeVac" type="checkbox" class="custom-control-input hidden" id="ck1a2" onclick="selectHouseType(this)" />
+                    <label class="custom-control-label houseTypeItem" data-housetype="HouseTypeVac" for="ck1a2">
                         <img src="~/img/typeVactionIcon.svg" style="width: 45px; height: 50px;" />
                     </label>
-                    <input type="checkbox" class="custom-control-input hidden" id="ck1a3" />
-                    <label class="custom-control-label houseTypeItem" for="ck1a3" onclick="selectHouseType(this)">
+                    <input asp-for="@Model.HouseTypeBoat" type="checkbox" class="custom-control-input hidden" id="ck1a3" onclick="selectHouseType(this)" />
+                    <label class="custom-control-label houseTypeItem" data-housetype="HouseTypeBoat" for="ck1a3">
                         <img src="~/img/typeBoatIcon.svg" style="width: 45px; height: 50px;">
                     </label>
+
+@*                    <input asp-for="@Model.HouseTypeHouse" type="checkbox" class="custom-control-input hidden" id="ck1a" />
+                    <label class="custom-control-label houseTypeItem" data-housetype="HouseTypeHouse" for="ck1a" onclick="selectHouseType(this)">
+                        <img src="~/img/typeHouseIcon.svg" style="width: 45px; height: 50px; " />
+                    </label>
+                    <input asp-for="@Model.HouseTypeVac" type="checkbox" class="custom-control-input hidden" id="ck1a2" />
+                    <label class="custom-control-label houseTypeItem" data-housetype="HouseTypeVac" for="ck1a2" onclick="selectHouseType(this)">
+                        <img src="~/img/typeVactionIcon.svg" style="width: 45px; height: 50px;" />
+                    </label>
+                    <input asp-for="@Model.HouseTypeBoat" type="checkbox" class="custom-control-input hidden" id="ck1a3" />
+                    <label class="custom-control-label houseTypeItem" data-housetype="HouseTypeBoat" for="ck1a3" onclick="selectHouseType(this)">
+                        <img src="~/img/typeBoatIcon.svg" style="width: 45px; height: 50px;">
+                    </label>*@
                 </div>
                 <div class="filterGroup">
                     <div class="rangeSummary">
                         <label class="form-label" for="stjerner">Antal stjerner</label>
-                        <span id="stjernerValue">3</span>
+                        @if (Model.Price == 0)
+                        {
+                            <span id="stjernerValue">Ikke angivet</span>
+                        } else
+                        {
+                            <span id="stjernerValue">@Model.Rating</span>
+                        }
                     </div>
                     <div class="range browseRange">
-                        <input type="range" class="form-range" id="stjerner" min="1" max="5" />
+                        <input asp-for="@Model.Rating" type="range" class="form-range" id="stjerner" min="1" max="5" />
                     </div>
                 </div>
                 <div class="filterGroup">
                     <div class="rangeSummary">
                         <label class="form-label" for="soveværelser">Min. Soveværelser</label>
-                        <span id="soveværelserValue">25</span>
+                        @if (Model.Price == 0)
+                        {
+                            <span id="soveværelserValue">Ikke angivet</span>
+                        } else
+                        {
+                            <span id="soveværelserValue">@Model.Bedrooms</span>
+                        }
                     </div>
                     <div class="range browseRange">
-                        <input type="range" class="form-range" id="soveværelser" min="1" max="50" />
+                        <input asp-for="@Model.Bedrooms" type="range" class="form-range" id="soveværelser" min="1" max="50" />
 
                     </div>
                 </div>
                 <div class="filterGroup">
                     <div class="rangeSummary">
                         <label class="form-label" for="badeværelser">Min. Badeværelser</label>
-                        <span id="badeværelserValue">10</span>
+                        @if (Model.Price == 0)
+                        {
+                            <span id="badeværelserValue">Ikke angivet</span>
+                        } else
+                        {
+                            <span id="badeværelserValue">@Model.Bathrooms</span>
+                        }
                     </div>
                     <div class="range browseRange">
-                        <input type="range" class="form-range" id="badeværelser" min="1" max="20" />
+                        <input asp-for="@Model.Bathrooms" type="range" class="form-range" id="badeværelser" min="1" max="20" />
                     </div>
                 </div>
                 <div class="filterGroup">
                     <label>Sustainable</label>
                     <img style="width: 24px; height: 24px; " src="/img/co2Friendly.svg" />
-@*                    <svg xmlns="http://www.w3.org/2000/svg" width="24.345" height="24.31" viewBox="0 0 24.345 24.31">
-                        <g id="co2    Friendly" transform="translate(0.002)">
-                        <path id="Path_45" data-name="Path 45" d="M13.129,27.28a9.5,9.5,0,0,0-.132-1.6l-2.118-3.472a6.169,6.169,0,0,1-2.743-.826,6.313,6.313,0,0,1-2.56-2.9l-.3-.677C4.239,15.446,4.05,14.27,3.1,11.963c-.029-.075-.063-.161-.1-.253A12.144,12.144,0,0,0,12.75,30.04,9.756,9.756,0,0,0,13.129,27.28Z" transform="translate(-1.29 -5.73)" fill="#2dd473"/>
-                        <path id="Path_46" data-name="Path 46" d="M15.23,1.29A12.133,12.133,0,0,0,5.438,6.256a11.926,11.926,0,0,1,6.016,2.787,11.972,11.972,0,0,1,3.8,6.531q-2.416-2.037-4.9-4.08L8.32,9.835l1.188,1.693q3.053,4.344,6.152,8.488a4.413,4.413,0,0,1,.528,1,6.08,6.08,0,0,1,.189,2.611c-.034.545-.08,1.211-.155,1.957A12.167,12.167,0,0,0,15.23,1.29Zm8.149,12.626c-.494,1.481-.316,2.026-.958,3.122A5.309,5.309,0,0,1,20.165,19.2a5.165,5.165,0,0,1-2.732.488c.425-.62.861-1.24,1.3-1.865Q20.246,15.7,21.749,13.7c-1.176.913-2.376,1.865-3.581,2.87-.574.494-1.188.993-1.768,1.486a8.609,8.609,0,0,1,1.263-3.214C20,11.293,24.3,10.828,25.02,10.777a11.547,11.547,0,0,0-1.641,3.145Z" transform="translate(-3.058 -1.29)" fill="#2dd473"/>
-                        </g>
-                    </svg>*@
-                    <input type="checkbox" class="custom-control-input" />
+                    <input asp-for="@Model.Sustainable" type="checkbox" class="custom-control-input" />
                 </div>
-                <p>KLIK HERRRRRRRR</p>
+                <div class="form-group">
+                    <input type="submit" value="Filtrer" class="btn btn-primary" />
+                </div>
             </div>
         </form>
         <div class="browsePanel">

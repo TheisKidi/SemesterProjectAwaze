@@ -7,25 +7,18 @@ namespace SemesterProjectAwaze.Pages.Login
 {
     public class GuestProfileModel : PageModel
     {
-        private ILoginService _loginService;
-        private IGenericRepositoryService<Property> _propertyService;
-        private IGenericRepositoryService<Guest> _guestService;
-        [BindProperty]
-        public Guest Profile { get; set; }
-        [BindProperty]
-        public List<Property> Properties { get; set; }
+        private IGenericRepositoryService<Guest> _guestRepo;
 
-        public GuestProfileModel(ILoginService loginService, IGenericRepositoryService<Property> propertyService, IGenericRepositoryService<Guest> guestService)
+        public GuestProfileModel(IGenericRepositoryService<Guest> guestRepo)
         {
-            _loginService = loginService;
-            _propertyService = propertyService;
-            _guestService = guestService;
+            _guestRepo = guestRepo;
         }
 
-        public void OnGet()
+        public Guest? Profile { get; set; }
+
+        public void OnGet(string email)
         {
-            _loginService = SessionHelper.GetProfile(HttpContext);
-            Properties = _propertyService.GetAll();
+            Profile = _guestRepo.GetByEmail(email);
         }
     }
 }

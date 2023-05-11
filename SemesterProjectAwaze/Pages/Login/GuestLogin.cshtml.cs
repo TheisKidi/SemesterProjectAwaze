@@ -15,12 +15,16 @@ namespace SemesterProjectAwaze.Pages.Login
         public GuestLoginModel(IGenericRepositoryService<Guest> guestRepo)
         {
             _guestRepo = guestRepo;
+
         }
 
         [Required, BindProperty]
         public string Email { get; set; }
         [Required, BindProperty]
         public string Password { get; set; }
+        [BindProperty]
+        public Guest loggedInGuest { get; set; }
+
 
         public void OnGet()
         {
@@ -47,8 +51,10 @@ namespace SemesterProjectAwaze.Pages.Login
 
             }
 
+            loggedInGuest = _guestRepo.GetByEmail(loggedInGuest.Email);
+
             SessionHelper.SetUser(_loginService, HttpContext);
-            return RedirectToPage("../Index");
+            return RedirectToPage("GuestProfile");
         }
     }
 }
