@@ -72,29 +72,29 @@
                                 switch (p.Property.Rating)
                                 {
                                     case 1:
-                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                            <img class="starImg" src="~/img/starIcon.svg" />
                                         break;
                                     case 2:
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                            <img class="starImg" src="~/img/starIcon.svg" />
+                                            <img class="starImg" src="~/img/starIcon.svg" />
                                         break;
                                     case 3:
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                            <img class="starImg" src="~/img/starIcon.svg" />
+                                            <img class="starImg" src="~/img/starIcon.svg" />
+                                            <img class="starImg" src="~/img/starIcon.svg" />
                                         break;
                                     case 4:
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                            <img class="starImg" src="~/img/starIcon.svg" />
+                                            <img class="starImg" src="~/img/starIcon.svg" />
+                                            <img class="starImg" src="~/img/starIcon.svg" />
+                                            <img class="starImg" src="~/img/starIcon.svg" />
                                         break;
                                     case 5:
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
-                                        <img class="starImg" src="~/img/starIcon.svg" />
+                                            <img class="starImg" src="~/img/starIcon.svg" />
+                                            <img class="starImg" src="~/img/starIcon.svg" />
+                                            <img class="starImg" src="~/img/starIcon.svg" />
+                                            <img class="starImg" src="~/img/starIcon.svg" />
+                                            <img class="starImg" src="~/img/starIcon.svg" />
                                         break;
                                 }
                             }
@@ -120,11 +120,11 @@
                                     @{
                                         if (p.Property.Bedrooms > 1)
                                         {
-                                            @:SENGE
+                                                @:SENGE
                                         }
                                         else
                                         {
-                                            @:SENG
+                                                @:SENG
                                         }
                                     }
                                 </p>
@@ -138,16 +138,16 @@
                                     switch (p.Property.HouseType)
                                     {
                                         case "HolidayCottage":
-                                            <img class="moduleIcon" src="~/img/typeHouseIcon.svg" />
-                                            <p>FERIEHUS</p>
+                                                <img class="moduleIcon" src="~/img/typeHouseIcon.svg" />
+                                                <p>FERIEHUS</p>
                                             break;
                                         case "HollidayApartment":
-                                            <img class="moduleIcon" src="~/img/typeVactionIcon.svg" />
-                                            <p>FERIELEJLIGHED</p>
+                                                <img class="moduleIcon" src="~/img/typeVactionIcon.svg" />
+                                                <p>FERIELEJLIGHED</p>
                                             break;
                                         case "HouseBoat":
-                                            <img class="moduleIcon" src="~/img/typeBoatIcon.svg" />
-                                            <p>HUSBÅD</p>
+                                                <img class="moduleIcon" src="~/img/typeBoatIcon.svg" />
+                                                <p>HUSBÅD</p>
                                             break;
                                     }
                                 }
@@ -159,10 +159,14 @@
                                 }
                             </div>
                         </div>
-                    </div>
-                }
-                }
+                            <form method="post" asp-page-handler="UnFavorite">
+                                <input type="hidden" name="id" value="@p.Id" />
+                                <button type="submit" class="btn btn-primary loginbtn">Fjern fra favoritter</button>
+                            </form>
+                        </div>
 
+                    }
+                }
             </div>
         </div>
     </div>

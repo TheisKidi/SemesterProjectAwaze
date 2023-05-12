@@ -77,6 +77,12 @@ namespace SemesterProjectAwaze.Pages.Login
             return RedirectToPage("GuestProfile");
         }
 
+        public IActionResult OnPostUnFavorite(int id)
+        {
+            _favRepo.Delete(id);
+
+            return RedirectToPage("GuestProfile");
+        }
 
     }
 }
