@@ -88,6 +88,14 @@ namespace SemesterProjectAwaze.Pages.Sites
         [Required(ErrorMessage = "TV is required")]
         public int Tv { get; set; }
 
+        [BindProperty]
+        public string PromoImg { get; set; }
+        [BindProperty]
+        public string Img1 { get; set; }
+        [BindProperty]
+        public string Img2 { get; set; }
+        [BindProperty]
+        public string Img3 { get; set; }
 
         private int RandomNumber() // calculates a random number for the personal ID in the interval [0-999]
         {
@@ -125,7 +133,7 @@ namespace SemesterProjectAwaze.Pages.Sites
                 return Page();
             }
             Property newProperty = new Property(MakePropertyId(), OwnerId, CountryToString, Address, Name, PricePrNight, Rating, Description,
-                VR, Persons, Bedrooms, Bathrooms, Sustainable, AllowPets, Wifi, Tv, TypeToString);
+                VR, Persons, Bedrooms, Bathrooms, Sustainable, AllowPets, Wifi, Tv, TypeToString, PromoImg, Img1, Img2, Img3);
 
             _repo.Create(newProperty);
             

@@ -47,6 +47,14 @@ namespace SemesterProjectAwaze.Pages.Sites
         public int Tv { get; set; }
         [BindProperty]
         public string HouseType { get; set; }
+        [BindProperty]
+        public string PromoImg { get; set; }
+        [BindProperty]
+        public string Img1 { get; set; }
+        [BindProperty]
+        public string Img2 { get; set; }
+        [BindProperty]
+        public string Img3 { get; set; }
 
         public void OnGet(string id)
         {
@@ -68,7 +76,7 @@ namespace SemesterProjectAwaze.Pages.Sites
         public IActionResult OnPostEdit(string id)
         {
             Property newValues = new Property(Id, OwnerId, Country, Address, Name, PricePrNight, Rating,
-                Description, VR, Persons, Bedrooms, Bathrooms, Sustainable, AllowPets, Wifi, Tv, HouseType);
+                Description, VR, Persons, Bedrooms, Bathrooms, Sustainable, AllowPets, Wifi, Tv, HouseType, PromoImg, Img1, Img2, Img3);
 
             _propertyService.Update(id, newValues);
             return RedirectToPage("/Sites/Browse");

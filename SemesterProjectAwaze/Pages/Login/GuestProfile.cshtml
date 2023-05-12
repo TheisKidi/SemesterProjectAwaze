@@ -7,7 +7,37 @@
     <div class="browseContainerProfile">
         <div class="filterRow profile">
             <h1>MIN PROFIL</h1>
-            <p class="profileInfoTitle">EMAIL ADRESSE</p>
+            <form method="post">
+                <div class="form-group">
+                    <p class="profileInfoTitle">FORNAVN</p><br>
+                    <input class="profileInfo" asp-for="@Model.FirstName" class="form-control" placeholder="@Model.LoggedInUser.FirstName"/><br />
+                </div>
+                <div class="form-group">
+                    <p class="profileInfoTitle">EFTERNAVN</p><br>
+                    <input class="profileInfo" asp-for="@Model.LastName" class="form-control" placeholder="@Model.LoggedInUser.LastName"/><br />
+                </div>
+                <div>
+                    <p class="profileInfoTitle">ID</p>
+                    <p class="profileInfo">@Model.LoggedInUser.MyBookingId</p>
+                </div>
+                <div class="form-group">
+                    <p class="profileInfoTitle">TELEFON NR.</p><br>
+                    <input class="profileInfo" asp-for="@Model.Phone" class="form-control" placeholder="@Model.LoggedInUser.Phone" /><br />
+                </div>
+                <div class="form-group">
+                    <p class="profileInfoTitle">PASSWORD</p><br>
+                    <input class="profileInfo" asp-for="@Model.Password" class="form-control" placeholder="**********" /><br />
+                </div>
+                <div class="form-group">
+                    <p class="profileInfoTitle">EMAIL</p><br>
+                    <input class="profileInfo" asp-for="@Model.Email" class="form-control" placeholder="@Model.LoggedInUser.Email" /><br />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Ændre oplysninger" asp-page-handler="Edit" asp-route-id="@Model.LoggedInUser.MyBookingId" class="btn btn-success" />
+                </div>
+            </form>
+
+            @*<p class="profileInfoTitle">EMAIL ADRESSE</p>
             <p class="profileInfo">@Model.LoggedInUser.Email</p>
             <div>
                 <p class="profileInfoTitle">FORNAVN</p>
@@ -24,7 +54,7 @@
             <div>
                 <p class="profileInfoTitle">TELEFON NR.</p>
                 <p class="profileInfo">@Model.LoggedInUser.Phone</p>
-            </div>
+            </div>*@
         </div>
         <div class="favoriteModule">
             <div class="favoriteContainer">
@@ -32,12 +62,14 @@
                 <img class="favoriteSiteIcon" src="~/img/favoritesIcon.svg"/>
             </div>
             <div class="browsePanel">
-                @foreach (var p in Model.Properties)
+                @if(Model.FavoriteList != null)
+                {
+                foreach (var p in Model.FavoriteList)
                 {
                     <div class="propertyModule">
                         <div class="propertyHeader">
                             @{
-                                switch (p.Rating)
+                                switch (p.Property.Rating)
                                 {
                                     case 1:
                                         <img class="starImg" src="~/img/starIcon.svg" />
@@ -70,23 +102,23 @@
                         </div>
                         <div class="imageContainer">
                             <form method="post">
-                                <a style="border: none;" type="submit" asp-route-id="@p.Id" asp-page="../Sites/SelectedProperty">
-                                    <div class="moduleImg" style="background-image: url('/img/IndexBanner.jpg')">
+                                <a style="border: none;" type="submit" asp-route-id="@p.Property.Id" asp-page="../Sites/SelectedProperty">
+                                    <div class="moduleImg" style="background-image: url('@p.Property.PromoImg')">
                                         <div class="priceBox">
-                                            <p>@Math.Round(p.PricePrNight, 2) DKK</p>
+                                            <p>@Math.Round(p.Property.PricePrNight, 2) DKK</p>
                                         </div>
                                     </div>
                                 </a>
                             </form>
                         </div>
-                        <h3 class="propertyName">@p.Name, @p.Country</h3>
+                        <h3 class="propertyName">@p.Property.Name, @p.Property.Country</h3>
                         <div class="moduleBottom">
                             <div class="moduleIconContainer">
                                 <img class="moduleIcon" src="~/img/bedIcon.svg" />
                                 <p>
-                                    @p.Bedrooms
+                                    @p.Property.Bedrooms
                                     @{
-                                        if (p.Bedrooms > 1)
+                                        if (p.Property.Bedrooms > 1)
                                         {
                                             @:SENGE
                                         }
@@ -99,11 +131,11 @@
                             </div>
                             <div class="moduleIconContainer">
                                 <img class="moduleIcon" src="~/img/personsIcon.svg" />
-                                <p>@p.Persons PERSONER</p>
+                                <p>@p.Property.Persons PERSONER</p>
                             </div>
                             <div class="moduleIconContainer">
                                 @{
-                                    switch (p.HouseType)
+                                    switch (p.Property.HouseType)
                                     {
                                         case "HolidayCottage":
                                             <img class="moduleIcon" src="~/img/typeHouseIcon.svg" />
@@ -121,7 +153,7 @@
                                 }
                             </div>
                             <div class="sustainableIcon">
-                                @if (p.Sustainable)
+                                @if (p.Property.Sustainable)
                                 {
                                     <img src="/img/co2Friendly.svg" />
                                 }
@@ -129,6 +161,8 @@
                         </div>
                     </div>
                 }
+                }
+
             </div>
         </div>
     </div>

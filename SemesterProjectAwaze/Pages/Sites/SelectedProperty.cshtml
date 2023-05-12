@@ -79,6 +79,14 @@
     </ul>
 </div>
 
+<div>
+    <h4>@Model.SelectedProperty.Name</h4>
+    <!-- Tilføj til favoritliste-knap/link -->
+    <form method="post" asp-page-handler="AddToFavorite" asp-route-id="@Model.SelectedProperty.Id">
+        <button type="submit">Tilføj til favoritliste</button>
+    </form>
+</div>
+
 <!-- Description -->
 <div>
     <h4 class="selectedPropertyDescHeader">Beskrivelse</h4>

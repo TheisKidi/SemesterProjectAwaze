@@ -17,7 +17,7 @@ namespace AwazeLib.model
         }
 
         public Guest() : this ("Default firstName", "Default lastname", "Default email", "Default phone", false,
-                               "Default Password", "DefaultBookingId" )
+                               "Default Password", "DefaultBookingId")
         {
         }
 

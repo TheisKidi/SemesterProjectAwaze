@@ -10,6 +10,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace AwazeLib.model
 {
+
     public enum Country {Denmark, Croatia, Italy, TheNetherlands, Portugal}
     public enum HouseType { HolidayCottage, HollidayApartment, HouseBoat }
 
@@ -32,15 +33,20 @@ namespace AwazeLib.model
         public bool Wifi { get; set; }
         public int Tv { get; set; }
         public string HouseType { get; set; }
+        public string PromoImg { get; set; }
+        public string Img1 { get; set; }
+        public string Img2 { get; set; }
+        public string Img3 { get; set; }
+
 
         public Property() : this ("default ID", "DEF001", "Denmark", "default address", "default name", -1, 0, 
-            "default description", "default VR link", 0, 0, 0, false, false, false, 0, "HolidayCottage")
+            "default description", "default VR link", 0, 0, 0, false, false, false, 0, "HolidayCottage", "", "", "", "")
         {
         }
 
         public Property(string id, string ownerId, string country, string address, string name, decimal pricePrNight, 
             int rating, string description, string vr, int persons, int bedrooms, int bathrooms, bool sustainable, 
-            bool allowPets, bool wifi, int tv, string houseType)
+            bool allowPets, bool wifi, int tv, string houseType, string promoImg, string img1, string img2, string img3)
         {
             Id = id;
             OwnerId = ownerId;
@@ -59,6 +65,10 @@ namespace AwazeLib.model
             Wifi = wifi;
             Tv = tv;
             HouseType = houseType;
+            PromoImg = promoImg;
+            Img1 = img1;
+            Img2 = img2;
+            Img3 = img3;
         }
 
         public override string ToString()

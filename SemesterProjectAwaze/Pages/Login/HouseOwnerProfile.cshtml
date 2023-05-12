@@ -70,7 +70,7 @@
                         <div class="imageContainer">
                             <form method="post">
                                 <a style="border: none;" type="submit" asp-route-id="@p.Id" asp-page="../Sites/SelectedProperty">
-                                    <div class="moduleImg" style="background-image: url('/img/IndexBanner.jpg')">
+                                    <div class="moduleImg" style="background-image: url('@p.PromoImg')">
                                         <div class="priceBox">
                                             <p>@Math.Round(p.PricePrNight, 2) DKK</p>
                                         </div>
