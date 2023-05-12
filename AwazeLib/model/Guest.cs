@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AwazeLib.model
 {
+    [Table("Guest")]
     public class Guest : Profile
     {
+        [Key]
+        [MaxLength(6)]
         public string MyBookingId { get; set; }
 
         public Guest (string firstName, string lastname, string email, string phone, bool isOwner, string password, string myBookingId)

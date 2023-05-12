@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.Intrinsics.X86;
@@ -8,14 +9,18 @@ using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 using static System.Net.Mime.MediaTypeNames;
 
+
 namespace AwazeLib.model
 {
 
     public enum Country {Denmark, Croatia, Italy, TheNetherlands, Portugal}
     public enum HouseType { HolidayCottage, HollidayApartment, HouseBoat }
 
+    [Table("Property")]
     public class Property
     {
+        [Key]
+        [MaxLength(6)]  
         public string Id { get; set; }
         public string OwnerId { get; set; }
         public string Country { get; set; }

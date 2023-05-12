@@ -1,4 +1,5 @@
 ﻿using AwazeLib.model;
+using Microsoft.EntityFrameworkCore;
 
 namespace SemesterProjectAwaze.Services
 {
@@ -6,7 +7,7 @@ namespace SemesterProjectAwaze.Services
     {
 
         private FavoriteDBContext _db = new FavoriteDBContext();
-
+        private IGenericRepositoryService<Property> _propRepo;
 
         public Favorite Create(Favorite favorite)
         {
@@ -40,6 +41,16 @@ namespace SemesterProjectAwaze.Services
                 throw new KeyNotFoundException();
             }
             return new List<Favorite>(_db.Favorite);
+        }
+
+        public List<Favorite> GetFavoritesByUserEmail(string email)
+        {
+            if (_db.Favorite == null)
+            {
+                throw new KeyNotFoundException();
+            }
+
+            return _db.Favorite.Include(f => f.Property).Where(f => f.User.Email == email).ToList();
         }
 
         public Favorite GetByEmail(string email)

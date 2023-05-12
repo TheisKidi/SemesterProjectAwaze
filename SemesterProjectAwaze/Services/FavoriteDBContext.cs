@@ -13,18 +13,8 @@ namespace SemesterProjectAwaze.Services
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Favorite>().HasKey(f => f.Id).HasName(nameof(Favorite));
-           
-            modelBuilder.Entity<Favorite>()
-                .HasOne(f => f.User).WithMany().
-                HasForeignKey(f => f.User.MyBookingId)
-                .OnDelete(DeleteBehavior.Cascade);
-            
-            modelBuilder.Entity<Favorite>()
-                .HasOne(f => f.Property).WithMany().
-                HasForeignKey(f => f.Property.Id)
-                .OnDelete(DeleteBehavior.Cascade);
-
+            modelBuilder.Entity<Favorite>().ToTable("Favorites");
+            modelBuilder.Entity<Favorite>().HasKey(f => f.Id);
         }
 
         public virtual DbSet<Favorite> Favorite { get; set; }

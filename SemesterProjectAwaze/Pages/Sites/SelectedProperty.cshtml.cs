@@ -3,9 +3,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using SemesterProjectAwaze.Services;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SemesterProjectAwaze.Pages.Sites
 {
+    [Table("Favorite")]
     public class SelectedPropertyModel : PageModel
     {
         private IGenericRepositoryService<Property> _propRepo;
@@ -23,6 +26,7 @@ namespace SemesterProjectAwaze.Pages.Sites
         [BindProperty]
         public Property SelectedProperty { get; set; }
         [BindProperty]
+        [Key]
         public int Id { get; set; }
 
         public void OnGet(string id)
@@ -35,11 +39,12 @@ namespace SemesterProjectAwaze.Pages.Sites
             Property selectedProperty = _propRepo.GetById(id);
             Guest loggedInGuest = _guestRepo.GetByEmail(SessionHelper.GetProfile(HttpContext).Email);
 
-            Favorite newFav = new Favorite(Id, loggedInGuest, selectedProperty);
+            Favorite newFav = new Favorite(Id, loggedInGuest.MyBookingId, selectedProperty.Id);
             _favRepo.Create(newFav);
 
             return Page();
         }
+
 
     }
 }

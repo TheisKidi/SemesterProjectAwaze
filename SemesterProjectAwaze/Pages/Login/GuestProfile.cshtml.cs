@@ -46,7 +46,7 @@ namespace SemesterProjectAwaze.Pages.Login
             
             try
             {
-                FavoriteList = _favRepo.GetAll();
+                FavoriteList = _favRepo.GetFavoritesByUserEmail(LoggedInUser.Email);
             }
             catch(Exception ex)
             {
