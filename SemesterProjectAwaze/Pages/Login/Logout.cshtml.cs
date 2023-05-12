@@ -19,7 +19,7 @@ namespace SemesterProjectAwaze.Pages.Login
             _loginService.ProfileLoggedOut();
             SessionHelper.SetUser(_loginService, HttpContext);
 
-            return RedirectToPage("Index");
+            return RedirectToPage("../Index");
         }
     }
 }

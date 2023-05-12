@@ -12,9 +12,6 @@ namespace SemesterProjectAwaze.Pages.Login
         [BindProperty]
         public List<Property> Properties { get; set; }
 
-        private LoggedInUser _eee;
-
-        private ILoginService _loginService;
         private IGenericRepositoryService<Property> _propRepo;
         private IGenericRepositoryService<Guest> _guestRepo;
 

@@ -74,7 +74,7 @@ namespace AwazeLib.model
 //----------------------------------------------------
 //property
 //| id | houseid | name | rating | fk_promo_img | fk_imgs |
-//| 1 | ABC123 | mithus | 4 | 3 | 1,2,3 |
+//| 1  | ABC123 | mithus | 4      | 3            | 1,2,3 |
 
 //images
 //| id | url | 

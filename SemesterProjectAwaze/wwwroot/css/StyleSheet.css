@@ -769,4 +769,7 @@ ul.propertNavbarUl li {
     top: 47px;
     right: 542px;
 }
+
+.favoriteContainer.owner {
+    right: 372px;
 }
