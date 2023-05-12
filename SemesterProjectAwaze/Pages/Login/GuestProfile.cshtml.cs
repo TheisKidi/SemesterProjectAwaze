@@ -12,6 +12,9 @@ namespace SemesterProjectAwaze.Pages.Login
         [BindProperty]
         public List<Property> Properties { get; set; }
 
+        private LoggedInUser _eee;
+
+        private ILoginService _loginService;
         private IGenericRepositoryService<Property> _propRepo;
         private IGenericRepositoryService<Guest> _guestRepo;
 
@@ -22,9 +25,9 @@ namespace SemesterProjectAwaze.Pages.Login
         }
 
 
-        public void OnGet()
+        public void OnGet(string email)
         {
-            LoggedInUser = _guestRepo.GetByEmail(SemesterProjectAwaze.Pages.Login.GuestLoginModel.EmailId);
+            LoggedInUser = _guestRepo.GetByEmail(SessionHelper.GetProfile(HttpContext).Email);
             Properties = _propRepo.GetAll();
         }
 
