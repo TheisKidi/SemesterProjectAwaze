@@ -20,7 +20,7 @@ li {
 .navbar-container {
     display: flex;
     justify-content: center;
-    width: 1914px;
+    width: 1900px;
 }
 
 .navbar-light {
@@ -522,7 +522,7 @@ input[type=range]:focus::-ms-fill-upper {
     right: 0;
     background-color: #2dd473;
     padding: 7px 20px;
-    color: white;
+    color: #2C2B2B;
     font-family: poppins;
     font-weight: bold;
 }
