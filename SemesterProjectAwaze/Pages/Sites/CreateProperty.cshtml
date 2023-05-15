@@ -7,10 +7,13 @@
     <h1 style="font-family: Poppins; font-size: 50px; padding-top: 50px; padding-bottom: 50px;">Udlej dit sommerhus</h1>
 </div>
 
-<div class="row">
-    <div class="col-md-6">
-        <form method="post">
-            <div class="form-group">
+<form method="post">
+    <div class="someyih">
+        
+        <div class="uploadHouseContainer">
+            
+            
+            <div class="form-group create">
                 <label>Land</label><br>
                 <select id="Country" name="Country" class="form-control">
                     @foreach (var c in Model.Countries)
@@ -19,85 +22,98 @@
                     }
                 </select>
             </div>
-            <div class="form-group">
+
+
+            <div class="form-group create">
                 <label>Adresse</label>
                 <input asp-for="@Model.Address" class="form-control" /><br />
                 <span asp-validation-for="@Model.Address" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+
+            <div class="form-group create">
                 <label>Navn på sommerhus</label>
                 <input asp-for="@Model.Name" class="form-control" /><br />
                 <span asp-validation-for="@Model.Name" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+
+            <div class="form-group create">
                 <label>Pris pr. nat</label>
                 <input asp-for="@Model.PricePrNight" class="form-control" /><br />
                 <span asp-validation-for="@Model.PricePrNight" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+
+            <div class="form-group create">
                 <label>Bedømmelse</label>
                 <input asp-for="@Model.Rating" class="form-control" /><br />
                 <span asp-validation-for="@Model.Rating" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+
+            <div class="form-group create">
                 <label>Beskrivelse</label>
                 <input asp-for="@Model.Description" class="form-control" /><br />
                 <span asp-validation-for="@Model.Description" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+
+            <div class="form-group create">
                 <label>Link til digitale rundviser</label>
                 <input asp-for="@Model.VR" class="form-control" /><br />
                 <span asp-validation-for="@Model.VR" class="text-danger"></span>
             </div>
+        </div>
 
-            <div class="form-group">
+
+
+        <div class="uploadHouseContainer">
+
+
+            <div class="form-group create">
                 <label>Antal personer tilladt</label>
                 <input asp-for="@Model.Persons" class="form-control" /><br />
                 <span asp-validation-for="@Model.Persons" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group create">
                 <label>Antal soveværelser</label>
                 <input asp-for="@Model.Bedrooms" class="form-control" /><br />
                 <span asp-validation-for="@Model.Bedrooms" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group create">
                 <label>Antal badeværelser</label>
                 <input asp-for="@Model.Bathrooms" class="form-control" /><br />
                 <span asp-validation-for="@Model.Bathrooms" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group create">
                 <label>Er dette hus bæredygtigt?</label>
                 <input type="checkbox" asp-for="@Model.Sustainable" /><br />
                 <span asp-validation-for="@Model.Sustainable" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group create">
                 <label>Er kæledyr tilladt?</label>
                 <input type="checkbox" asp-for="@Model.AllowPets" /><br />
                 <span asp-validation-for="@Model.AllowPets" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group create">
                 <label>Har sommerhuset Wifi?</label>
                 <input type="checkbox" asp-for="@Model.Wifi" /><br />
                 <span asp-validation-for="@Model.Wifi" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group create">
                 <label>Antal fjernsyn</label>
                 <input asp-for="@Model.Tv" class="form-control" /><br />
                 <span asp-validation-for="@Model.Tv" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group create">
                 <label>Sommerhus type</label><br>
                 <select id="Type" name="Type" class="form-control">
                     @foreach (var t in Model.HouseTypes)
@@ -106,6 +122,7 @@
                     }
                 </select>
             </div>
+            
 
             <label for="img">Link til billeder:</label>
             <input asp-for="@Model.PromoImg" class="form-control" /><br />
@@ -119,10 +136,10 @@
 
             <input asp-for="@Model.Img3" class="form-control" /><br />
             <span asp-validation-for="@Model.Img3" class="text-danger"></span>
-            <div class="form-group">
+
+            <div class="form-group create">
                 <input type="submit" value="Upload sommerhus" class="btn btn-primary" />
             </div>
-
-        </form>
-    </div>
+        </div>
+    </form>
 </div>

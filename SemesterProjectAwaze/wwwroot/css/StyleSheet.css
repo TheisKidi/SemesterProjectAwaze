@@ -62,7 +62,7 @@ li {
 }
 
 div .logo {
-    padding-right: 250px;
+    padding-right: 400px;
 }
 
 /* Responsive navbar */
@@ -824,4 +824,19 @@ ul.propertNavbarUl li {
     position: absolute;
     right: 950px;
     top: 482px;
+}
+
+.someyih {
+    display: flex;
+    font-family: poppins;
+    gap: 50px;
+    justify-content: center;
+}
+
+.uploadHouseContainer {
+    width: 500px;
+}
+
+.form-group.create{
+
 }
