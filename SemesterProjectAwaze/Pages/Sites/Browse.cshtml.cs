@@ -95,7 +95,13 @@ namespace SemesterProjectAwaze.Pages.Sites
                         (p.HouseType == HouseTypeHouseString || 
                         p.HouseType == HouseTypeVacString || 
                         p.HouseType == HouseTypeBoatString))
+                .OrderByDescending(p => p.PricePrNight)
                 .ToList();
+        }
+
+        public IActionResult OnGetReset()
+        {
+            return Page();
         }
     }
 }

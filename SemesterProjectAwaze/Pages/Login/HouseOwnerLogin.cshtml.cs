@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using SemesterProjectAwaze.Services;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Helpers;
 
 namespace SemesterProjectAwaze.Pages.Login
 {
@@ -36,21 +37,27 @@ namespace SemesterProjectAwaze.Pages.Login
                 return Page();
             }
 
-            try
+            foreach(HouseOwner owner in _repo.GetAll())
             {
-                _repo.GetByEmail(Email);
-                _loginService.SetProfileLoggedIn(_repo.GetByEmail(Email).FirstName, _repo.GetByEmail(Email).Email, true);
+                if(owner.Email == Email)
+                {
+                    if (Crypto.VerifyHashedPassword(owner.Password, Password))
+                    {
+                        try
+                        {
+                            _loginService.SetProfileLoggedIn(_repo.GetByEmail(Email).FirstName, _repo.GetByEmail(Email).OwnerId, true);
+                        }
+                        catch (KeyNotFoundException ex)
+                        {
+                            return Page();
+                        }
+                        SessionHelper.SetUser(_loginService, HttpContext);
+                        return RedirectToPage("HouseOwnerProfile");
+                    }
+                    ModelState.AddModelError("Password", "Adgangskode eller email er forkert");
+                }
             }
-            catch (KeyNotFoundException ex)
-            {
-                return Page();
-
-            }
-
-            SessionHelper.SetUser(_loginService, HttpContext);
-            return RedirectToPage("../Index");
+            return Page();
         }
-
-
     }
 }

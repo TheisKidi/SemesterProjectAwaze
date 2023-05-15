@@ -21,46 +21,29 @@ namespace SemesterProjectAwaze.Pages.Login
         [BindProperty]
         public string Phone { get; set; }
         [BindProperty]
-        public string Password { get; set; }
-        [BindProperty]
         public string MyBookingId { get; set; }
 
-        private IGenericRepositoryService<Property> _propRepo;
         private IGenericRepositoryService<Guest> _guestRepo;
         private FavoriteRepositoryService _favRepo;
 
-        public GuestProfileModel(IGenericRepositoryService<Guest> guestRepo, IGenericRepositoryService<Property> propRepo,
+        public GuestProfileModel(IGenericRepositoryService<Guest> guestRepo,
             FavoriteRepositoryService favRepo)
         {
             _favRepo = favRepo;
             _guestRepo = guestRepo;
-            _propRepo = propRepo;
         }
 
 
         public void OnGet()
         {
-
-
-            LoggedInUser = _guestRepo.GetByEmail(SessionHelper.GetProfile(HttpContext).Email);
-            
-            try
-            {
-                FavoriteList = _favRepo.GetFavoritesByUserEmail(LoggedInUser.Email);
-            }
-            catch(Exception ex)
-            {
-                FavoriteList = null;
-            }
-            
+            LoggedInUser = _guestRepo.GetById(SessionHelper.GetProfile(HttpContext).Id);
+            FavoriteList = _favRepo.GetFavoritesByUserEmail(LoggedInUser.Email);
 
             Guest editGuest = _guestRepo.GetById(LoggedInUser.MyBookingId);
 
             FirstName = editGuest.FirstName;
             LastName = editGuest.LastName;
-            Email = editGuest.Email;
             Phone = editGuest.Phone;
-            Password = editGuest.Password;
         }
 
         public IActionResult OnPostEdit(string id)
@@ -69,9 +52,7 @@ namespace SemesterProjectAwaze.Pages.Login
 
             editGuest.FirstName = FirstName;
             editGuest.LastName = LastName;
-            editGuest.Email = Email;
             editGuest.Phone = Phone;
-            editGuest.Password = Password;
 
             _guestRepo.Update(id, editGuest);
             return RedirectToPage("GuestProfile");

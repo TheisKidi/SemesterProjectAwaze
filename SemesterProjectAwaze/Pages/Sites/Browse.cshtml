@@ -34,19 +34,6 @@
                     <label class="custom-control-label houseTypeItem" data-housetype="HouseTypeBoat" for="ck1a3">
                         <img src="~/img/typeBoatIcon.svg" style="width: 45px; height: 50px;">
                     </label>
-
-@*                    <input asp-for="@Model.HouseTypeHouse" type="checkbox" class="custom-control-input hidden" id="ck1a" />
-                    <label class="custom-control-label houseTypeItem" data-housetype="HouseTypeHouse" for="ck1a" onclick="selectHouseType(this)">
-                        <img src="~/img/typeHouseIcon.svg" style="width: 45px; height: 50px; " />
-                    </label>
-                    <input asp-for="@Model.HouseTypeVac" type="checkbox" class="custom-control-input hidden" id="ck1a2" />
-                    <label class="custom-control-label houseTypeItem" data-housetype="HouseTypeVac" for="ck1a2" onclick="selectHouseType(this)">
-                        <img src="~/img/typeVactionIcon.svg" style="width: 45px; height: 50px;" />
-                    </label>
-                    <input asp-for="@Model.HouseTypeBoat" type="checkbox" class="custom-control-input hidden" id="ck1a3" />
-                    <label class="custom-control-label houseTypeItem" data-housetype="HouseTypeBoat" for="ck1a3" onclick="selectHouseType(this)">
-                        <img src="~/img/typeBoatIcon.svg" style="width: 45px; height: 50px;">
-                    </label>*@
                 </div>
                 <div class="filterGroup">
                     <div class="rangeSummary">
@@ -75,7 +62,7 @@
                         }
                     </div>
                     <div class="range browseRange">
-                        <input asp-for="@Model.Bedrooms" type="range" class="form-range" id="soveværelser" min="1" max="50" />
+                        <input asp-for="@Model.Bedrooms" type="range" class="form-range" id="soveværelser" min="1" max="7" />
 
                     </div>
                 </div>
@@ -91,7 +78,7 @@
                         }
                     </div>
                     <div class="range browseRange">
-                        <input asp-for="@Model.Bathrooms" type="range" class="form-range" id="badeværelser" min="1" max="20" />
+                        <input asp-for="@Model.Bathrooms" type="range" class="form-range" id="badeværelser" min="1" max="7" />
                     </div>
                 </div>
                 <div class="filterGroup">
@@ -102,8 +89,13 @@
                 <div class="form-group">
                     <input type="submit" value="Filtrer" class="btn btn-primary" />
                 </div>
+                </form>
+                <form method="get" asp-page-handler="reset">
+                    <div class="form-group">
+                        <input type="submit" value="Nulstil filter" class="btn btn-primary" />
+                    </div>
+                </form>
             </div>
-        </form>
         <div class="browsePanel">
             @foreach (var p in Model.Properties)
             {

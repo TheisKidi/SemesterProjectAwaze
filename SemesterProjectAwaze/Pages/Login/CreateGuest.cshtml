@@ -36,13 +36,13 @@
 
             <div class="form-group">
                 <label>Password</label>
-                <input asp-for="@Model.Password" class="form-control" /><br />
+                <input asp-for="@Model.Password" class="form-control" type="password"/><br />
                 <span asp-validation-for="@Model.Password" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label>Bekræft Password</label>
-                <input asp-for="@Model.ConfirmPassword" class="form-control" /><br />
+                <input asp-for="@Model.ConfirmPassword" class="form-control" type="password" /><br />
                 <span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
             </div>
 

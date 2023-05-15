@@ -8,6 +8,14 @@
         <div class="filterRow profile">
             <h1>MIN PROFIL</h1>
             <form method="post">
+                <div>
+                    <p class="profileInfoTitle">ID</p>
+                    <p class="profileInfo">@Model.LoggedInUser.MyBookingId</p>
+                </div>
+                <div class="form-group">
+                    <p class="profileInfoTitle">EMAIL</p><br>
+                    <p class="profileInfo">@Model.LoggedInUser.Email</p>
+                </div>
                 <div class="form-group">
                     <p class="profileInfoTitle">FORNAVN</p><br>
                     <input class="profileInfo" asp-for="@Model.FirstName" class="form-control" placeholder="@Model.LoggedInUser.FirstName"/><br />
@@ -16,45 +24,15 @@
                     <p class="profileInfoTitle">EFTERNAVN</p><br>
                     <input class="profileInfo" asp-for="@Model.LastName" class="form-control" placeholder="@Model.LoggedInUser.LastName"/><br />
                 </div>
-                <div>
-                    <p class="profileInfoTitle">ID</p>
-                    <p class="profileInfo">@Model.LoggedInUser.MyBookingId</p>
-                </div>
+
                 <div class="form-group">
                     <p class="profileInfoTitle">TELEFON NR.</p><br>
                     <input class="profileInfo" asp-for="@Model.Phone" class="form-control" placeholder="@Model.LoggedInUser.Phone" /><br />
                 </div>
                 <div class="form-group">
-                    <p class="profileInfoTitle">PASSWORD</p><br>
-                    <input class="profileInfo" asp-for="@Model.Password" class="form-control" placeholder="**********" /><br />
-                </div>
-                <div class="form-group">
-                    <p class="profileInfoTitle">EMAIL</p><br>
-                    <input class="profileInfo" asp-for="@Model.Email" class="form-control" placeholder="@Model.LoggedInUser.Email" /><br />
-                </div>
-                <div class="form-group">
                     <input type="submit" value="Ændre oplysninger" asp-page-handler="Edit" asp-route-id="@Model.LoggedInUser.MyBookingId" class="btn btn-success" />
                 </div>
             </form>
-
-            @*<p class="profileInfoTitle">EMAIL ADRESSE</p>
-            <p class="profileInfo">@Model.LoggedInUser.Email</p>
-            <div>
-                <p class="profileInfoTitle">FORNAVN</p>
-                <p class="profileInfo">@Model.LoggedInUser.FirstName</p>
-            </div>
-            <div>
-                <p class="profileInfoTitle">EFTERNAVN</p>
-                <p class="profileInfo">@Model.LoggedInUser.LastName</p>
-            </div>
-            <div>
-                <p class="profileInfoTitle">ID</p>
-                <p class="profileInfo">@Model.LoggedInUser.MyBookingId</p>
-            </div>
-            <div>
-                <p class="profileInfoTitle">TELEFON NR.</p>
-                <p class="profileInfo">@Model.LoggedInUser.Phone</p>
-            </div>*@
         </div>
         <div class="favoriteModule">
             <div class="favoriteContainer">

@@ -5,8 +5,8 @@
         bool IsProfileOwner { get; }
         string ProfileName { get; }
         bool IsLoggedIn { get; }
-        string Email { get; }
-        void SetProfileLoggedIn(string name, string email, bool isOwner);
+        string Id { get; }
+        void SetProfileLoggedIn(string name, string id, bool isOwner);
         void ProfileLoggedOut();
     }
 }

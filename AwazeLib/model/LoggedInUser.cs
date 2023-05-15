@@ -9,7 +9,7 @@ namespace AwazeLib.model
     public class LoggedInUser
     {
         public string Name { get; set; }
-        public string Email { get; set; }
+        public string Id { get; set; }
         public bool IsOwner { get; set; }
 
 
@@ -17,16 +17,16 @@ namespace AwazeLib.model
         {
         }
 
-        public LoggedInUser(string name, string email ,bool isAdmin)
+        public LoggedInUser(string name, string id ,bool isAdmin)
         {
-            Email = email;
+            Id = id;
             Name = name;
             IsOwner = isAdmin;
         }
 
         public override string ToString()
         {
-            return $"Name: {Name}, Email: {Email}, IsAdmin: {IsOwner}";
+            return $"Name: {Name}, Email: {Id}, IsAdmin: {IsOwner}";
         }
     }
 }

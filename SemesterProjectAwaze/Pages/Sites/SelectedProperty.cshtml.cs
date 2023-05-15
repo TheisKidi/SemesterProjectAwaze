@@ -37,12 +37,20 @@ namespace SemesterProjectAwaze.Pages.Sites
         public IActionResult OnPostAddToFavorite(string id)
         {
             Property selectedProperty = _propRepo.GetById(id);
-            Guest loggedInGuest = _guestRepo.GetByEmail(SessionHelper.GetProfile(HttpContext).Email);
+            Guest loggedInGuest = _guestRepo.GetById(SessionHelper.GetProfile(HttpContext).Id);
 
+            foreach (Favorite fav in _favRepo.GetAll())
+            {
+                if (fav.PropertyId == selectedProperty.Id && fav.GuestId == loggedInGuest.MyBookingId)
+                {
+                    return RedirectToPage("SelectedProperty", new { Id = id });
+                }
+            }
             Favorite newFav = new Favorite(Id, loggedInGuest.MyBookingId, selectedProperty.Id);
             _favRepo.Create(newFav);
 
-            return Page();
+            return RedirectToPage("SelectedProperty", new { Id = id }); 
+            //Her videresender vi med Id som parameter for, at 'SelectedProperty' siden ikke genindlæses med default værdier
         }
 
 

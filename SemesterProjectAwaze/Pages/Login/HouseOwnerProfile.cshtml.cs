@@ -25,7 +25,7 @@ namespace SemesterProjectAwaze.Pages.Login
 
         public void OnGet()
         {
-            LoggedInUser = _ownerRepo.GetByEmail(SessionHelper.GetProfile(HttpContext).Email);
+            LoggedInUser = _ownerRepo.GetById(SessionHelper.GetProfile(HttpContext).Id);
             Properties = _propRepo.GetAll().Where(p => p.OwnerId == LoggedInUser.OwnerId).ToList();
         }
 

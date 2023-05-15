@@ -3,92 +3,159 @@
 @{
 }
 
+<div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
+    <div class="carousel-inner w-100" role="listbox">
+        <div class="carousel-item active">
+            <img class="d-block col-4 p-1 pics" src="@Model.SelectedProperty.PromoImg">
+            <img class="d-block col-4 p-1 pics" src="@Model.SelectedProperty.Img1">
+            <img class="d-block col-4 p-1 pics" src="@Model.SelectedProperty.Img2">
+            <img class="d-block col-4 p-1 pics" src="@Model.SelectedProperty.Img3">
+        </div>
+    </div>
+</div>
+
 <div class="selectedPropertyNavbar">
-    <ul class="propertNavbarUl">
-        <li>Koncepter</li>
-        <li>Beskrivelse</li>
-        <li>Om feriehuset</li>
-        <li>Kort</li>
-    </ul>
+    <div class="navbar-pos">
+        <ul class="propertNavbarUl">
+            <li>Koncepter</li>
+            <li>Beskrivelse</li>
+            <li>Om feriehuset</li>
+            <li>Kort</li>
+        </ul>
+    </div>
 </div>
 
-<!-- Navigation -->
-<div class="selectedPropertyNavigationContainer">
-    <p class="selectedPropertyNavigation">FORSIDE / FERIEHUSE / @Model.SelectedProperty.Country / @Model.SelectedProperty.Address / <strong class="propertyId">@Model.SelectedProperty.Id</strong></p>
-</div>
+<!-- SiteContainer -->
+<div class="selectedContainer">
+    <!-- Navigation -->
+    <div class="selectedPropertyNavigationContainer">
+        <p class="selectedPropertyNavigation">FORSIDE / FERIEHUSE / @Model.SelectedProperty.Country / @Model.SelectedProperty.Address / <strong class="propertyId">@Model.SelectedProperty.Id</strong></p>
+    </div>
 
-<!-- Rating -->
-<div class="raitingContainer">
-        @switch (Model.SelectedProperty.Rating)
-        {
-            case 1:
-                <img class="starImg" src="~/img/starIcon.svg" />
-                break;
-            case 2:
-                <img class="starImg" src="~/img/starIcon.svg" />
-                <img class="starImg" src="~/img/starIcon.svg" />
-                break;
-            case 3:
-                <img class="starImg" src="~/img/starIcon.svg" />
-                <img class="starImg" src="~/img/starIcon.svg" />
-                <img class="starImg" src="~/img/starIcon.svg" />
-                break;
-            case 4:
-                <img class="starImg" src="~/img/starIcon.svg" />
-                <img class="starImg" src="~/img/starIcon.svg" />
-                <img class="starImg" src="~/img/starIcon.svg" />
-                <img class="starImg" src="~/img/starIcon.svg" />
-                break;
-            case 5:
-                <img class="starImg" src="~/img/starIcon.svg" />
-                <img class="starImg" src="~/img/starIcon.svg" />
-                <img class="starImg" src="~/img/starIcon.svg" />
-                <img class="starImg" src="~/img/starIcon.svg" />
-                <img class="starImg" src="~/img/starIcon.svg" />
-                break;
-        }
-</div>
-
-<!-- Name -->
-<div class="selectedPropertyNameContainer">
-    <h2 class="selectedPropertyHeader">@Model.SelectedProperty.Name,<br />@Model.SelectedProperty.Country</h2>
-    <p class="catalogNumber">Katalognummer: @Model.SelectedProperty.Id</p>
-</div>
-
-<div class="facilitiesContainer">
-    <ul class="facilitiesUl">
-        @switch (Model.SelectedProperty.HouseType)
-        {
+    <!-- Rating -->
+    <div class="raitingContainer">
+            @switch (Model.SelectedProperty.Rating)
+            {
+                case 1:
+                    <img class="starImg sIcon" src="~/img/starIcon.svg" />
+                    break;
+                case 2:
+                    <img class="starImg sIcon" src="~/img/starIcon.svg" />
+                    <img class="starImg sIcon" src="~/img/starIcon.svg" />
+                    break;
+                case 3:
+                    <img class="starImg sIcon" src="~/img/starIcon.svg" />
+                    <img class="starImg sIcon" src="~/img/starIcon.svg" />
+                    <img class="starImg sIcon" src="~/img/starIcon.svg" />
+                    break;
+                case 4:
+                    <img class="starImg sIcon" src="~/img/starIcon.svg" />
+                    <img class="starImg sIcon" src="~/img/starIcon.svg" />
+                    <img class="starImg sIcon" src="~/img/starIcon.svg" />
+                    <img class="starImg sIcon" src="~/img/starIcon.svg" />
+                    break;
+                case 5:
+                    <img class="starImg sIcon" src="~/img/starIcon.svg" />
+                    <img class="starImg sIcon" src="~/img/starIcon.svg" />
+                    <img class="starImg sIcon" src="~/img/starIcon.svg" />
+                    <img class="starImg sIcon" src="~/img/starIcon.svg" />
+                    <img class="starImg sIcon" src="~/img/starIcon.svg" />
+                    break;
+            }
+    </div>
+    @*HolidayCottage, HollidayApartment, HouseBoat*@
+    <!-- Name -->
+    <div class="selectedPropertyNameContainer">
+        
+            @switch(Model.SelectedProperty.HouseType)
+            {
             case "HolidayCottage":
-                <li><img class="starImg" src="~/img/typeHouseIcon.svg"/></li>
+                <h2 class="selectedPropertyHeader">Feriebolig - @Model.SelectedProperty.Name,<br />@Model.SelectedProperty.Country</h2>
                 break;
             case "HollidayApartment":
-                <li><img class="starImg" src="~/img/typeVactionIcon.svg"/></li>
+                <h2 class="selectedPropertyHeader">Ferielejlighed - @Model.SelectedProperty.Name,<br />@Model.SelectedProperty.Country</h2>
                 break;
             case "HouseBoat":
-                <li><img class="starImg" src="~/img/typeBoatIcon.svg" /></li>
+                <h2 class="selectedPropertyHeader">Husbåd - @Model.SelectedProperty.Name,<br />@Model.SelectedProperty.Country</h2>
                 break;
-        }
-        <li><img class="starImg" src="~/img/personsIcon.svg"/></li>
-        <li><img class="starImg" src="~/img/bedIcon.svg"/></li>
-        <li><img class="starImg"  src="~/img/bathroomIcon.svg" /></li>
-        @if (Model.SelectedProperty.Sustainable == true)
-        {
-            <li><img class="starImg" src="~/img/co2Friendly.svg"/></li>
-        }
-    </ul>
-</div>
+            }
+        <p class="catalogNumber">Katalognummer: @Model.SelectedProperty.Id</p>
+    </div>
 
-<div>
-    <h4>@Model.SelectedProperty.Name</h4>
-    <!-- Tilføj til favoritliste-knap/link -->
-    <form method="post" asp-page-handler="AddToFavorite" asp-route-id="@Model.SelectedProperty.Id">
-        <button type="submit">Tilføj til favoritliste</button>
-    </form>
-</div>
+    <div class="facilitiesContainer">
+        <ul class="facilitiesUl">
+            <div class="moduleIconContainer">
+                @{
+                    switch (Model.SelectedProperty.HouseType)
+                    {
+                        case "HolidayCottage":
+                            <img class="moduleIcon" src="~/img/typeHouseIcon.svg" />
+                            <p>FERIEHUS</p>
+                            break;
+                        case "HollidayApartment":
+                            <img class="moduleIcon" src="~/img/typeVactionIcon.svg" />
+                            <p>FERIELEJLIGHED</p>
+                            break;
+                        case "HouseBoat":
+                            <img class="moduleIcon" src="~/img/typeBoatIcon.svg" />
+                            <p>HUSBÅD</p>
+                            break;
+                    }
+                }
+            </div>
+            <div class="moduleIconContainer">
+                <img class="moduleIcon" src="~/img/bedIcon.svg" />
+                <p>@Model.SelectedProperty.Bedrooms 
+                    @{
+                        if (Model.SelectedProperty.Bedrooms > 1)
+                        {
+                            @:SENGE
+                        } 
+                        else 
+                        {
+                            @:SENG
+                        }
+                    }
+                </p>
+            </div>
+            <div class="moduleIconContainer">
+                <img class="moduleIcon" src="~/img/personsIcon.svg" />
+                <p>@Model.SelectedProperty.Persons PERSONER</p>
+            </div>
+            <div class="moduleIconContainer">
+            <img class="starImg"  src="~/img/bathroomIcon.svg" />
+                @if (Model.SelectedProperty.Bathrooms > 1)
+                {
+                    <p>@Model.SelectedProperty.Bathrooms BADEVÆRELSER</p>
+                }
+                <p>@Model.SelectedProperty.Bathrooms BADEVÆRELSE</p>
+            </div>
+            <div class="moduleIconContainer">
+            @if (Model.SelectedProperty.Sustainable == true)
+            {
+                <img class="starImg" src="~/img/co2Friendly.svg"/>
+                <p>BÆREDYGTIG FERIE</p>
+            }
+            </div>
+        </ul>
+    </div>
 
-<!-- Description -->
-<div>
-    <h4 class="selectedPropertyDescHeader">Beskrivelse</h4>
-    <p class="breadText">@Model.SelectedProperty.Description</p>
+    <div class="favoriteButton">
+        <!-- Tilføj til favoritliste-knap/link -->
+        @{
+            if (SemesterProjectAwaze.Services.SessionHelper.GetProfile(HttpContext).IsLoggedIn && !SemesterProjectAwaze.Services.SessionHelper.GetProfile(HttpContext).IsProfileOwner)
+            {
+                <form method="post" asp-page-handler="AddToFavorite" asp-route-id="@Model.SelectedProperty.Id">
+                    <button type="submit">Tilføj til favoritliste</button>
+                </form>
+            }
+        }
+
+    </div>
+
+    <!-- Description -->
+    <div class="descContainer">
+        <h4 class="selectedPropertyDescHeader">Beskrivelse</h4>
+        <p class="breadText">@Model.SelectedProperty.Description</p>
+    </div>
 </div>

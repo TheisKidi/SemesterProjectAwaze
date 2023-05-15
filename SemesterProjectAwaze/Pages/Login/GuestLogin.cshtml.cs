@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using SemesterProjectAwaze.Services;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Helpers;
 
 namespace SemesterProjectAwaze.Pages.Login
 {
@@ -21,10 +22,8 @@ namespace SemesterProjectAwaze.Pages.Login
 
         [Required, BindProperty]
         public string Email { get; set; }
-        [Required, BindProperty]
+        [Required(ErrorMessage = "Adgangskode mangler"), BindProperty]
         public string Password { get; set; }
-
-        public static string EmailId;
 
         public void OnGet()
         {
@@ -40,20 +39,29 @@ namespace SemesterProjectAwaze.Pages.Login
                 return Page();
             }
 
-            try
+            foreach (Guest guest in _guestRepo.GetAll())
             {
-                _loginService.SetProfileLoggedIn(_guestRepo.GetByEmail(Email).FirstName, _guestRepo.GetByEmail(Email).Email,false);
+                if (guest.Email == Email)
+                {
+                    if (Crypto.VerifyHashedPassword(guest.Password, Password))
+                    {
+                        try
+                        {
+                            _loginService.SetProfileLoggedIn(_guestRepo.GetByEmail(Email).FirstName, _guestRepo.GetByEmail(Email).MyBookingId, false);
+                        }
+
+                        catch (KeyNotFoundException ex)
+                        {
+                            return Page();
+
+                        }
+                        SessionHelper.SetUser(_loginService, HttpContext);
+                        return RedirectToPage("GuestProfile");
+                    }
+                    ModelState.AddModelError("Password", "Adgangskode eller email er forkert");
+                }
             }
-
-            catch (KeyNotFoundException ex)
-            {
-                return Page();
-
-            }
-
-            EmailId = _guestRepo.GetByEmail(Email).Email;
-            SessionHelper.SetUser(_loginService, HttpContext);
-            return RedirectToPage("GuestProfile");
+            return Page();
         }
     }
 }

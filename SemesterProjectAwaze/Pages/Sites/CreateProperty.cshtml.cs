@@ -13,12 +13,14 @@ namespace SemesterProjectAwaze.Pages.Sites
     public class CreatePropertyModel : PageModel
     {
         private IGenericRepositoryService<Property> _repo;
+        private IGenericRepositoryService<HouseOwner> _houseOwnerRepo;
         private int _randomNumberForId;
         private string _personalId;
 
-        public CreatePropertyModel(IGenericRepositoryService<Property> repo)
+        public CreatePropertyModel(IGenericRepositoryService<Property> repo, IGenericRepositoryService<HouseOwner> houseOwner)
         {
             _repo = repo;
+            _houseOwnerRepo = houseOwner;
         }
 
         public string Id
@@ -27,9 +29,8 @@ namespace SemesterProjectAwaze.Pages.Sites
             set { _personalId = value; }
         }
 
-        [BindProperty]
-        [Required(ErrorMessage = "OwnerId is required")]
-        public string OwnerId { get; set; } // skal erstattes, når vi har lavet loginService
+        public HouseOwner LoggedInOwner { get; set; }
+        public string OwnerId { get; set; }
         [BindProperty]
         [Required(ErrorMessage = "Country is required")]
         public Country Country { get; set; }
@@ -111,28 +112,38 @@ namespace SemesterProjectAwaze.Pages.Sites
             return _personalId;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            HouseTypes = Enum.GetValues<HouseType>().ToList();
-            Countries = Enum.GetValues<Country>().ToList();
+            try
+            {
+                LoggedInOwner = _houseOwnerRepo.GetById(SessionHelper.GetProfile(HttpContext).Id);
+            } catch (Exception ex)
+            {
+                return RedirectToPage("../Login/HouseOwnerLogin");
+            }
+
+                HouseTypes = Enum.GetValues<HouseType>().ToList();
+                Countries = Enum.GetValues<Country>().ToList();
+            return Page();
         }
 
         public IActionResult OnPost()
-        {
+            {
+            
+            OwnerId = _houseOwnerRepo.GetById(SessionHelper.GetProfile(HttpContext).Id).OwnerId;
 
             if (Id == null)
             {
                 Id = MakePropertyId();
             }
 
-            //Id = MakePropertyId();
             if (!ModelState.IsValid)
             {
                 HouseTypes = Enum.GetValues<HouseType>().ToList();
                 Countries = Enum.GetValues<Country>().ToList();
                 return Page();
             }
-            Property newProperty = new Property(MakePropertyId(), OwnerId, CountryToString, Address, Name, PricePrNight, Rating, Description,
+            Property newProperty = new Property(MakePropertyId(), OwnerId, CountryToString, Address, Name, Math.Round(PricePrNight,2), Rating, Description,
                 VR, Persons, Bedrooms, Bathrooms, Sustainable, AllowPets, Wifi, Tv, TypeToString, PromoImg, Img1, Img2, Img3);
 
             _repo.Create(newProperty);

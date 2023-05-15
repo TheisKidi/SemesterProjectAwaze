@@ -8,7 +8,7 @@ namespace SemesterProjectAwaze.Services
     {
         public static bool iAmOwner = false;
         public static string MyName = "";
-        public static string MyEmail = "";
+        public static string MyId = "";
         private LoggedInUser _user;
 
         public LoginService()
@@ -16,22 +16,22 @@ namespace SemesterProjectAwaze.Services
             _user = new LoggedInUser();
         }
 
-        public async void SetProfileLoggedIn(string name, string email, bool isOwner)
+        public async void SetProfileLoggedIn(string name, string id, bool isOwner)
         {
             MyName = name;
             _user.Name = name;
-            MyEmail = email;
-            _user.Email = email;
-            _user.IsOwner = isOwner;
+            MyId = id;
+            _user.Id = id;
             iAmOwner = isOwner;
+            _user.IsOwner = isOwner;
         }
 
         public void ProfileLoggedOut()
         {
             MyName = "";
             _user.Name = "";
-            MyEmail = "";
-            _user.Email = "";
+            MyId = "";
+            _user.Id = "";
             _user.IsOwner = false;
             iAmOwner = false;
         }
@@ -56,10 +56,10 @@ namespace SemesterProjectAwaze.Services
             set { _user.Name = value; }
         }
 
-        public string Email
+        public string Id
         {
-            get { return _user.Email; }
-            set { _user.Email = value; }
+            get { return _user.Id; }
+            set { _user.Id = value; }
         }
 
     }

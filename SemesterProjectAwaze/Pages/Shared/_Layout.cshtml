@@ -68,7 +68,7 @@
                     
                     
                         @{
-                            if (SemesterProjectAwaze.Services.LoginService.MyName == "")
+                            if (SemesterProjectAwaze.Services.LoginService.MyId == "")
                             {
                             <li><a asp-page="/Login/HouseOwnerLogin">Husejer-login</a></li>
                             <li class="navbar-seperator">
@@ -83,7 +83,7 @@
                                 </svg>
                             </li>
                             }
-                            else if (SemesterProjectAwaze.Services.LoginService.MyName != "" && !SemesterProjectAwaze.Services.LoginService.iAmOwner)
+                            else if (SemesterProjectAwaze.Services.LoginService.MyId != "" && !SemesterProjectAwaze.Services.LoginService.iAmOwner)
                             {
                                 <li><a asp-page="/Login/Logout">Log ud</a></li>
                                 <li class="navbar-seperator">
@@ -97,7 +97,7 @@
                                     </a>
                                 </li>
                             }
-                            else if (SemesterProjectAwaze.Services.LoginService.MyName != "" && SemesterProjectAwaze.Services.LoginService.iAmOwner)
+                            else if (SemesterProjectAwaze.Services.LoginService.MyId != "" && SemesterProjectAwaze.Services.LoginService.iAmOwner)
                             {
                                 <li><a asp-page="/Login/Logout">Log ud</a></li>
                                 <li class="navbar-seperator">
@@ -148,6 +148,7 @@
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 <script src="~/js/SelectHouseType.js" asp-append-version="true"></script>
+<script src="~/js/Slider.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

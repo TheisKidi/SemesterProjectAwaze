@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using SemesterProjectAwaze.Services;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Helpers;
 
 namespace SemesterProjectAwaze.Pages.Login
 {
@@ -31,14 +32,18 @@ namespace SemesterProjectAwaze.Pages.Login
         [Required(ErrorMessage = "Du mangler at udfylde feltet")]
         public string LastName { get; set; }
         [BindProperty]
+        [RegularExpression(@"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b", ErrorMessage = "Ikke gyldig Email")]
         [Required(ErrorMessage = "Du mangler at udfylde feltet")]
         public string Email { get; set; }
         [BindProperty]
         [Required(ErrorMessage = "Du mangler at udfylde feltet")]
         public string Phone { get; set; }
         [BindProperty]
+        [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$", 
+        ErrorMessage = "Ugyldigt password. Dit password skal være mindst 8 tegn langt, og det skal indeholde mindst ét tal, ét stort bogstav og ét lille bogstav.")]
         [Required(ErrorMessage = "Du mangler at udfylde feltet")]
         public string Password { get; set; }
+
         [Required(ErrorMessage = "Du mangler at udfylde feltet")]
         [BindProperty]
         public string ConfirmPassword { get; set; }
@@ -73,10 +78,33 @@ namespace SemesterProjectAwaze.Pages.Login
                 return Page();
             }
 
-            Guest newGuest = new Guest(FirstName, LastName, Email, Phone, false, Password, MakeGuestId());
-            _guestService.Create(newGuest);
+            if (_guestService.GetAll().Count == 0)
+            {
+                Guest newGuest = new Guest(FirstName, LastName, Email, Phone, false, Password, MakeGuestId());
+                _guestService.Create(newGuest);
 
-            return RedirectToPage("/Login/GuestLogin");
+                return RedirectToPage("/Login/GuestLogin");
+            }
+            else
+            {
+                foreach (Guest guest in _guestService.GetAll())
+                {
+
+                    if (guest.Email == Email)
+                    {
+                        ModelState.AddModelError("Email", "Email findes allerede");
+                    }
+                    else
+                    {
+                        Guest newGuest = new Guest(FirstName, LastName, Email, Phone, false, Crypto.HashPassword(Password), MakeGuestId());
+                        _guestService.Create(newGuest);
+
+                        return RedirectToPage("/Login/GuestLogin");
+                    }
+                }
+            }
+
+            return Page();  
         }
     }
 }
