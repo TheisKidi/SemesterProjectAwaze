@@ -16,7 +16,7 @@ namespace SemesterProjectAwaze.Services
             modelBuilder.Entity<Order>().HasKey(f => f.OrderId);
         }
 
-        public virtual DbSet<Order> Favorite { get; set; }
+        public virtual DbSet<Order> Order { get; set; }
 
 
     }
