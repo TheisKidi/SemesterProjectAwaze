@@ -14,6 +14,7 @@ builder.Services.AddSingleton<IGenericRepositoryService<HouseOwner>, HouseOwnerR
 builder.Services.AddSingleton<IGenericRepositoryService<Guest>, GuestRepositoryServiceDB>();
 builder.Services.AddSingleton<IGenericRepositoryService<Property>, PropertyRepositoryServiceDB>();
 builder.Services.AddSingleton <FavoriteRepositoryService>();
+builder.Services.AddSingleton <OrderRepositoryServiceDB>();
 builder.Services.AddSession();
 
 var app = builder.Build();
