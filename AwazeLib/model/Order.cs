@@ -9,27 +9,30 @@ namespace AwazeLib.model
     public class Order
     {
         public int OrderId { get; set; }
+        public string MyBookingId { get; set; }
+        public string PropertyId { get; set; }
         public Guest Guest { get; set; }
         public Property Property { get; set; }
         public DateTime ArrivalDate { get; set; }
         public DateTime DepartureDate { get; set; }
+        public decimal Price { get; set; }
         public bool IsBooked { get; set; }
 
-        public Order(int orderId, Guest guest, Property property, DateTime arrivalDate, DateTime departureDate, bool isBooked)
+        public Order(int orderId, string myBookingId, string propertyId, DateTime arrivalDate, DateTime departureDate, decimal price)
         {
             OrderId = orderId;
-            Guest = guest;
-            Property = property;
+            MyBookingId = myBookingId;
+            PropertyId = propertyId;
             ArrivalDate = arrivalDate;
             DepartureDate = departureDate;
-            IsBooked = isBooked;
+            Price = price;
         }
 
-        public Order() : this(0, new Guest(), new Property(), DateTime.Now, DateTime.Now, false) { }
+        public Order() : this(0, "", "", DateTime.Now, DateTime.Now, 9) { }
 
         public override string ToString()
         {
-            return $"Order Id: {OrderId}, Guest: {Guest}, Property: {Property}, Arrival Date: {ArrivalDate}, Departure Date: {DepartureDate}, Is Booked: {IsBooked}";
+            return $"Order Id: {OrderId}, Guest: {MyBookingId}, Property: {PropertyId}, Arrival Date: {ArrivalDate}, Departure Date: {DepartureDate}, Price: {Price}";
         }
 
     }
