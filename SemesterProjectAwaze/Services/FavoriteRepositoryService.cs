@@ -7,7 +7,6 @@ namespace SemesterProjectAwaze.Services
     {
 
         private FavoriteDBContext _db = new FavoriteDBContext();
-        //private IGenericRepositoryService<Property> _propRepo;
 
         public Favorite Create(Favorite favorite)
         {
