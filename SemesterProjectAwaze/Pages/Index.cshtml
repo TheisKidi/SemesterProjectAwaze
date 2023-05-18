@@ -10,9 +10,9 @@
     <div class="bannerText">
         <h1>Sommerhuse til dine feriedrømme @(Model?.userName ?? "")</h1>
         <h2>Tusindvis af sommerhuse og ferieboliger i Europa</h2>
-        <form method="post">
-        <div class="mainMenues">
-            <div class="dropdown">
+        @*<form method="post">*@
+        @*<div class="mainMenues">*@
+@*            <div class="dropdown">
                 <select id="smallDropdown" name="Country" class="dropbtn dropWide">
                     <option>Vælg land</option>
                     @foreach (var country in Model.Countries)
@@ -47,7 +47,7 @@
             <a asp-page="/Sites/Browse" id="searchBtn" class="btn-primary">SØG</a>
             </div>
         </div>
-        </form>
+        </form>*@
     </div>
 </div>
 

@@ -14,48 +14,61 @@
     </div>
 </div>
 
-<div class="selectedPropertyNavbar">
-    <div class="navbar-pos">
-        <ul class="propertNavbarUl">
-            <li>Koncepter</li>
-            <li>Beskrivelse</li>
-            <li>Om feriehuset</li>
-            <li>Kort</li>
-            <div class="orderModule">
-                <div class="orderTop">
-                    <p id="orderTopBot">Fra pris</p>
-                    <p>@Math.Round(Model.SelectedProperty.PricePrNight,2) DKK</p>
-                </div>
-                <div class="orderDetails">
-                    <p>Vis detaljeret pris</p>
-                </div>
-                <div class="orderDate">
-                    <div class="dateFlex">
-                        <div>
-                            <p>FRA</p>
-                            <input type="date" style="width: 140px;" placeholder="Ankomst"/>
-                        </div>
-                        <div>
-                            <p>TIL</p>
-                            <input type="date" style="width: 140px;"/>
+<form method="post" asp-page-handler="SelectPeriod" asp-route-id="@Model.SelectedProperty.Id">
+    <div class="selectedPropertyNavbar">
+        <div class="navbar-pos">
+            <ul class="propertNavbarUl">
+                <li>Koncepter</li>
+                <li>Beskrivelse</li>
+                <li>Om feriehuset</li>
+                <li>Kort</li>
+                <div class="orderModule">
+                    <div class="orderTop">
+                        <p id="orderTopBot">Fra pris</p>
+                        <p>@Math.Round(Model.SelectedProperty.PricePrNight,2) DKK</p>
+                    </div>
+                    <div class="orderDetails">
+                        <p>Vis detaljeret pris</p>
+                    </div>
+                    <div class="orderDate">
+                        <div class="dateFlex">
+                            <div>
+                                <p>FRA</p>
+                                <input asp-for="@Model.ArrivalDate" type="date" style="width: 140px ;"/>
+                            </div>
+                            <div>
+                                <p>TIL</p>
+                                <input asp-for="@Model.DepartureDate" type="date" style="width: 140px;" />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <form method="post" asp-page-handler="UnFavorite">
+
                     <input type="hidden" name="id" value="@Model.SelectedProperty.Id" />
                     <button type="submit" class="btn btn-primary loginbtn" 
                     style="margin-top: 50px; border-top-right-radius: 0px; border-top-left-radius: 0px;">
                         Vælg periode
                     </button>
-                </form>
-            </div>
-        </ul>
+                </div>
+            </ul>
+        </div>
     </div>
-</div>
+</form>
 
 
 <div class="containerRestraint">
     <!-- SiteContainer -->
+    <div class="favoriteButton">
+        <!-- Tilføj til favoritliste-knap/link -->
+        @{
+            if (SemesterProjectAwaze.Services.SessionHelper.GetProfile(HttpContext).IsLoggedIn && !SemesterProjectAwaze.Services.SessionHelper.GetProfile(HttpContext).IsProfileOwner)
+            {
+                <form method="post" asp-page-handler="AddToFavorite" asp-route-id="@Model.SelectedProperty.Id">
+                    <button class="favBtn" type="submit">Tilføj til favoritliste</button>
+                </form>
+            }
+        }
+
+    </div>
     <div class="selectedContainer">
         <!-- Navigation -->
         <div class="selectedPropertyNavigationContainer">
@@ -93,7 +106,6 @@
                         break;
                 }
         </div>
-        @*HolidayCottage, HollidayApartment, HouseBoat*@
         <!-- Name -->
         <div class="selectedPropertyNameContainer">
         
@@ -174,18 +186,7 @@
             </ul>
         </div>
 
-        <div class="favoriteButton">
-            <!-- Tilføj til favoritliste-knap/link -->
-            @{
-                if (SemesterProjectAwaze.Services.SessionHelper.GetProfile(HttpContext).IsLoggedIn && !SemesterProjectAwaze.Services.SessionHelper.GetProfile(HttpContext).IsProfileOwner)
-                {
-                    <form method="post" asp-page-handler="AddToFavorite" asp-route-id="@Model.SelectedProperty.Id">
-                        <button type="submit">Tilføj til favoritliste</button>
-                    </form>
-                }
-            }
 
-        </div>
 
         <!-- Description -->
         <div class="descContainer">
