@@ -549,6 +549,7 @@ input[type=range]:focus::-ms-fill-upper {
     font-weight: 500;
     background-color: #F5F5F5;
     font-family: 'Poppins';
+    position: relative;
 }
 
 ul.propertNavbarUl li {
@@ -618,8 +619,8 @@ ul.propertNavbarUl li {
     display: flex;
     align-items: center;
     height: 90px;
-    grid-column-start: 3;
-    column-gap: 130px;
+    /* grid-column-start: 12; */
+    column-gap: 75px;
     border-top: solid;
     border-bottom: solid;
     border-width: 1px;
@@ -802,9 +803,8 @@ ul.propertNavbarUl li {
 }
 
 .selectedContainer {
-    /* display: flex; */
-    margin: auto;
-    width: 1262px;
+    width: 860px;
+    margin-left: 308px;
 }
 
 .starImg.sIcon {
@@ -840,3 +840,75 @@ ul.propertNavbarUl li {
 .form-group.create{
 
 }
+
+.orderModule {
+    width: 345px;
+    position: absolute;
+    right: 31px;
+    top: -80px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    font-family: "poppins";
+}
+
+.orderTop {
+    height: 80px;
+    background-color: #2DD473;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border: 1px solid lightgrey;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.orderTop p {
+    margin: 0;
+    font-size: 23px;
+    color: white;
+    font-weight: bold;
+}
+
+#orderTopBot {
+    margin-top: 34px;
+    margin-right: 68px;
+    font-size: 15px;
+    font-weight: initial;
+}
+
+.orderDetails {
+    height: 59px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    background-color: white;
+}
+
+.orderDetails p {
+    margin: 0;
+    color: #ACACAC;
+    margin-right: 23px;
+}
+
+.orderDate {
+    height: 170px;
+    background-color: #2DD473;
+    border-left: 5px solid #6effab;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dateFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    font-family: poppins;
+}
+
+.dateFlex p{
+    margin: 0;
+    color: white;
+}
+
