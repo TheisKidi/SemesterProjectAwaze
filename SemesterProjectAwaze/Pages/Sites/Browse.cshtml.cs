@@ -9,13 +9,18 @@ namespace SemesterProjectAwaze.Pages.Sites
 {
     public class BrowseModel : PageModel
     {
-
+        #region instance field
         private readonly IGenericRepositoryService<Property> _propRepo;
+        #endregion
+
+        #region constructor
         public BrowseModel(IGenericRepositoryService<Property> propRepo)
         {
             _propRepo = propRepo;
         }
+        #endregion
 
+        #region properties
         [BindProperty]
         public List<Property> Properties { get; set; }
         [BindProperty]
@@ -50,7 +55,13 @@ namespace SemesterProjectAwaze.Pages.Sites
 
         [BindProperty]
         public HouseType SelectedType { get; set; }
+        #endregion
 
+        #region methods
+        /// <summary>
+        /// Henter alle boliger ved hjælp af property service. Herefter bliver alle hustyper sat til false,
+        /// så vores filter på hustype kan bruges.
+        /// </summary>
         public void OnGet()
         {
             Properties = _propRepo.GetAll();
@@ -59,14 +70,23 @@ namespace SemesterProjectAwaze.Pages.Sites
             HouseTypeBoat = false;
         }
 
+        /// <summary>
+        /// Klikker gæsten på en bolig, benytter de denne metode.
+        /// </summary>
+        /// <returns>
+        /// Returnerer siden /SelectedProperty, som er en side med udvidet info om den valgte bolig.
+        /// </returns>
         public IActionResult OnPost()
         {
             return RedirectToPage("SelectedProperty");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void OnPostFilter()
         {
-            HouseType selectedType = SelectedType;
+            //HouseType selectedType = SelectedType;
 
             if (HouseTypeHouse)
             {
@@ -103,5 +123,6 @@ namespace SemesterProjectAwaze.Pages.Sites
         {
             return Page();
         }
+        #endregion
     }
 }

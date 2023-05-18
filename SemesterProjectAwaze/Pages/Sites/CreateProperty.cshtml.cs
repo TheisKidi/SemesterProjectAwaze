@@ -12,34 +12,43 @@ namespace SemesterProjectAwaze.Pages.Sites
     [PrimaryKey(nameof(Id))]
     public class CreatePropertyModel : PageModel
     {
-        private IGenericRepositoryService<Property> _repo;
-        private IGenericRepositoryService<HouseOwner> _houseOwnerRepo;
+        #region instance field
+        private IGenericRepositoryService<Property> _propertyService;
+        private IGenericRepositoryService<HouseOwner> _houseOwnerService;
         private int _randomNumberForId;
         private string _personalId;
+        #endregion
 
-        public CreatePropertyModel(IGenericRepositoryService<Property> repo, IGenericRepositoryService<HouseOwner> houseOwner)
+        #region constructor
+        public CreatePropertyModel(IGenericRepositoryService<Property> propertyService, IGenericRepositoryService<HouseOwner> houseOwnerService)
         {
-            _repo = repo;
-            _houseOwnerRepo = houseOwner;
+            _propertyService = propertyService;
+            _houseOwnerService = houseOwnerService;
         }
+        #endregion
 
+        #region propeties
         public string Id
         {
             get { return _personalId; }
             set { _personalId = value; }
         }
-
+        public string CountryToString
+        {
+            get { return Country.ToString(); }
+            set { CountryToString = value; }
+        }
+        public string TypeToString
+        {
+            get { return Type.ToString(); }
+            set { TypeToString = value; }
+        }
         public HouseOwner LoggedInOwner { get; set; }
         public string OwnerId { get; set; }
         [BindProperty]
         [Required(ErrorMessage = "Country is required")]
         public Country Country { get; set; }
         public List<Country> Countries { get; private set; }
-        public string CountryToString
-        {
-            get { return Country.ToString(); }
-            set { CountryToString = value; }
-        }
         [BindProperty]
         [Required(ErrorMessage = "Address is required")]
         public string Address { get; set; }
@@ -61,12 +70,6 @@ namespace SemesterProjectAwaze.Pages.Sites
         [BindProperty]
         public HouseType Type { get; set; }
         public List<HouseType> HouseTypes { get; private set; }
-        public string TypeToString
-        {
-            get { return Type.ToString(); }
-            set { TypeToString = value; }
-        }
-
         [BindProperty]
         [Required(ErrorMessage = "Persons is required")]
         public int Persons { get; set; }
@@ -88,7 +91,6 @@ namespace SemesterProjectAwaze.Pages.Sites
         [BindProperty]
         [Required(ErrorMessage = "TV is required")]
         public int Tv { get; set; }
-
         [BindProperty]
         public string PromoImg { get; set; }
         [BindProperty]
@@ -97,26 +99,42 @@ namespace SemesterProjectAwaze.Pages.Sites
         public string Img2 { get; set; }
         [BindProperty]
         public string Img3 { get; set; }
+        #endregion
 
-        private int RandomNumber() // calculates a random number for the personal ID in the interval [0-999]
+        #region methods
+        /// <summary>
+        /// Udregner et tilfældigt nummer for et bolig ID i intervalet [100-999]
+        /// </summary>
+        /// <returns> en int, som repræsenterer et tilfældigt nummer </returns>
+        private int RandomNumber()
         {
             Random rnd = new Random();
             _randomNumberForId = rnd.Next(100, 999);
             return _randomNumberForId;
         }
 
-        private string MakePropertyId() // makes a personal id from the accounts first name and the RandomNumber() method
+        /// <summary>
+        /// laver et personligt id, som kombinerer boligens første tre bogstaver fra navnet og
+        /// kombinerer dem med RandomNumber() metodens output
+        /// </summary>
+        /// <returns> en string som repræsenterer et bolig id på 6 tegn </returns>
+        private string MakePropertyId()
         {
             string threeLetters = Name[..3].ToUpper();
             _personalId = $"{threeLetters}" + $"{RandomNumber()}";
             return _personalId;
         }
 
+        /// <summary>
+        /// Prøver at finde en husejer, da det kun er en husejer der kanm oprette en bolig.
+        /// Hvis der ikke er en husejer, som et logget ind, bliver gæsten omdiregeret til login siden.
+        /// </summary>
+        /// <returns> en side </returns>
         public IActionResult OnGet()
         {
             try
             {
-                LoggedInOwner = _houseOwnerRepo.GetById(SessionHelper.GetProfile(HttpContext).Id);
+                LoggedInOwner = _houseOwnerService.GetById(SessionHelper.GetProfile(HttpContext).Id);
             } catch (Exception ex)
             {
                 return RedirectToPage("../Login/HouseOwnerLogin");
@@ -127,10 +145,17 @@ namespace SemesterProjectAwaze.Pages.Sites
             return Page();
         }
 
+        /// <summary>
+        /// Sætter OwnerId ved hjælp af vore SessionHelper.
+        /// Tjekker om bolig Id er null ellers laver den et.
+        /// Tjekker om modelState er gyldigt og sætter vores enums.
+        /// Opretter til sidst en ny bolig og tilføjer den til databasen, hvis alt opfyldes.
+        /// </summary>
+        /// <returns> en side </returns>
         public IActionResult OnPost()
-            {
+        {
             
-            OwnerId = _houseOwnerRepo.GetById(SessionHelper.GetProfile(HttpContext).Id).OwnerId;
+            OwnerId = _houseOwnerService.GetById(SessionHelper.GetProfile(HttpContext).Id).OwnerId;
 
             if (Id == null)
             {
@@ -146,9 +171,10 @@ namespace SemesterProjectAwaze.Pages.Sites
             Property newProperty = new Property(MakePropertyId(), OwnerId, CountryToString, Address, Name, Math.Round(PricePrNight,2), Rating, Description,
                 VR, Persons, Bedrooms, Bathrooms, Sustainable, AllowPets, Wifi, Tv, TypeToString, PromoImg, Img1, Img2, Img3);
 
-            _repo.Create(newProperty);
+            _propertyService.Create(newProperty);
             
             return RedirectToPage("/Sites/Browse");
         }
+        #endregion
     }
 }

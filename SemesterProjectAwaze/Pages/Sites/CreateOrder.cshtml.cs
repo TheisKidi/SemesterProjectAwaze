@@ -11,6 +11,7 @@ namespace SemesterProjectAwaze.Pages.Sites
         // instance field
         private IGenericRepositoryService<Guest> _guestService;
         private IGenericRepositoryService<Property> _propertyService;
+        private OrderRepositoryServiceDB _orderService;
 
         // properties
         [BindProperty]
@@ -22,30 +23,61 @@ namespace SemesterProjectAwaze.Pages.Sites
         public DateTime StartDate { get; set; }
         [BindProperty]
         public DateTime EndDate { get; set; }
+        [BindProperty]
+        public int OrderId { get; set; }
+        [BindProperty]
+        public int CardNumber { get; set; }
+        [BindProperty]
+        public int Cvc { get; set; }
+        [BindProperty]
+        public int Month { get; set; }
+        [BindProperty]
+        public int Year { get; set; }
 
 
         // constructor 
-        public CreateOrderModel(IGenericRepositoryService<Guest> guestService, IGenericRepositoryService<Property> propertyService)
+        public CreateOrderModel(IGenericRepositoryService<Guest> guestService, 
+            IGenericRepositoryService<Property> propertyService, OrderRepositoryServiceDB orderService)
         {
             _guestService = guestService;
             _propertyService = propertyService;
+            _orderService = orderService;
         }
 
         // methods
         public decimal CalculatePrice()
         {
-            throw new Exception();
+            var nights = StartDate - EndDate;
+            decimal totalDays = Convert.ToDecimal(nights.TotalDays);
+
+            Price = totalDays * SelectedProperty.PricePrNight;
+            return Price;
         }
 
         public void OnGet(string id)
         {
-            SelectedProperty = _propertyService.GetById(id);
-            GuestLoggedIn = _guestService.GetById(SessionHelper.GetProfile(HttpContext).Id);
+            SelectedProperty = SelectedProperty = _propertyService.GetById(id);
+            try
+            {
+                GuestLoggedIn = _guestService.GetById(SessionHelper.GetProfile(HttpContext).Id);
+            }
+            catch (Exception ex)
+            {
+                RedirectToPage("../Login/GuestLogin");
+            }
         }
 
         public IActionResult OnPost()
         {
-            throw new Exception();
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            Order newOrder = new Order(OrderId, GuestLoggedIn.MyBookingId, SelectedProperty.Id, 
+                                       StartDate, EndDate, Price);
+            _orderService.Create(newOrder);
+            return RedirectToPage("Reciept");
         }
     }
 }
