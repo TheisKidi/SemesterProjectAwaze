@@ -82,12 +82,11 @@ namespace SemesterProjectAwaze.Pages.Sites
         }
 
         /// <summary>
-        /// 
+        /// Tjekker på alle husstyper om de er true, hvis de er true sætter metoden de forskellige hustyper til en string.
+        /// Til slut gør metoden brug af mange lambda udtryk, som skal filtrere bolig listen.
         /// </summary>
         public void OnPostFilter()
         {
-            //HouseType selectedType = SelectedType;
-
             if (HouseTypeHouse)
             {
                 HouseTypeHouseString = "HolidayCottage";
@@ -119,6 +118,12 @@ namespace SemesterProjectAwaze.Pages.Sites
                 .ToList();
         }
 
+        /// <summary>
+        /// Nulstiller alle filtre,
+        /// </summary>
+        /// <returns>
+        /// Returnerer siden
+        /// </returns>
         public IActionResult OnGetReset()
         {
             return Page();
