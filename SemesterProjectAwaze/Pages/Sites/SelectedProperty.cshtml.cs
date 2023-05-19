@@ -49,6 +49,14 @@ namespace SemesterProjectAwaze.Pages.Sites
         #endregion
 
         #region methods
+        /// <summary>
+        /// Metode til at udregne total prisen for en booking. Udregner først hvor mange nætter,
+        /// gæsten har booket. Herefter converterer den nætterne til et decimal, så
+        /// den kan gange det med pris pr nat.
+        /// </summary>
+        /// <returns>
+        /// Returnerer et decimal som svarer til total prisen
+        /// </returns>
         public decimal CalculatePrice()
         {
             var nights = DepartureDate - ArrivalDate;
@@ -98,6 +106,18 @@ namespace SemesterProjectAwaze.Pages.Sites
             return RedirectToPage("SelectedProperty", new { Id = id }); 
         }
 
+        /// <summary>
+        /// Metode til at booke en bolig. Finder først den valgte bolig. Derefter
+        /// tjekker den om en gæst er logget ind, hvis ikke sender den gæsten til logind siden.
+        /// Herefter kalder den CalculatePrice() metoden og opretter et nyt order objekt og
+        /// gemmer det i databasen.
+        /// </summary>
+        /// <param name="id">
+        /// Tager et property ID ind
+        /// </param>
+        /// <returns>
+        /// Returnerer gæstens side.
+        /// </returns>
         public IActionResult OnPostSelectPeriod(string id)
         {
 

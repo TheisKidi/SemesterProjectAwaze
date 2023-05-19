@@ -4,8 +4,12 @@ namespace SemesterProjectAwaze.Services
 {
     public class HouseOwnerRepositoryServiceDB : IGenericRepositoryService<HouseOwner>
     {
+        #region instance field
         private HouseOwnerDBContext _db = new HouseOwnerDBContext();
+        #endregion
 
+        #region methods
+        // alle metoder forklares i FavoriteRepositoryService samt GuestRepositoryService
         public HouseOwner Create(HouseOwner houseOwner)
         {
             _db.HouseOwner.Add(houseOwner);
@@ -53,5 +57,6 @@ namespace SemesterProjectAwaze.Services
             _db.SaveChanges();
             return houseOwner;
         }
+        #endregion
     }
 }

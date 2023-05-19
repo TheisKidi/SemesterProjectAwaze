@@ -30,7 +30,8 @@ namespace SemesterProjectAwaze.Pages.Login
 
         #region method
         /// <summary>
-        /// 
+        /// OnGet henter den profil som er logget ind og henter alle husejerens boliger,
+        /// så de kan blive vist på viewdelen.
         /// </summary>
         public void OnGet()
         {

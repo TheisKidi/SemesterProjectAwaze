@@ -4,8 +4,12 @@ namespace SemesterProjectAwaze.Services
 {
     public class PropertyRepositoryServiceDB : IGenericRepositoryService<Property>
     {
+        #region instance field
         private PropertyDBContext _db = new PropertyDBContext();
+        #endregion
 
+        #region methods
+        // alle metoder forklares i FavoriteRepositoryService samt GuestRepositoryService
         public Property Create(Property property)
         {
             _db.Property.Add(property);
@@ -48,5 +52,6 @@ namespace SemesterProjectAwaze.Services
             _db.SaveChanges();
             return property;
         }
+        #endregion
     }
 }

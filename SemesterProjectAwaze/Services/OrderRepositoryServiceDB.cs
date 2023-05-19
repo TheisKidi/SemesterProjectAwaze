@@ -5,8 +5,12 @@ namespace SemesterProjectAwaze.Services
 {
     public class OrderRepositoryServiceDB
     {
+        #region instance field
         private OrderDBContext _db = new OrderDBContext();
+        #endregion
 
+        #region methods
+        // alle metoder forklares i FavoriteRepositoryService samt GuestRepositoryService
         public Order Create(Order order)
         {
             _db.Order.Add(order);
@@ -49,5 +53,6 @@ namespace SemesterProjectAwaze.Services
             }
             return _db.Order.Include(f => f.Property).Where(f => f.Guest.Email == email).ToList();
         }
+        #endregion
     }
 }
