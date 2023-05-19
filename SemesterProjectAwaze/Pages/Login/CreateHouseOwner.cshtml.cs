@@ -11,21 +11,25 @@ namespace SemesterProjectAwaze.Pages.Login
     [PrimaryKey(nameof(OwnerId))]
     public class CreateHouseOwnerModel : PageModel
     {
-        private IGenericRepositoryService<HouseOwner> _repo;
+        #region instance field
+        private IGenericRepositoryService<HouseOwner> _houseOwnerService;
+        private int _randomNumberForId;
+        private string _personalId;
+        #endregion
 
+        #region constructor
         public CreateHouseOwnerModel(IGenericRepositoryService<HouseOwner> repo)
         {
             _repo = repo;
         }
+        #endregion
 
-        private int _randomNumberForId;
-        private string _personalId;
+        #region properties
         public string OwnerId
         {
             get { return _personalId; }
             set { _personalId = value; }
         }
-
         [BindProperty]
         [RegularExpression(@"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b", ErrorMessage = "Ikke gyldig Email")]
         [Required(ErrorMessage = "Du mangler at udfylde feltet")]
@@ -43,30 +47,47 @@ namespace SemesterProjectAwaze.Pages.Login
         public string Password { get; set; }
         [Required(ErrorMessage ="Password does not match")]
         [BindProperty]
-        
         public string ConfirmPassword { get; set; }
-
         [Required(ErrorMessage = "Du mangler at udfylde feltet")]
         [BindProperty]
         public string Phone { get; set; }
         [Required(ErrorMessage = "Du mangler at udfylde feltet")]
         [BindProperty]
         public string Address { get; set; }
+        #endregion
 
-        private int RandomNumber() // calculates a random number for the personal ID in the interval [0-999]
+        #region methods
+        /// <summary>
+        /// Udregner et tilfældigt nummer for et personligt husejer ID i intervalet [100-999]
+        /// </summary>
+        /// <returns> en int, som repræsenterer et tilfældigt nummer </returns>
+        private int RandomNumber()
         {
             Random rnd = new Random();
             _randomNumberForId = rnd.Next(100, 999);
             return _randomNumberForId;
         }
 
-        private string MakeOwnerId() // makes a personal id from the accounts first name and the RandomNumber() method
+        /// <summary>
+        /// laver et personligt id, som kombinerer husejerns navns første tre bogstaver og
+        /// kombinerer dem med RandomNumber() metodens output
+        /// </summary>
+        /// <returns> en string som repræsenterer et husejer id på 6 tegn </returns>
+        private string MakeOwnerId()
         {
             string threeLetters = FirstName[..3].ToUpper();
             _personalId = $"{threeLetters}" + $"{RandomNumber()}";
             return _personalId;
         }
 
+        /// <summary>
+        /// Tjekker om adganskoderne passer, hvis ikke smider den en error tekst i feltet till 'confirm password'.
+        /// Tjekker også om model state er gyldigt. Herudover laver metoden et tjek på om husejer listen er tom. Hvis
+        /// den er tom laver den en gæst med det samme og omdiregerer husejeren til login siden. Hvis listen ikke er tom
+        /// går den igennem en foreach løkke, som skal tjekke på om der allerede findes en husejer med den indtastede email.
+        /// Ellers opretter den et nyt hussejer objekt om diregerer ejeren til login siden.
+        /// </summary>
+        /// <returns> returnerer en side. </returns>
         public IActionResult OnPost()
         {
 
@@ -80,20 +101,33 @@ namespace SemesterProjectAwaze.Pages.Login
                 return Page();
             }
 
-
-            foreach (HouseOwner houseOwner in _repo.GetAll())
+            if (_houseOwnerService.GetAll().Count == 0)
             {
-                if (houseOwner.Email == Email)
+                HouseOwner newOwner = new HouseOwner(FirstName, LastName, Email, Phone, true, Crypto.HashPassword(Password), MakeOwnerId(), Address);
+                _houseOwnerService.Create(newOwner);
+
+                return RedirectToPage("/Login/HouseOwnerLogin");
+            }
+            else
+            {
+                foreach (HouseOwner owner in _houseOwnerService.GetAll())
                 {
-                    ModelState.AddModelError("Email", "Email findes allerede");
-                    return Page();
+
+                    if (owner.Email == Email)
+                    {
+                        ModelState.AddModelError("Email", "Email findes allerede");
+                    }
+                    else
+                    {
+                        HouseOwner newOwner = new HouseOwner(FirstName, LastName, Email, Phone, true, Crypto.HashPassword(Password), MakeOwnerId(), Address);
+                        _houseOwnerService.Create(newOwner);
+
+                        return RedirectToPage("/Login/HouseOwnerLogin");
+                    }
                 }
             }
-            HouseOwner newHouseOwner = new HouseOwner(FirstName, LastName, Email, Phone, true, Crypto.HashPassword(Password), MakeOwnerId(), Address);
-            _repo.Create(newHouseOwner);
-
-            return RedirectToPage("/Login/HouseOwnerLogin");
+            return Page();
         }
-
+        #endregion
     }
 }

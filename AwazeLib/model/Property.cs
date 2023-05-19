@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Runtime.Intrinsics.X86;
-using System.Text;
-using System.Threading.Tasks;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using static System.Net.Mime.MediaTypeNames;
-
 
 namespace AwazeLib.model
 {
-
+    #region enums
     public enum Country {Denmark, Croatia, Italy, TheNetherlands, Portugal}
     public enum HouseType { HolidayCottage, HollidayApartment, HouseBoat }
+    #endregion
 
     [Table("Property")]
     public class Property
     {
+        #region properties
         [Key]
         [MaxLength(6)]  
         public string Id { get; set; }
@@ -42,8 +35,9 @@ namespace AwazeLib.model
         public string Img1 { get; set; }
         public string Img2 { get; set; }
         public string Img3 { get; set; }
+        #endregion
 
-
+        #region constructors
         public Property() : this ("default ID", "DEF001", "Denmark", "default address", "default name", -1, 0, 
             "default description", "default VR link", 0, 0, 0, false, false, false, 0, "HolidayCottage", "", "", "", "")
         {
@@ -75,7 +69,9 @@ namespace AwazeLib.model
             Img2 = img2;
             Img3 = img3;
         }
+        #endregion
 
+        #region toString
         public override string ToString()
         {
             return $"Id: {Id}, HouseOwner: {OwnerId}, Country: {Country}, Address: {Address}, Name: {Name}, " +
@@ -83,49 +79,6 @@ namespace AwazeLib.model
                    $"VR: {VR}, Persons: {Persons}, Bedrooms: {Bedrooms}, Bathroom: {Bathrooms}, Sustainable: {Sustainable}, " +
                    $"AllowPets: {AllowPets}, Wifi: {Wifi}, Tv: {Tv}, Type: {HouseType}";
         }
-
-//----------------------------------------------------
-//Database setup
-//----------------------------------------------------
-//property
-//| id | houseid | name | rating | fk_promo_img | fk_imgs |
-//| 1  | ABC123 | mithus | 4      | 3            | 1,2,3 |
-
-//images
-//| id | url | 
-//| 1  | /assets/house/nice_house.jpg |
-//| 2  | /assets/house/nice_house2.jpg |
-//| 3  | /assets/house/promo_house.jpg |
-//| 4  | /assets/house/boat_house.jpg |
-
-
-//----------------------------------------------------
-///browse: Vis alle properties
-//----------------------------------------------------
-//SELECT* FROM property RIGHT JOIN property.fk_main_img = images.id;
-
-
-//----------------------------------------------------
-///abc123: Selected house
-//----------------------------------------------------
-//// Snup al data omkring huset og gem i propertydata
-//Property propertydata = "SELECT * FROM property RIGHT JOIN property.fk_main_img = images.id WHERE houseid = '<url houseid(abc123)>'";
-
-//        // Snup al data omkring billederne der ligger på huset ved at tilgå fk_imgs der kommer tilbage
-//        fra første query.
-//        PropertyImages propertyImages = "SELECT * FROM images WHERE id in (propertydata.fk_imgs)" 
-
-//// Render lortet:
-//foreach (propertydata as property) 
-//{
-//  <div class="images">
-//    foreach (Image image in propertyImages) 
-//    {
-//      <img src = "image.url" />
-//    }
-//  </div>
-//  <p>property.name</p>
-//}
-
+        #endregion
     }
 }
