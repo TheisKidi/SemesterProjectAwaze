@@ -122,6 +122,15 @@ namespace SemesterProjectAwaze.Pages.Login
 
             return RedirectToPage("GuestProfile");
         }
+
+        public IActionResult OnPostCancel(int id)
+        {
+            _orderRepo.Delete(id);
+
+            return RedirectToPage("GuestProfile");
+        }
+
+
         #endregion
     }
 }

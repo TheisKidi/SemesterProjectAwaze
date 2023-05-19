@@ -20,7 +20,7 @@ namespace SemesterProjectAwaze.Pages.Login
         #region constructor
         public CreateHouseOwnerModel(IGenericRepositoryService<HouseOwner> repo)
         {
-            _repo = repo;
+            _houseOwnerService = repo;
         }
         #endregion
 

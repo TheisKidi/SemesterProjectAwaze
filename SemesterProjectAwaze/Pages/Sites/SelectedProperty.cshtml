@@ -67,8 +67,12 @@
                 </form>
             }
         }
-
     </div>
+    <div class="discoverBtn">
+        <img style="width: 56px" src="~/img/vrIcon.svg" />
+        <a class="discoverLink" href="#discoverCottage">DIGITAL RUNDVISNING</a>
+    </div>
+
     <div class="selectedContainer">
         <!-- Navigation -->
         <div class="selectedPropertyNavigationContainer">
@@ -192,6 +196,10 @@
         <div class="descContainer">
             <h4 class="selectedPropertyDescHeader">Beskrivelse</h4>
             <p class="breadText">@Model.SelectedProperty.Description</p>
+        </div>
+        <div class="matterportContainer">
+            <p class="selectedPropertyHeader" style="font-weight: bold; padding-top: 50px;" id="discoverCottage">OPLEV BOLIGEN</p>
+            <iframe style=" width: 1250px; height: 700px; margin-bottom: 100px;" src="@Model.SelectedProperty.VR" frameborder="0" allowfullscreen allow="xr-spatial-tracking"></iframe>
         </div>
     </div>
 </div>
