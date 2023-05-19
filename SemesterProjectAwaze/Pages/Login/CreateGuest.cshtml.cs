@@ -105,7 +105,7 @@ namespace SemesterProjectAwaze.Pages.Login
 
             if (_guestService.GetAll().Count == 0)
             {
-                Guest newGuest = new Guest(FirstName, LastName, Email, Phone, false, Password, MakeGuestId());
+                Guest newGuest = new Guest(FirstName, LastName, Email, Phone, false, Crypto.HashPassword(Password), MakeGuestId());
                 _guestService.Create(newGuest);
 
                 return RedirectToPage("/Login/GuestLogin");

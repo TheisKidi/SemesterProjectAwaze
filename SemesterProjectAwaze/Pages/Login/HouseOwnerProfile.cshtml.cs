@@ -7,28 +7,36 @@ namespace SemesterProjectAwaze.Pages.Login
 {
     public class HouseOwnerProfileModel : PageModel
     {
+        #region instance field
+        private IGenericRepositoryService<Property> _propertyService;
+        private IGenericRepositoryService<HouseOwner> _ownerRepo;
+        #endregion
 
+        #region constructor
+        public HouseOwnerProfileModel(IGenericRepositoryService<HouseOwner> houseOwner,
+                              IGenericRepositoryService<Property> propertyService)
+        {
+            _ownerRepo = houseOwner;
+            _propertyService = propertyService;
+        }
+        #endregion
+
+        #region properties
         [BindProperty]
         public HouseOwner LoggedInUser { get; set; }
         [BindProperty]
         public List<Property> Properties { get; set; }
+        #endregion
 
-        private IGenericRepositoryService<Property> _propRepo;
-        private IGenericRepositoryService<HouseOwner> _ownerRepo;
-
-        public HouseOwnerProfileModel(IGenericRepositoryService<HouseOwner> houseOwner, IGenericRepositoryService<Property> propRepo)
-        {
-            _ownerRepo = houseOwner;
-            _propRepo = propRepo;
-        }
-
-
+        #region method
+        /// <summary>
+        /// 
+        /// </summary>
         public void OnGet()
         {
             LoggedInUser = _ownerRepo.GetById(SessionHelper.GetProfile(HttpContext).Id);
-            Properties = _propRepo.GetAll().Where(p => p.OwnerId == LoggedInUser.OwnerId).ToList();
+            Properties = _propertyService.GetAll().Where(p => p.OwnerId == LoggedInUser.OwnerId).ToList();
         }
-
-
+        #endregion
     }
 }
