@@ -944,3 +944,25 @@ ul.propertNavbarUl li {
     padding: 30px 50px;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
 }
+
+.discoverBtn {
+    position: relative;
+    top: 142px;
+    left: 144px;
+    z-index: 1;
+    margin: auto;
+    width: 235px;
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+}
+
+.discoverLink {
+    border: 1px solid lightgrey;
+    padding: 10px 10px;
+    margin-top: 10px;
+    background-color: #2DD473;
+    color: white;
+    font-family: poppins;
+    border-radius: 5px;
+}
