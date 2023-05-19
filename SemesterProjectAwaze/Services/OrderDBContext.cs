@@ -12,7 +12,7 @@ namespace SemesterProjectAwaze.Services
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Order>().ToTable("Favorites");
+            modelBuilder.Entity<Order>().ToTable("Order");
             modelBuilder.Entity<Order>().HasKey(f => f.OrderId);
         }
 
