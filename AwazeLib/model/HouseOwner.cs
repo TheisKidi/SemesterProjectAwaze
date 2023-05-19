@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Numerics;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AwazeLib.model
+﻿namespace AwazeLib.model
 {
     public class HouseOwner : Profile
     {
+        #region properties
         public string OwnerId { get; set; }
         public string Address { get; set; }
+        #endregion
 
+        #region constrctors
         public HouseOwner() : this("default FirstName", "default lastname", "default email", "default phone", 
                                    false, "default password", "default ownerId", "default address")
         {
@@ -25,11 +20,14 @@ namespace AwazeLib.model
             OwnerId = ownerId;
             Address = address;
         }
+        #endregion
 
+        #region toString
         public override string ToString()
         {
             return $"FirstName: {FirstName}, LastName: {LastName}, Email: {Email}, Phone: {Phone}, IsOwner: {IsOwner}, " +
                    $"Password: {Password}, OwnerId: {OwnerId}, Address: {Address}";
         }
+        #endregion
     }
 }

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AwazeLib.model
 {
     public class Order
     {
+        #region properties
         public int OrderId { get; set; }
         [ForeignKey("Guest")]
         [MaxLength(6)]
@@ -22,8 +18,9 @@ namespace AwazeLib.model
         public DateTime ArrivalDate { get; set; }
         public DateTime DepartureDate { get; set; }
         public decimal Price { get; set; }
-        //public bool IsBooked { get; set; }
+        #endregion
 
+        #region constructors
         public Order(int orderId, string myBookingId, string propertyId, DateTime arrivalDate, DateTime departureDate, decimal price)
         {
             OrderId = orderId;
@@ -35,11 +32,13 @@ namespace AwazeLib.model
         }
 
         public Order() : this(0, "", "", DateTime.Now, DateTime.Now, 9) { }
+        #endregion
 
+        #region toString
         public override string ToString()
         {
             return $"Order Id: {OrderId}, Guest: {MyBookingId}, Property: {PropertyId}, Arrival Date: {ArrivalDate}, Departure Date: {DepartureDate}, Price: {Price}";
         }
-
+        #endregion
     }
 }
