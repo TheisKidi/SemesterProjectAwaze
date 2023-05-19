@@ -147,7 +147,7 @@
             </div>
         </div>
     </div>
-    <div class="MasterTable">
+        <div class="MasterTable">
         <h2 class="RequestHeader">Dine ferier</h2>
         <table class="table table-hover">
             <thead>
@@ -160,25 +160,29 @@
                     <th></th>
                 </tr>
             </thead>
-            @if(Model.OrdersList != null)
+            @if (Model.OrdersList != null)
             {
-                <tbody class="TableBody">
+                    <tbody class="TableBody">
                     @foreach (var o in Model.OrdersList)
                     {
-                        <tr>
-                            <td>@o.Property.Name</td>
-                            <td>@o.ArrivalDate.ToString("dddd, dd MMMM yyyy")</td>
-                            <td>@o.DepartureDate.ToString("dddd, dd MMMM yyyy")</td>
-                            <td>@Math.Round(o.Price,2) DKK</td>
-                            <td>@Model.GetEmail(o)</td>
-                            <form asp-page-handler="Cancel">
-                            <td><a asp-route-id="@o.Property.Id" style="color: red;">Afbestil rejse</a></td>
-                            </form>
-                        </tr>
+                                <tr>
+                                    <td>@o.Property.Name</td>
+                                    <td>@o.ArrivalDate.ToString("dddd, dd MMMM yyyy")</td>
+                                    <td>@o.DepartureDate.ToString("dddd, dd MMMM yyyy")</td>
+                                    <td>@Math.Round(o.Price,2) DKK</td>
+                                    <td>@Model.GetEmail(o)</td>
+                                    <td>
+                                        <form method="post" asp-page-handler="Cancel">
+                                            <input type="hidden" name="id" value="@o.OrderId" />
+                                            <button style="border: none; background-color: transparent; color:red;" type="submit">Afbestil rejse</button>
+                                        </form>
+                                    </td>
+                                </tr>
                     }
-                </tbody>
+                    </tbody>
             }
         </table>
     </div>
 </div>
+
 

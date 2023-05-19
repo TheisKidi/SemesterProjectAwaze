@@ -18,7 +18,6 @@ namespace SemesterProjectAwaze.Pages.Login
         public GuestLoginModel(IGenericRepositoryService<Guest> guestRepo)
         {
             _guestService = guestRepo;
-
         }
         #endregion
 
