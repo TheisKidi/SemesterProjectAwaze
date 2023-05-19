@@ -25,7 +25,6 @@ namespace SemesterProjectAwaze.Services
         {
             string json = JsonSerializer.Serialize(service);
             context.Session.SetString(KEY, json);
-
         }
 
         /// <summary>
@@ -49,14 +48,13 @@ namespace SemesterProjectAwaze.Services
 
             if (json is not null)
             {
-
                 return JsonSerializer.Deserialize<LoginService>(json);
             }
             else
             {
-            LoginService us = new LoginService();
-            us.ProfileLoggedOut();
-            return us;
+                LoginService us = new LoginService();
+                us.ProfileLoggedOut();
+                return us;
             }
         }
         #endregion

@@ -86,13 +86,15 @@
                     <img style="width: 24px; height: 24px; " src="/img/co2Friendly.svg" />
                     <input asp-for="@Model.Sustainable" type="checkbox" class="custom-control-input" />
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Filtrer" class="btn btn-primary" />
+                <div class="filterGroup">
+                    <div class="form-group">
+                        <input type="submit" value="Filtrer" class="btn btn-primary filttBtn" />
+                    </div>
                 </div>
                 </form>
                 <form method="get" asp-page-handler="reset">
                     <div class="form-group">
-                        <input type="submit" value="Nulstil filter" class="btn btn-primary" />
+                        <input type="submit" value="Nulstil filter" class="btn btn-primary filttBtn" />
                     </div>
                 </form>
             </div>
