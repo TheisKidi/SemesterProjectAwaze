@@ -1,5 +1,6 @@
 using AwazeLib.model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using SemesterProjectAwaze.Services;
@@ -106,17 +107,30 @@ namespace SemesterProjectAwaze.Pages.Sites
             return RedirectToPage("SelectedProperty", new { Id = id }); 
         }
 
-        public bool IsBooked()
+        public bool IsNotBooked()
         {
             foreach (Order order in _orderRepo.GetAll())
             {
-                if (Order.PropertyId == SelectedProperty.Id)
+                if (order.PropertyId == SelectedProperty.Id)
                 {
-                    if (ArrivalDate.Ticks > order.DepartureDate.Ticks && DepartureDate.Ticks < order.ArrivalDate.Ticks)
+                    if (ArrivalDate.Ticks > order.DepartureDate.Ticks)
                     {
                         return true;
                     }
+                    else
+                    {
+                        return false;
+                    }
                 }
+            }
+            return true;
+        }
+
+        public bool CheckDate()
+        {
+            if (ArrivalDate < DepartureDate)
+            {
+                return true;
             }
             return false;
         }
@@ -143,12 +157,12 @@ namespace SemesterProjectAwaze.Pages.Sites
             }
             catch (Exception ex)
             {
-                RedirectToPage("../Login/GuestLogin");
+                return RedirectToPage("../Login/GuestLogin");
             }
 
             Price = CalculatePrice();
 
-            if (IsBooked()){
+            if (IsNotBooked() && CheckDate()){
 
                 Order newOrder = new Order(OrderId, GuestLoggedIn.MyBookingId, SelectedProperty.Id,
                                ArrivalDate, DepartureDate, Price);
@@ -156,7 +170,11 @@ namespace SemesterProjectAwaze.Pages.Sites
                 _orderRepo.Create(newOrder);
                 return RedirectToPage("../Login/GuestProfile");
             }
-            ModelState.AddModelError("ArrivalDate", "Dato er allerede booket");
+            else
+            {
+                ModelState.AddModelError("ArrivalDate", "Dato er allerede booked");
+            }
+
             return RedirectToPage("SelectedProperty", new { Id = id });
         }
         #endregion
