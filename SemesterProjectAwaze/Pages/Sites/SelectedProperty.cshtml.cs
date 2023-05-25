@@ -110,9 +110,12 @@ namespace SemesterProjectAwaze.Pages.Sites
         {
             foreach (Order order in _orderRepo.GetAll())
             {
-                if (ArrivalDate.Ticks > order.DepartureDate.Ticks && DepartureDate.Ticks < order.ArrivalDate.Ticks)
+                if (Order.PropertyId == SelectedProperty.Id)
                 {
-                    return true;
+                    if (ArrivalDate.Ticks > order.DepartureDate.Ticks && DepartureDate.Ticks < order.ArrivalDate.Ticks)
+                    {
+                        return true;
+                    }
                 }
             }
             return false;
@@ -153,7 +156,8 @@ namespace SemesterProjectAwaze.Pages.Sites
                 _orderRepo.Create(newOrder);
                 return RedirectToPage("../Login/GuestProfile");
             }
-            return RedirectToPage("../Login/GuestLogin");
+            ModelState.AddModelError("ArrivalDate", "Dato er allerede booket");
+            return RedirectToPage("SelectedProperty", new { Id = id });
         }
         #endregion
     }
