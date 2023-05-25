@@ -106,6 +106,18 @@ namespace SemesterProjectAwaze.Pages.Sites
             return RedirectToPage("SelectedProperty", new { Id = id }); 
         }
 
+        public bool IsBooked()
+        {
+            foreach (Order order in _orderRepo.GetAll())
+            {
+                if (ArrivalDate.Ticks > order.DepartureDate.Ticks && DepartureDate.Ticks < order.ArrivalDate.Ticks)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         /// <summary>
         /// Metode til at booke en bolig. Finder først den valgte bolig. Derefter
         /// tjekker den om en gæst er logget ind, hvis ikke sender den gæsten til logind siden.
@@ -133,11 +145,14 @@ namespace SemesterProjectAwaze.Pages.Sites
 
             Price = CalculatePrice();
 
-            Order newOrder = new Order(OrderId, GuestLoggedIn.MyBookingId, SelectedProperty.Id,
-                           ArrivalDate, DepartureDate, Price);
+            if (IsBooked()){
 
-            _orderRepo.Create(newOrder);
-            return RedirectToPage("../Login/GuestProfile");
+                Order newOrder = new Order(OrderId, GuestLoggedIn.MyBookingId, SelectedProperty.Id,
+                               ArrivalDate, DepartureDate, Price);
+
+                _orderRepo.Create(newOrder);
+                return RedirectToPage("../Login/GuestProfile");
+            }
         }
         #endregion
     }
