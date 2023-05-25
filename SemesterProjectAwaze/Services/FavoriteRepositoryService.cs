@@ -104,16 +104,6 @@ namespace SemesterProjectAwaze.Services
 
             return _db.Favorite.Include(f => f.Property).Where(f => f.User.Email == email).ToList();
         }
-
-        public Favorite GetByEmail(string email)
-        {
-            return null;
-        }
-
-        public Favorite Update(string id, Favorite property)
-        {
-            return null;
-        }
         #endregion
     }
 }

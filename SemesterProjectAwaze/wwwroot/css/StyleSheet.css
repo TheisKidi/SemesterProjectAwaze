@@ -967,3 +967,20 @@ ul.propertNavbarUl li {
     font-family: poppins;
     border-radius: 5px;
 }
+
+.filttBtn {
+    width: 274px;
+    background-color: #2C2B2B;
+    border-color: transparent;
+}
+
+.filttBtn{
+    width: 274px;
+    background-color: #2C2B2B;
+    border-color: transparent;
+}
+
+.filttBtn:hover {
+    background-color: #2dd473;
+    border-color: transparent;
+}

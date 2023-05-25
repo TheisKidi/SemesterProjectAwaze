@@ -18,7 +18,7 @@ namespace SemesterProjectAwaze.Services
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Guest>().HasKey(b => b.MyBookingId).HasName(nameof(Guest));
+            modelBuilder.Entity<Guest>().HasKey(b => b.MyBookingId);
         }
         #endregion
     }
