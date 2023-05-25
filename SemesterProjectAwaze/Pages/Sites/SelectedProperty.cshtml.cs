@@ -153,6 +153,7 @@ namespace SemesterProjectAwaze.Pages.Sites
                 _orderRepo.Create(newOrder);
                 return RedirectToPage("../Login/GuestProfile");
             }
+            return RedirectToPage("../Login/GuestLogin");
         }
         #endregion
     }
