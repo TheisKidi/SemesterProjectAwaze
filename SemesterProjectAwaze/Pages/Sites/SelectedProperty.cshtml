@@ -62,9 +62,9 @@
         @{
             if (SemesterProjectAwaze.Services.SessionHelper.GetProfile(HttpContext).IsLoggedIn && !SemesterProjectAwaze.Services.SessionHelper.GetProfile(HttpContext).IsProfileOwner)
             {
-                <form method="post" asp-page-handler="AddToFavorite" asp-route-id="@Model.SelectedProperty.Id">
-                    <button class="favBtn" type="submit">Tilføj til favoritliste</button>
-                </form>
+                        <form method="post" asp-page-handler="AddToFavorite" asp-route-id="@Model.SelectedProperty.Id">
+                            <button class="favBtn" type="submit">Tilføj til favoritliste</button>
+                        </form>
             }
         }
     </div>
@@ -135,16 +135,16 @@
                         switch (Model.SelectedProperty.HouseType)
                         {
                             case "HolidayCottage":
-                                <img class="moduleIcon" src="~/img/typeHouseIcon.svg" />
-                                <p>FERIEHUS</p>
+                                        <img class="moduleIcon" src="~/img/typeHouseIcon.svg" />
+                                        <p>FERIEHUS</p>
                                 break;
                             case "HollidayApartment":
-                                <img class="moduleIcon" src="~/img/typeVactionIcon.svg" />
-                                <p>FERIELEJLIGHED</p>
+                                        <img class="moduleIcon" src="~/img/typeVactionIcon.svg" />
+                                        <p>FERIELEJLIGHED</p>
                                 break;
                             case "HouseBoat":
-                                <img class="moduleIcon" src="~/img/typeBoatIcon.svg" />
-                                <p>HUSBÅD</p>
+                                        <img class="moduleIcon" src="~/img/typeBoatIcon.svg" />
+                                        <p>HUSBÅD</p>
                                 break;
                         }
                     }
@@ -155,11 +155,11 @@
                         @{
                             if (Model.SelectedProperty.Bedrooms > 1)
                             {
-                                @:SENGE
+                                        @:SENGE
                             } 
                             else 
                             {
-                                @:SENG
+                                        @:SENG
                             }
                         }
                     </p>

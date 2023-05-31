@@ -1,5 +1,6 @@
 using AwazeLib.model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using SemesterProjectAwaze.Services;
@@ -106,6 +107,34 @@ namespace SemesterProjectAwaze.Pages.Sites
             return RedirectToPage("SelectedProperty", new { Id = id }); 
         }
 
+        public bool IsNotBooked()
+        {
+            foreach (Order order in _orderRepo.GetAll())
+            {
+                if (order.PropertyId == SelectedProperty.Id)
+                {
+                    if (ArrivalDate.Ticks > order.DepartureDate.Ticks)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        public bool CheckDate()
+        {
+            if (ArrivalDate < DepartureDate)
+            {
+                return true;
+            }
+            return false;
+        }
+
         /// <summary>
         /// Metode til at booke en bolig. Finder først den valgte bolig. Derefter
         /// tjekker den om en gæst er logget ind, hvis ikke sender den gæsten til logind siden.
@@ -133,11 +162,20 @@ namespace SemesterProjectAwaze.Pages.Sites
 
             Price = CalculatePrice();
 
-            Order newOrder = new Order(OrderId, GuestLoggedIn.MyBookingId, SelectedProperty.Id,
-                           ArrivalDate, DepartureDate, Price);
+            if (IsNotBooked() && CheckDate()){
 
-            _orderRepo.Create(newOrder);
-            return RedirectToPage("../Login/GuestProfile");
+                Order newOrder = new Order(OrderId, GuestLoggedIn.MyBookingId, SelectedProperty.Id,
+                               ArrivalDate, DepartureDate, Price);
+
+                _orderRepo.Create(newOrder);
+                return RedirectToPage("../Login/GuestProfile");
+            }
+            else
+            {
+                ModelState.AddModelError("ArrivalDate", "Dato er allerede booked");
+            }
+
+            return RedirectToPage("SelectedProperty", new { Id = id });
         }
         #endregion
     }
