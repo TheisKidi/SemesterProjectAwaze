@@ -128,7 +128,7 @@ namespace SemesterProjectAwaze.Pages.Sites
             }
             catch (Exception ex)
             {
-                RedirectToPage("../Login/GuestLogin");
+                return RedirectToPage("../Login/GuestLogin");
             }
 
             Price = CalculatePrice();
